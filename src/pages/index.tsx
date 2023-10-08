@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="hidden"></header>
-      <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-primary to-[#2f3d1c] px-8 py-16 text-white">
+      <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-primary to-accent px-8 py-16 text-white">
         <h1 className="pb-10 text-5xl font-bold">Società agricola Kiwi Farm</h1>
         <nav className="flex flex-grow flex-wrap items-center justify-center gap-8 text-base font-bold">
           <LinkButton href="/about-us" Icon={IoMdBusiness}>
