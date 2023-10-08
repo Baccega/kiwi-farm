@@ -13,7 +13,7 @@ type Props = {
 export default function ArticleLayout(props: Props) {
   const { title, description, headline, children } = props;
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between gap-10 bg-gradient-to-b from-primary to-accent p-16 text-white">
+    <div className="to-accent flex min-h-screen flex-col items-center justify-between gap-10 bg-gradient-to-b from-primary p-16 text-white">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -30,7 +30,9 @@ export default function ArticleLayout(props: Props) {
         </h1>
         <div className="h-12 w-12"></div>
       </header>
-      <main className="flex flex-grow flex-col justify-evenly">{children}</main>
+      <main className="flex w-full flex-grow flex-col justify-evenly items-center">
+        {children}
+      </main>
       <Footer />
     </div>
   );
