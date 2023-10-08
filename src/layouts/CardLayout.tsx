@@ -29,11 +29,12 @@ export function CardLayout(props: Props) {
       <CardContent className="grid gap-6">{children}</CardContent>
       <CardFooter>
         <Button
-          disabled={isContinueAvailable}
+          disabled={!isContinueAvailable}
           onClick={onContinue}
           className="w-full"
+          type="submit"
         >
-          Continue
+          Continua
         </Button>
       </CardFooter>
     </Card>

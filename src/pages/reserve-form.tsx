@@ -6,6 +6,7 @@ import ShipmentType from "~/forms/ShipmentType";
 import ArticleLayout from "~/layouts/ArticleLayout";
 import PaymentMethod from "~/forms/PaymentMethod";
 import { useState } from "react";
+import OrderDetails from "~/forms/OrderDetails";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
@@ -13,15 +14,18 @@ const phoneRegex = new RegExp(
 
 export const formSchema = z.object({
   shipmentType: z.union([z.literal("pickup"), z.literal("delivery")]),
+  orderDetails: z.object({
+    name: z.string().min(3).max(50),
+    surname: z.string().min(3).max(50),
+    email: z.string().email().min(3).max(50),
+    phone: z.string().regex(phoneRegex).min(3).max(50),
+    kiwiKg: z.coerce.number().min(1).max(100),
+  }),
   shipmentDetails: z.object({
-    name: z.string(),
-    surname: z.string(),
-    email: z.string().email(),
-    phone: z.string().regex(phoneRegex),
-    address: z.string(),
-    city: z.string(),
-    zip: z.string(),
-    province: z.string(),
+    address: z.string().min(3).max(50),
+    city: z.string().min(3).max(50),
+    zip: z.string().min(3).max(7),
+    province: z.string().min(3).max(50),
   }),
   paymentMethod: z.union([z.literal("cash"), z.literal("online-payment")]),
 });
@@ -31,14 +35,17 @@ export default function ReserveForm() {
   const [page, setPage] = useState(0);
 
   const form = useForm<FormSchema>({
+    mode: "onBlur",
     resolver: zodResolver(formSchema),
     defaultValues: {
-      shipmentType: undefined,
-      shipmentDetails: {
+      orderDetails: {
         name: "",
         surname: "",
         email: "",
         phone: "",
+        kiwiKg: 5,
+      },
+      shipmentDetails: {
         address: "",
         city: "",
         zip: "",
@@ -64,9 +71,9 @@ export default function ReserveForm() {
           }}
           className="w-3/5 max-w-[90dvw] space-y-8"
         >
-          {/* Shipment type form */}
+          {/* Order details */}
           {page === 0 && (
-            <ShipmentType
+            <OrderDetails
               form={form}
               onContinue={() => {
                 console.log("continue");
@@ -75,8 +82,19 @@ export default function ReserveForm() {
               }}
             />
           )}
-          {/* Payment method */}
+          {/* Shipment type */}
           {page === 1 && (
+            <ShipmentType
+              form={form}
+              onContinue={() => {
+                console.log("continue");
+                console.log(form.getValues());
+                setPage(2);
+              }}
+            />
+          )}
+          {/* Payment method */}
+          {page === 2 && (
             <PaymentMethod
               form={form}
               onContinue={() => {
