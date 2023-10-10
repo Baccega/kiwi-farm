@@ -18,17 +18,27 @@ import {
  */
 export const mysqlTable = mysqlTableCreator((name) => `kiwi-farm_${name}`);
 
-export const example = mysqlTable(
-  "example",
+export const orders = mysqlTable(
+  "orders",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
+    name: varchar("name", { length: 256 }),
+    surname: varchar("surname", { length: 256 }),
+    address: varchar("address", { length: 256 }),
+    city: varchar("city", { length: 256 }),
+    zip: varchar("zip", { length: 256 }),
+    province: varchar("province", { length: 256 }),
+    kiwiKg: varchar("kiwiKg", { length: 256 }),
+    phone: varchar("phone", { length: 256 }),
+    email: varchar("email", { length: 256 }),
+    paymentMethod: varchar("paymentMethod", { length: 256 }),
+    shipmentType: varchar("shipmentType", { length: 256 }),
   },
-  (example) => ({
-    nameIndex: uniqueIndex("name_idx").on(example.name),
+  (orders) => ({
+    nameIndex: uniqueIndex("name_idx").on(orders.name),
   })
 );

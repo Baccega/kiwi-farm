@@ -2,13 +2,13 @@ import { CardLayout } from "~/layouts/CardLayout";
 import { type UseFormReturn } from "react-hook-form";
 import {
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "~/components/Form";
 import { Input } from "~/components/Input";
-import { env } from "~/env.mjs";
 import { type FormSchema } from "~/types/types";
 
 type Props = {
@@ -16,59 +16,40 @@ type Props = {
   onContinue: () => void;
 };
 
-export default function OrderDetails(props: Props) {
+export default function ShipmentDetails(props: Props) {
   const { form, onContinue } = props;
   const {
     formState: { errors },
   } = form;
 
   const hasErrors = Boolean(
-    errors.orderDetails?.email ??
-      errors.orderDetails?.phone ??
-      errors.orderDetails?.name ??
-      errors.orderDetails?.surname ??
-      errors.orderDetails?.kiwiKg,
+    errors.shipmentDetails?.address ??
+      errors.shipmentDetails?.city ??
+      errors.shipmentDetails?.province ??
+      errors.shipmentDetails?.zip,
   );
 
-  const orderDetails = form.watch("orderDetails");
+  const shipmentDetails = form.watch("shipmentDetails");
   const isAnyEmpty = Boolean(
-    !orderDetails.email ||
-      !orderDetails.phone ||
-      !orderDetails.name ||
-      !orderDetails.surname ||
-      !orderDetails.kiwiKg,
+    !shipmentDetails.address ||
+      !shipmentDetails.city ||
+      !shipmentDetails.province ||
+      !shipmentDetails.zip,
   );
-
-  const kgKiwi = form?.getValues()?.orderDetails?.kiwiKg ?? 0;
-  const priceStr =
-    kgKiwi > 0 ? ` (${kgKiwi * Number(env.NEXT_PUBLIC_KIWI_PRICE)} €)` : "";
 
   return (
     <CardLayout
       isContinueAvailable={!hasErrors && !isAnyEmpty}
       onContinue={onContinue}
-      title="Dettagli ordine"
+      title="Dettagli consegna"
       description="Inserisci i tuoi dati"
     >
       <FormField
         control={form.control}
-        name="orderDetails.kiwiKg"
+        name="shipmentDetails.address"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Kg. Kiwi{priceStr}</FormLabel>
-            <FormControl>
-              <Input type="number" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <FormField
-        control={form.control}
-        name="orderDetails.name"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Nome</FormLabel>
+            <FormLabel>Indirizzo</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -78,10 +59,10 @@ export default function OrderDetails(props: Props) {
       />
       <FormField
         control={form.control}
-        name="orderDetails.surname"
+        name="shipmentDetails.city"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Cognome</FormLabel>
+            <FormLabel>Città</FormLabel>
             <FormControl>
               <Input {...field} />
             </FormControl>
@@ -91,25 +72,29 @@ export default function OrderDetails(props: Props) {
       />
       <FormField
         control={form.control}
-        name="orderDetails.email"
+        name="shipmentDetails.zip"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Email</FormLabel>
+            <FormLabel>CAP</FormLabel>
             <FormControl>
-              <Input type="email" {...field} />
+              <Input {...field} />
             </FormControl>
             <FormMessage />
+            <FormDescription>
+              Per il momento la consegna è disponibile solamente a 30km dallo
+              spaccio
+            </FormDescription>
           </FormItem>
         )}
       />
       <FormField
         control={form.control}
-        name="orderDetails.phone"
+        name="shipmentDetails.province"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Telefono</FormLabel>
+            <FormLabel>Provincia</FormLabel>
             <FormControl>
-              <Input type="tel" {...field} />
+              <Input {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

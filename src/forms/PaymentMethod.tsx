@@ -5,7 +5,6 @@ import { IoGlobeOutline } from "react-icons/io5";
 import { FaTruck } from "react-icons/fa";
 import { BsCashCoin } from "react-icons/bs";
 import { type UseFormReturn } from "react-hook-form";
-import { type FormSchema } from "~/pages/reserve-form";
 import {
   FormControl,
   FormDescription,
@@ -14,6 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/Form";
+import { FormSchema } from "~/types/types";
 
 type Props = {
   form: UseFormReturn<FormSchema, unknown, undefined>;

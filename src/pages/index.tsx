@@ -6,8 +6,6 @@ import { IoMdBusiness } from "react-icons/io";
 import { RiShoppingBagLine } from "react-icons/ri";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>

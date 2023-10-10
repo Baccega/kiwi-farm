@@ -17,6 +17,8 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    TELEGRAM_BOT_TOKEN: z.string(),
+    TELEGRAM_CHAT_ID: z.string(),
   },
 
   /**
@@ -33,9 +35,12 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN,
+    TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_KIWI_PRICE: process.env.NEXT_PUBLIC_KIWI_PRICE,
+    // NEXT_PUBLIC_AVAILABLE_ZIPS: process.env.NEXT_PUBLIC_AVAILABLE_ZIPS,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
