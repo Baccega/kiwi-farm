@@ -2,8 +2,8 @@
 
 ## TODO
 
-- [ ] Make it deploy (vercel)
-- [ ] Setup dev and prod environments
+- [x] Make it deploy (vercel)
+- [x] Setup dev and prod environments
 - [ ] Scaffold basic ui with mock data
 - [ ] Tidy up build process
 - [ ] Set up a database (vercel postgres)
