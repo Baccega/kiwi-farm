@@ -8,6 +8,7 @@ import {
   serial,
   timestamp,
   varchar,
+  numeric
 } from "drizzle-orm/pg-core";
 
 /**
@@ -16,19 +17,35 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `kiwi-farm_${name}`);
+export const createTable = pgTableCreator((name) => `kiwi-farm_${process.env.NODE_ENV}_${name}`);
 
-export const posts = createTable(
-  "post",
+export const products = createTable(
+  "products",
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-    updatedAt: timestamp("updatedAt"),
+    price: numeric("price").notNull(),
+    strikedPrice: numeric("striked_price"),
+    description: varchar("description", { length: 256 }),
+    image: varchar("images", { length: 256 }),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
   })
 );
+
+
+// export const warehouse = createTable(
+//   "warehouse",
+//   {
+//     id: serial("id").primaryKey(),
+//     product: products.id.references().notNull(),
+//     quantity: numeric("quantity").notNull(),
+//   },
+//   (example) => ({
+//     nameIndex: index("name_idx").on(example.name),
+//   })
+// );
