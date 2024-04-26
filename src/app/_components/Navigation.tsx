@@ -4,11 +4,11 @@ import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 import { buttonVariants } from "~/components/ui/button";
 
-const navigationVariants = cva("flex gap-6", {
+const navigationVariants = cva("flex", {
   variants: {
     variant: {
-      default: "",
-      vertical: "flex-col items-start",
+      default: "gap-2 translate-x-4",
+      vertical: "gap-6 flex-col items-start",
     },
   },
   defaultVariants: {

@@ -1,16 +1,35 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
 
 export default function HomePage() {
   return (
-    <main className="flex h-fit flex-col">
+    <main className="text-primary-80 flex h-fit flex-col">
       <section
         id="hero"
         className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b text-center"
       >
-        <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
+        <div className="flex flex-col items-center gap-14">
+          <div className="flex flex-col items-center gap-6">
+            <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
+            <p className="text-primary-60 text-xl">
+              Una azienda agricola a conduzione familiare
+            </p>
+          </div>
+          <div className="flex flex-col gap-4 md:flex-row ">
+            <Link href="#prodotti" className={cn(buttonVariants(), "w-fit")}>
+              Acquista i nostri prodotti
+            </Link>
+            <Link
+              href="#azienda"
+              className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
+            >
+              Scopri la nostra azienda
+            </Link>
+          </div>
+        </div>
       </section>
       <section
         id="azienda"
@@ -61,7 +80,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="flex flex-col gap-3 md:gap-4">
+          <div className="flex translate-x-2 flex-col gap-3 md:gap-4">
             <span className="flex justify-center gap-2 md:justify-start">
               <MapPin />
               <Link
