@@ -5,41 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
-
-function Navigation(props: { onLinkClick?: () => void }) {
-  return (
-    <nav className="flex flex-col gap-6">
-      <Link
-        href="#azienda"
-        className="text-xl text-primary"
-        onClick={props.onLinkClick}
-      >
-        Azienda
-      </Link>
-      <Link
-        href="#prodotti"
-        className="text-xl text-primary"
-        onClick={props.onLinkClick}
-      >
-        Prodotti
-      </Link>
-      <Link
-        href="#spaccio"
-        className="text-xl text-primary"
-        onClick={props.onLinkClick}
-      >
-        Spaccio
-      </Link>
-      <Link
-        href="#contatti"
-        className="text-xl text-primary"
-        onClick={props.onLinkClick}
-      >
-        Contatti
-      </Link>
-    </nav>
-  );
-}
+import { Navigation } from "./Navigation";
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -58,11 +24,12 @@ export default function Header() {
           >
             <Image src="logo.svg" alt="logo" width={200} height={50} />
           </Link>
+          {/* <Navigation onLinkClick={handleLinkClick} /> */}
           <SheetTrigger>
             <Menu />
           </SheetTrigger>
           <SheetContent>
-            <Navigation onLinkClick={handleLinkClick} />
+            <Navigation variant="vertical" onLinkClick={handleLinkClick} />
           </SheetContent>
         </div>
       </header>
