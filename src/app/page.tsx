@@ -30,69 +30,75 @@ export default function HomePage() {
       >
         Spaccio
       </section>
-      <section
-        id="contatti"
-        className="bg-primary-80 container relative flex h-full min-h-50 md:min-h-64 scroll-mt-[--header-height] flex-col items-center justify-between border-b py-4 text-center text-white md:flex-row gap-4"
-      >
-        <div className="flex flex-col justify-between gap-2 md:gap-6">
-          <Image src="logo-white.svg" alt="logo" width={200} height={50} />
-          <div className="flex items-center justify-center md:justify-start gap-1">
-            {" "}
-            <Link
-              href="https://www.instagram.com/legiumelle/"
-              className={buttonVariants({
-                variant: "ghost",
-                inverted: true,
-                size: "icon",
-              })}
-            >
-              <Instagram />
-            </Link>
-            <Link
-              href="https://www.facebook.com/profile.php?id=100095173000490"
-              className={buttonVariants({
-                variant: "ghost",
-                inverted: true,
-                size: "icon",
-              })}
-            >
-              <Facebook />
-            </Link>
+      <section id="contatti" className="bg-primary-80 min-h-50">
+        <div className=" container relative flex h-full scroll-mt-[--header-height] flex-col items-center justify-between gap-4 border-b py-4 text-center text-white md:min-h-64 md:flex-row">
+          <div className="flex flex-col justify-between gap-2 md:gap-6 ">
+            <Image src="logo-white.svg" alt="logo" width={200} height={50} />
+            <div className="flex items-center  justify-center gap-1 md:-translate-x-2 md:justify-start">
+              {" "}
+              <Link
+                href="https://www.instagram.com/legiumelle/"
+                className={buttonVariants({
+                  variant: "ghost",
+                  inverted: true,
+                  size: "icon",
+                })}
+              >
+                <Instagram />
+              </Link>
+              <Link
+                href="https://www.facebook.com/profile.php?id=100095173000490"
+                className={buttonVariants({
+                  variant: "ghost",
+                  inverted: true,
+                  size: "icon",
+                })}
+              >
+                <Facebook />
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-3 md:gap-4">
-          <span className="flex justify-center md:justify-start gap-2">
-            <MapPin />
-            <span className="px-2">
-              Via Restello 19, Villa del Conte, Italy
+          <div className="flex flex-col gap-3 md:gap-4">
+            <span className="flex justify-center gap-2 md:justify-start">
+              <MapPin />
+              <Link
+                href="https://maps.app.goo.gl/JgZYeZmG7WiTfMWc7"
+                className={buttonVariants({
+                  variant: "link",
+                  inverted: true,
+                  size: "link",
+                })}
+              >
+                Via Restello 19, Villa del Conte, Italy
+              </Link>
             </span>
-          </span>
-          <span className="flex justify-center md:justify-start gap-2">
-            <Mail />{" "}
-            <Link
-              href="mailto:soc.agr.kiwifarm@gmail.com"
-              className={buttonVariants({
-                variant: "link",
-                inverted: true,
-                size: "link",
-              })}
-            >
-              soc.agr.kiwifarm@gmail.com
-            </Link>
-          </span>
-          <span className="flex justify-center md:justify-start gap-2">
-            <Phone />{" "}
-            <Link
-              href="tel:+393460586379"
-              className={buttonVariants({
-                variant: "link",
-                inverted: true,
-                size: "link",
-              })}
-            >
-              +39 346 058 6379
-            </Link>
-          </span>
+            <span className="flex justify-center gap-2 md:justify-start">
+              <Mail />{" "}
+              <Link
+                href="mailto:soc.agr.kiwifarm@gmail.com"
+                className={buttonVariants({
+                  variant: "link",
+                  inverted: true,
+                  size: "link",
+                })}
+              >
+                soc.agr.kiwifarm@gmail.com
+              </Link>
+            </span>
+            <span className="flex justify-center gap-2 md:justify-start">
+              <Phone />{" "}
+              <Link
+                href="tel:+393460586379"
+                className={buttonVariants({
+                  variant: "link",
+                  inverted: true,
+                  size: "link",
+                })}
+              >
+                +39 346 058 6379
+              </Link>
+            </span>
+          </div>
         </div>
       </section>
     </main>
