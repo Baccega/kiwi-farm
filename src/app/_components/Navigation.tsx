@@ -2,12 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
+import { buttonVariants } from "~/components/ui/button";
 
 const navigationVariants = cva("flex gap-6", {
   variants: {
     variant: {
       default: "",
-      vertical: "flex-col",
+      vertical: "flex-col items-start",
     },
   },
   defaultVariants: {
@@ -28,28 +29,28 @@ export function Navigation(props: NavigationProps) {
     <nav className={cn(navigationVariants({ variant, className }))} {...rest}>
       <Link
         href="#azienda"
-        className="text-xl text-primary"
+        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Azienda
       </Link>
       <Link
         href="#prodotti"
-        className="text-xl text-primary"
+        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Prodotti
       </Link>
       <Link
         href="#spaccio"
-        className="text-xl text-primary"
+        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Spaccio
       </Link>
       <Link
         href="#contatti"
-        className="text-xl text-primary"
+        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Contatti

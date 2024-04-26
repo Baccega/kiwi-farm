@@ -17,16 +17,19 @@ export default function Header() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <header className="h-header sticky top-0 z-50 border-b-2 border-b-primary bg-white">
-        <div className="container flex items-center justify-between py-4">
+        <div className="@container/header container flex items-center justify-between py-4">
           <Link
             href="/"
             className="block text-xl font-bold tracking-tight text-primary"
           >
             <Image src="logo.svg" alt="logo" width={200} height={50} />
           </Link>
-          {/* <Navigation onLinkClick={handleLinkClick} /> */}
-          <SheetTrigger>
-            <Menu />
+          <Navigation
+            className="@2xl/header:flex hidden"
+            onLinkClick={handleLinkClick}
+          />
+          <SheetTrigger className="@2xl/header:hidden">
+            <Menu className="fill-primary"/>
           </SheetTrigger>
           <SheetContent>
             <Navigation variant="vertical" onLinkClick={handleLinkClick} />

@@ -21,7 +21,7 @@ const config = {
         header: "var(--header-height)",
       },
       minHeight: {
-        "section": "calc(100dvh - var(--header-height))",
+        section: "calc(100dvh - var(--header-height))",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -48,7 +48,7 @@ const config = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          foreground: "var(--accent-foreground)",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -80,7 +80,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/container-queries"),
+  ],
 } satisfies Config;
 
 export default config;
