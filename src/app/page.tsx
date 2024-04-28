@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
@@ -9,7 +10,7 @@ export default function HomePage() {
     <main className="text-primary-80 flex h-fit flex-col">
       <section
         id="hero"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b text-center"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center"
       >
         <div className="flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
@@ -33,21 +34,73 @@ export default function HomePage() {
       </section>
       <section
         id="azienda"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b text-center"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center"
       >
-        <h1 className="text-5xl">Scopri la nostra azienda</h1>
+        <div className="flex w-full flex-col gap-10 lg:flex-row-reverse lg:justify-between">
+          <div className="flex flex-col items-center gap-6 lg:basis-3/5 lg:items-start">
+            <h1 className="text-5xl">La Nostra Azienda</h1>
+            <p className="text-primary-60 text-center text-xl lg:text-left">
+              Siamo una famiglia un legame profondo con il nostro territorio,
+              che curiamo e coltiviamo da almeno sei generazionsi. <br />
+              Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro
+              orgoglio
+            </p>
+          </div>
+          <div className="basis-1/3">
+            <figure className="relative mx-auto max-w-80 overflow-hidden rounded-xl border-8 border-primary bg-primary">
+              <AspectRatio ratio={1}>
+                <Image
+                  src="/enea.jpg"
+                  alt="Foto famiglia"
+                  fill
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </AspectRatio>
+            </figure>
+          </div>
+        </div>
       </section>
       <section
         id="prodotti"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b text-center"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center"
       >
         In costruzione
       </section>
       <section
         id="spaccio"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b text-center"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center"
       >
-        Spaccio
+        <div className="flex w-full flex-col gap-10 lg:flex-row-reverse lg:justify-between">
+          <div className="flex flex-col items-center gap-10 lg:basis-3/5 lg:items-start">
+            <div className="flex flex-col items-center gap-6 lg:items-start">
+              <h1 className="text-5xl">Il Nostro Spaccio</h1>
+              <p className="text-primary-60 text-center text-xl lg:text-left">
+                Venite a trovarci nel nostro spaccio aziendale, dove potrete
+                trovare e gustare tutti i nostri prodotti
+              </p>
+            </div>
+            <Link
+              href="#contatti"
+              className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
+            >
+              Vieni a trovarci
+            </Link>
+          </div>
+          <div className="basis-1/3">
+            <figure className="relative mx-auto max-w-80 overflow-hidden rounded-xl border-8 border-primary bg-primary">
+              <AspectRatio ratio={1}>
+                <Image
+                  src="/spaccio.jpg"
+                  alt="Foto spaccio"
+                  fill
+                  objectFit="fill"
+                  className="rounded-lg"
+                />
+              </AspectRatio>
+            </figure>
+          </div>
+        </div>
       </section>
       <section
         id="contatti"
