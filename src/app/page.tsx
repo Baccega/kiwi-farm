@@ -10,8 +10,15 @@ export default function HomePage() {
     <main className="text-primary-80 flex h-fit flex-col">
       <section
         id="hero"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center lg:px-16"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
+        <Image
+          src="/kiwi.jpg"
+          aria-hidden="true"
+          className="-z-10 object-cover opacity-20 grayscale"
+          alt=""
+          fill
+        />
         <div className="flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
@@ -50,7 +57,7 @@ export default function HomePage() {
       />
       <section
         id="prodotti"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center lg:px-16"
+        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         In costruzione
       </section>
@@ -69,10 +76,10 @@ export default function HomePage() {
         id="contatti"
         className="bg-primary-80 min-h-50 scroll-mt-[--header-height] border-b"
       >
-        <div className="container relative flex h-full flex-col items-center justify-between gap-6 py-6 text-center text-white md:min-h-64 md:flex-row md:gap-4 lg:px-16">
+        <div className="container relative flex h-full flex-col items-center justify-between gap-6 py-6 text-center text-white md:min-h-64 md:flex-row md:gap-4 md:px-16">
           <div className="flex flex-col justify-between gap-2 md:gap-6 ">
             <Image src="logo-white.svg" alt="logo" width={200} height={50} />
-            <div className="flex items-center  justify-center gap-1 md:-translate-x-2 md:justify-start">
+            <div className="flex items-center justify-center gap-1 md:-translate-x-2 md:justify-start">
               {" "}
               <Link
                 href="https://www.instagram.com/legiumelle/"

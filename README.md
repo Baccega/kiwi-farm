@@ -5,7 +5,7 @@
 - [x] Make it deploy (vercel)
 - [x] Setup dev and prod environments
 - [x] Add shadcn/ui
-- [ ] Scaffold basic ui with mock data
+- [x] Scaffold basic ui with mock data
 - [ ] Tidy up build process
 - [ ] Set up a database (vercel postgres)
 - [ ] Attach database to UI

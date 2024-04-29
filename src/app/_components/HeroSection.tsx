@@ -22,7 +22,7 @@ const heroSectionVariants = cva(
 );
 
 const heroSectionFigureVariants = cva(
-  "relative max-w-80 mx-auto lg:mx-0 overflow-hidden rounded-xl border-8 border-primary bg-primary",
+  "border-sketchy max-w-80 mx-auto lg:mx-0 bg-primary",
   {
     variants: {
       variant: {
@@ -67,7 +67,7 @@ export function HeroSection({
     <section
       id={id}
       className={cn(
-        "min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center lg:px-16",
+        "min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center md:px-16",
         className,
       )}
       {...rest}

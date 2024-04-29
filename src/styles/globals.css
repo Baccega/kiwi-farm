@@ -20,7 +20,7 @@
     --primary-60: #658369;
     --primary-40: #8dae92;
     --primary-20: #b9dabd;
-    --primary-foreground: #FFF;
+    --primary-foreground: #fff;
 
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
@@ -37,16 +37,31 @@
 
     --radius: 0.5rem;
   }
-}
 
-@layer base {
   * {
-    @apply border-border max-w-full;
+    @apply max-w-full border-border;
   }
   html {
     @apply scroll-smooth;
   }
   body {
     @apply min-h-dvh bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .border-sketchy {
+    @apply relative rounded-xl border-[5px] border-primary;
+
+    &::before {
+      @apply absolute left-1/2 top-1/2 block h-full w-full border-2 border-primary content-[''];
+      transform: translate3d(-50%, -50%, 0) scale(1.05) rotate(1deg);
+      border-radius: 1% 1% 2% 4% / 2% 6% 5% 9%;
+    }
+    &::after {
+      @apply absolute left-1/2 top-1/2 block h-full w-full border-2 border-primary content-[''];
+      transform: translate3d(-50%, -50%, 0) scale(1.05) rotate(-1deg);
+      border-radius: 1% 1% 2% 4% / 2% 6% 5% 9%;
+    }
   }
 }
