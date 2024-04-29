@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="h-header sticky top-0 z-50 border-b-2 border-b-primary bg-white text-primary">
       <Sheet open={open} onOpenChange={setOpen}>
-        <div className="@container/header container flex items-center justify-between py-4">
+        <div className="@container/header container flex items-center justify-between py-4 lg:px-16">
           <Link href="/" className="block text-xl font-bold tracking-tight">
             <Image src="logo.svg" alt="logo" width={200} height={50} />
           </Link>

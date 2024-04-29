@@ -6,7 +6,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-primary-80">
-      <div className="container flex flex-col items-center justify-between py-1 text-sm text-white md:flex-row">
+      <div className="container flex flex-col items-center justify-between py-1 text-sm text-white md:flex-row lg:px-16">
         <nav className="flex gap-4 md:-translate-x-4">
           <Link
             href="/privacy"

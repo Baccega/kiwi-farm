@@ -67,7 +67,7 @@ export function HeroSection({
     <section
       id={id}
       className={cn(
-        "min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center",
+        "min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center lg:px-16",
         className,
       )}
       {...rest}
