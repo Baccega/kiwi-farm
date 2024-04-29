@@ -17,7 +17,7 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `kiwi-farm_${process.env.NODE_ENV}_${name}`);
+export const createTable = pgTableCreator((name) => `kiwi-farm_${name}`);
 
 export const products = createTable(
   "products",

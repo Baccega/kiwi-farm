@@ -51,7 +51,7 @@
 
 @layer components {
   .border-sketchy {
-    @apply relative rounded-xl border-[5px] border-primary;
+    @apply relative rounded-xl border-[3px] border-primary;
 
     &::before {
       @apply absolute left-1/2 top-1/2 block h-full w-full border-2 border-primary content-[''];

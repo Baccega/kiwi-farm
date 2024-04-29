@@ -6,8 +6,8 @@
 - [x] Setup dev and prod environments
 - [x] Add shadcn/ui
 - [x] Scaffold basic ui with mock data
-- [ ] Tidy up build process
-- [ ] Set up a database (vercel postgres)
+- [x] Tidy up build process
+- [x] Set up a database (vercel postgres)
 - [ ] Attach database to UI
 - [ ] ~~Add authentication (w/ clerk)~~
 - [ ] "taint" (server-only)
