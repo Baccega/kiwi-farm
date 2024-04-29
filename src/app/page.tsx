@@ -1,9 +1,9 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
+import { HeroSection } from "./_components/HeroSection";
 
 export default function HomePage() {
   return (
@@ -32,76 +32,39 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section
+      <HeroSection
         id="azienda"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center"
-      >
-        <div className="flex w-full flex-col gap-10 lg:flex-row-reverse lg:justify-between">
-          <div className="flex flex-col items-center gap-6 lg:basis-3/5 lg:items-start">
-            <h1 className="text-5xl">La Nostra Azienda</h1>
-            <p className="text-primary-60 text-center text-xl lg:text-left">
-              Siamo una famiglia un legame profondo con il nostro territorio,
-              che curiamo e coltiviamo da almeno sei generazionsi. <br />
-              Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro
-              orgoglio
-            </p>
-          </div>
-          <div className="basis-1/3">
-            <figure className="relative mx-auto max-w-80 overflow-hidden rounded-xl border-8 border-primary bg-primary">
-              <AspectRatio ratio={1}>
-                <Image
-                  src="/enea.jpg"
-                  alt="Foto famiglia"
-                  fill
-                  objectFit="cover"
-                  className="rounded-lg"
-                />
-              </AspectRatio>
-            </figure>
-          </div>
-        </div>
-      </section>
+        title="La Nostra Azienda"
+        description={
+          <>
+            Siamo una famiglia un legame profondo con il nostro territorio, che
+            curiamo e coltiviamo da almeno sei generazionsi. <br />
+            Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro
+            orgoglio
+          </>
+        }
+        imgSrc="/enea.jpg"
+        imgAlt="Foto famiglia"
+        ctaText="Vieni a trovarci"
+        ctaHref="#contatti"
+      />
       <section
         id="prodotti"
         className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center"
       >
         In costruzione
       </section>
-      <section
+      <HeroSection
+        variant="imgLeft"
         id="spaccio"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center"
-      >
-        <div className="flex w-full flex-col gap-10 lg:flex-row-reverse lg:justify-between">
-          <div className="flex flex-col items-center gap-10 lg:basis-3/5 lg:items-start">
-            <div className="flex flex-col items-center gap-6 lg:items-start">
-              <h1 className="text-5xl">Il Nostro Spaccio</h1>
-              <p className="text-primary-60 text-center text-xl lg:text-left">
-                Venite a trovarci nel nostro spaccio aziendale, dove potrete
-                trovare e gustare tutti i nostri prodotti
-              </p>
-            </div>
-            <Link
-              href="#contatti"
-              className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
-            >
-              Vieni a trovarci
-            </Link>
-          </div>
-          <div className="basis-1/3">
-            <figure className="relative mx-auto max-w-80 overflow-hidden rounded-xl border-8 border-primary bg-primary">
-              <AspectRatio ratio={1}>
-                <Image
-                  src="/spaccio.jpg"
-                  alt="Foto spaccio"
-                  fill
-                  objectFit="fill"
-                  className="rounded-lg"
-                />
-              </AspectRatio>
-            </figure>
-          </div>
-        </div>
-      </section>
+        description="Il Nostro Spaccio"
+        imgSrc="/spaccio.jpg"
+        imgAlt="Foto spaccio"
+        imgClassname="object-right"
+        title="Il Nostro Spaccio"
+        ctaText="Vieni a trovarci"
+        ctaHref="#contatti"
+      />
       <section
         id="contatti"
         className="bg-primary-80 min-h-50 scroll-mt-[--header-height] border-b"
@@ -150,14 +113,14 @@ export default function HomePage() {
             <span className="flex justify-center gap-2 md:justify-start">
               <Mail />{" "}
               <Link
-                href="mailto:soc.agr.kiwifarm@gmail.com"
+                href="mailto:info@legiumelle.it"
                 className={buttonVariants({
                   variant: "link",
                   inverted: true,
                   size: "link",
                 })}
               >
-                soc.agr.kiwifarm@gmail.com
+                info@legiumelle.it
               </Link>
             </span>
             <span className="flex justify-center gap-2 md:justify-start">
