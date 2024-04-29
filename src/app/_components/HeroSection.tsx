@@ -94,8 +94,7 @@ export function HeroSection({
                 src={imgSrc}
                 alt={imgAlt}
                 fill
-                objectFit="cover"
-                className={cn("rounded-lg", imgClassname)}
+                className={cn("rounded-lg object-cover", imgClassname)}
               />
             </AspectRatio>
           </figure>
