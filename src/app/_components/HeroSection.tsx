@@ -75,7 +75,7 @@ export function HeroSection({
       <div className={cn(heroSectionVariants({ variant, className }))}>
         <div className="flex flex-col items-center gap-10 lg:basis-3/5 lg:items-start">
           <div className="flex flex-col items-center gap-6 lg:items-start">
-            <h1 className="text-5xl">{title}</h1>
+            <h2 className="text-5xl">{title}</h2>
             <p className="text-primary-60 text-center text-xl lg:text-left">
               {description}
             </p>

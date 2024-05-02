@@ -4,6 +4,9 @@ import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { HeroSection } from "./_components/HeroSection";
+import ProductList from "./_components/ProductList";
+import { Suspense } from "react";
+import { Skeleton } from "~/components/ui/skeleton";
 
 export default function HomePage() {
   return (
@@ -59,7 +62,21 @@ export default function HomePage() {
         id="prodotti"
         className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        In costruzione
+        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-6">
+          <Suspense
+            fallback={[1, 2, 3, 4, 5, 6].map((id) => (
+              <div key={id} className="flex flex-col space-y-3">
+                <Skeleton className="h-product w-product rounded-xl" />
+                <div className="space-y-2">
+                  <Skeleton className="w-product h-4" />
+                  <Skeleton className="w-product h-4" />
+                </div>
+              </div>
+            ))}
+          >
+            <ProductList />
+          </Suspense>
+        </div>
       </section>
       <HeroSection
         variant="imgLeft"

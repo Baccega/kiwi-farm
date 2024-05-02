@@ -17,8 +17,12 @@ const config = {
       },
     },
     extend: {
+      width: {
+        product: "var(--product-width)",
+      },
       height: {
         header: "var(--header-height)",
+        product: "var(--product-height)",
       },
       minHeight: {
         section: "calc(90dvh - var(--header-height))",
