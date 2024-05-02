@@ -1,6 +1,8 @@
 import React from "react";
 import { db } from "~/server/db";
 
+export const dynamic = 'force-dynamic'
+
 export default async function ProductList() {
   const products = (await db.query.products.findMany()) ?? [];
 
