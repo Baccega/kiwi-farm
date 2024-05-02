@@ -62,7 +62,7 @@ export default function HomePage() {
         id="prodotti"
         className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-6">
+        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
           <Suspense
             fallback={[1, 2, 3, 4, 5, 6].map((id) => (
               <div key={id} className="flex flex-col space-y-3">
