@@ -13,7 +13,26 @@ export const metadata = {
   title: "Le Giumelle",
   description:
     "Scopri la nostra azienda agricola ed acquista i nostri prodotti",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/favicon/favicon-32x32.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      url: "/favicon/favicon-16x16.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/favicon/apple-touch-icon.png",
+    },
+    { rel: "icon", url: "/favicon.ico" },
+  ],
 };
 
 export default function RootLayout({
@@ -23,9 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto]`}
-      >
+      <body className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto]`}>
         <Header />
         {children}
         <Footer />
