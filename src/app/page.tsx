@@ -10,22 +10,24 @@ import { Skeleton } from "~/components/ui/skeleton";
 
 export default function HomePage() {
   return (
-    <main className="text-primary-80 flex h-fit flex-col">
+    <main className="flex h-fit flex-col text-primary-80">
       <section
         id="hero"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
+        className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <Image
-          src="/kiwi.jpg"
-          aria-hidden="true"
-          className="-z-10 object-cover opacity-20 grayscale"
-          alt=""
-          fill
-        />
+        <div className="border-sketchy-big absolute bottom-0 top-0 h-full w-full border-2 border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4">
+          <Image
+            src="/kiwi2.jpg"
+            aria-hidden="true"
+            className="-z-10 block object-cover opacity-30 grayscale"
+            alt=""
+            fill
+          />
+        </div>
         <div className="flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
-            <p className="text-primary-60 text-xl">
+            <p className="text-xl text-primary-60">
               Una azienda agricola a conduzione familiare
             </p>
           </div>
@@ -60,7 +62,7 @@ export default function HomePage() {
       />
       <section
         id="prodotti"
-        className="min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
+        className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
           <Suspense
@@ -68,8 +70,8 @@ export default function HomePage() {
               <div key={id} className="flex flex-col space-y-3">
                 <Skeleton className="h-product w-product rounded-xl" />
                 <div className="space-y-2">
-                  <Skeleton className="w-product h-4" />
-                  <Skeleton className="w-product h-4" />
+                  <Skeleton className="h-4 w-product" />
+                  <Skeleton className="h-4 w-product" />
                 </div>
               </div>
             ))}
@@ -91,7 +93,7 @@ export default function HomePage() {
       />
       <section
         id="contatti"
-        className="bg-primary-80 min-h-50 scroll-mt-[--header-height] border-b"
+        className="min-h-50 scroll-mt-[--header-height] border-b bg-primary-80"
       >
         <div className="container relative flex h-full flex-col items-center justify-between gap-6 py-6 text-center text-white md:min-h-64 md:flex-row md:gap-4 md:px-16">
           <div className="flex flex-col justify-between gap-2 md:gap-6 ">

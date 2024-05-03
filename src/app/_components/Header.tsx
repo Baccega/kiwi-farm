@@ -22,17 +22,17 @@ export default function Header() {
             src="drappeggio2.svg"
             alt=""
             aria-hidden={true}
-            width={180}
+            width={150}
             height={350}
-            className="absolute bottom-0 left-0 z-20 translate-x-[-45%] translate-y-[75%] object-cover"
+            className="absolute bottom-0 left-0 z-20 translate-x-[-45%] translate-y-[85%] object-cover"
           />
           <Image
             src="drappeggio2.svg"
             alt=""
             aria-hidden={true}
-            width={180}
+            width={150}
             height={350}
-            className="absolute bottom-0 right-0 z-20 translate-x-[45%] translate-y-[75%] object-cover"
+            className="absolute bottom-0 right-0 z-20 translate-x-[45%] translate-y-[85%] object-cover"
           />
           <Link href="/" className="block text-xl font-bold tracking-tight">
             <Image src="logo.svg" alt="logo" width={200} height={50} />
