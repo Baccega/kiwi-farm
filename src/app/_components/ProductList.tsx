@@ -12,7 +12,7 @@ export default async function ProductList() {
       {products.map((product) => (
         <div
           key={product.id}
-          className="border-sketchy relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-transform hover:scale-110"
+          className="border-sketchy relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-transform hover:scale-105"
         >
           {product.image !== null ? (
             <Image

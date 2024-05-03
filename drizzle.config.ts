@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     connectionString: env.POSTGRES_URL,
   },
-  tablesFilter: [`kiwi-farm_${env.NODE_ENV}_*`],
+  tablesFilter: [`kiwi-farm_*`],
 } satisfies Config;

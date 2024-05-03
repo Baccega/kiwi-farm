@@ -8,7 +8,8 @@ import {
   serial,
   timestamp,
   varchar,
-  numeric
+  numeric,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -31,12 +32,12 @@ export const products = createTable(
     strikedPrice: numeric("striked_price"),
     description: varchar("description", { length: 256 }),
     image: varchar("images", { length: 256 }),
+    available: boolean("available").notNull(),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
-
 
 // export const warehouse = createTable(
 //   "warehouse",
