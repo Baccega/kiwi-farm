@@ -67,6 +67,8 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        sketchy: "1% 1% 2% 4% / 2% 6% 5% 9%",
+        "sketchy-big": "0.5% 0.5% 1% 2% / 1% 3% 2.5% 4.5%",
       },
       keyframes: {
         "accordion-down": {

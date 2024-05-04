@@ -7,6 +7,7 @@ import { HeroSection } from "./_components/HeroSection";
 import ProductList from "./_components/ProductList";
 import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
+import { CustomBorder } from "~/components/customBorder";
 
 export default function HomePage() {
   return (
@@ -15,7 +16,11 @@ export default function HomePage() {
         id="hero"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <div className="border-sketchy-big absolute bottom-0 top-0 h-full w-full border-2 border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4">
+        <CustomBorder
+          size={"big"}
+          withDecoration={false}
+          className="absolute bottom-0 top-0 h-full w-full border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4"
+        >
           <Image
             src="/kiwi2.jpg"
             aria-hidden="true"
@@ -23,7 +28,7 @@ export default function HomePage() {
             alt=""
             fill
           />
-        </div>
+        </CustomBorder>
         <div className="flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>

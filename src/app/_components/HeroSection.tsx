@@ -2,6 +2,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import Image from "next/image";
 import Link from "next/link";
 import React, { type ReactNode } from "react";
+import { CustomBorder } from "~/components/customBorder";
 import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
@@ -21,20 +22,17 @@ const heroSectionVariants = cva(
   },
 );
 
-const heroSectionFigureVariants = cva(
-  "border-sketchy max-w-80 mx-auto lg:mx-0 bg-primary",
-  {
-    variants: {
-      variant: {
-        default: "lg:mr-auto",
-        imgLeft: "lg:ml-auto",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
+const heroSectionFigureVariants = cva("max-w-80 mx-auto lg:mx-0 bg-primary", {
+  variants: {
+    variant: {
+      default: "lg:mr-auto",
+      imgLeft: "lg:ml-auto",
     },
   },
-);
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export interface HeroSectionProps
   extends React.HTMLAttributes<HTMLElement>,
@@ -67,7 +65,7 @@ export function HeroSection({
     <section
       id={id}
       className={cn(
-        "min-h-section container relative flex h-full scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center md:px-16",
+        "container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center scroll-smooth border-b py-24 text-center md:px-16",
         className,
       )}
       {...rest}
@@ -76,7 +74,7 @@ export function HeroSection({
         <div className="flex flex-col items-center gap-10 lg:basis-3/5 lg:items-start">
           <div className="flex flex-col items-center gap-6 lg:items-start">
             <h2 className="text-5xl">{title}</h2>
-            <p className="text-primary-60 text-center text-xl lg:text-left">
+            <p className="text-center text-xl text-primary-60 lg:text-left">
               {description}
             </p>
           </div>
@@ -88,7 +86,7 @@ export function HeroSection({
           </Link>
         </div>
         <div className="basis-1/3">
-          <figure className={heroSectionFigureVariants({ variant })}>
+          <CustomBorder className={heroSectionFigureVariants({ variant })}>
             <AspectRatio ratio={1}>
               <Image
                 src={imgSrc}
@@ -97,7 +95,7 @@ export function HeroSection({
                 className={cn("rounded-lg object-cover", imgClassname)}
               />
             </AspectRatio>
-          </figure>
+          </CustomBorder>
         </div>
       </div>
     </section>
