@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { CustomBorder } from "~/components/CustomBorder";
+import { CustomBorder } from "~/components/customBorder";
 import { getProducts } from "~/server/queries";
 
 export const dynamic = "force-dynamic";

@@ -7,7 +7,7 @@ import { HeroSection } from "./_components/HeroSection";
 import ProductList from "./_components/ProductList";
 import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
-import { CustomBorder } from "~/components/CustomBorder";
+import { CustomBorder } from "~/components/customBorder";
 
 export default function HomePage() {
   return (
