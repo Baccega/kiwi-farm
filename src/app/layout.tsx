@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Roboto } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import Providers from "./providers";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -45,9 +46,11 @@ export default function RootLayout({
       <body
         className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto] overflow-x-hidden`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

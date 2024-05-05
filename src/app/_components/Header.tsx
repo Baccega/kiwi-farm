@@ -6,17 +6,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { Navigation } from "./Navigation";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-  DrawerDescription,
-} from "~/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "~/components/ui/drawer";
 import { Button } from "~/components/ui/button";
+import Basket from "./Basket";
 
 export function useDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,21 +60,7 @@ export default function Header() {
           />
           <Drawer {...basketDialog}>
             <DrawerContent>
-              <div className="mx-auto w-full max-w-sm">
-                <DrawerHeader>
-                  <DrawerTitle>Carrello</DrawerTitle>
-                  <DrawerDescription>
-                    Set your daily activity goal.
-                  </DrawerDescription>
-                </DrawerHeader>
-
-                <DrawerFooter>
-                  <Button>Submit</Button>
-                  <DrawerClose asChild>
-                    <Button variant="outline">Cancel</Button>
-                  </DrawerClose>
-                </DrawerFooter>
-              </div>
+              <Basket />
             </DrawerContent>
             <DrawerTrigger asChild onClick={basketDialog.trigger}>
               <Button variant={"ghost"} size={"icon"}>
