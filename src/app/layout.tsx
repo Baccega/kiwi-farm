@@ -42,7 +42,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto]`}>
+      <body
+        className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto] overflow-x-hidden`}
+      >
         <Header />
         {children}
         <Footer />

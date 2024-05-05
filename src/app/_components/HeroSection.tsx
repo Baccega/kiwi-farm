@@ -2,7 +2,7 @@ import { type VariantProps, cva } from "class-variance-authority";
 import Image from "next/image";
 import Link from "next/link";
 import React, { type ReactNode } from "react";
-import { CustomBorder } from "~/components/customBorder";
+import { CustomBorder } from "~/components/CustomBorder";
 import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";

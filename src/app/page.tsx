@@ -7,7 +7,7 @@ import { HeroSection } from "./_components/HeroSection";
 import ProductList from "./_components/ProductList";
 import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
-import { CustomBorder } from "~/components/customBorder";
+import { CustomBorder } from "~/components/CustomBorder";
 
 export default function HomePage() {
   return (
@@ -19,6 +19,7 @@ export default function HomePage() {
         <CustomBorder
           size={"big"}
           withDecoration={false}
+          // decorationPositions={[BOTTOM_LEFT, BOTTOM_RIGHT]}
           className="absolute bottom-0 top-0 h-full w-full border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4"
         >
           <Image
@@ -29,7 +30,7 @@ export default function HomePage() {
             fill
           />
         </CustomBorder>
-        <div className="flex flex-col items-center gap-14">
+        <div className="z-30 flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
             <p className="text-xl text-primary-60">

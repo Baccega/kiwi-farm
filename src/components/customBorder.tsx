@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "~/lib/utils";
 import Image from "next/image";
+import { getRandomCustomBorder } from "~/resources/customBordersList";
 
 const customBorderVariants = cva(
   "relative rounded-xl after:border-sketchy before:border-sketchy",
@@ -30,58 +31,23 @@ export interface CustomBorderProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof customBorderVariants> {
   withDecoration?: boolean;
+  decorationPositions?: string[];
 }
-
-const flowers = ["fiore1.svg", "fiore2.svg", "fiore3.svg", "fiore4.svg"];
-
-const TOP_LEFT = "-top-6 -left-5";
-// const TOP_RIGHT = "-top-7 -right-5";
-// const BOTTOM_LEFT = "-bottom-7 -left-5";
-const BOTTOM_RIGHT = "-bottom-7 -right-6";
 
 const CustomBorder = React.forwardRef<HTMLDivElement, CustomBorderProps>(
   (
-    { className, variant, size, withDecoration = true, children, ...props },
+    {
+      className,
+      variant,
+      size,
+      withDecoration = true,
+      decorationPositions,
+      children,
+      ...props
+    },
     ref,
   ) => {
-    const svgs = [
-      {
-        src: flowers[2],
-        position: TOP_LEFT,
-        size: 35,
-        random: `translate-y-10`,
-      },
-      {
-        src: flowers[2],
-        position: TOP_LEFT,
-        size: 40,
-        random: ``,
-      },
-      {
-        src: flowers[2],
-        position: TOP_LEFT,
-        size: 30,
-        random: `translate-x-10`,
-      },
-      {
-        src: flowers[2],
-        position: BOTTOM_RIGHT,
-        size: 30,
-        random: `-translate-y-10`,
-      },
-      {
-        src: flowers[2],
-        position: BOTTOM_RIGHT,
-        size: 35,
-        random: ``,
-      },
-      {
-        src: flowers[2],
-        position: BOTTOM_RIGHT,
-        size: 30,
-        random: `-translate-x-10`,
-      },
-    ] as const;
+    const randomBorder = getRandomCustomBorder(decorationPositions);
 
     return (
       <div
@@ -90,10 +56,10 @@ const CustomBorder = React.forwardRef<HTMLDivElement, CustomBorderProps>(
         {...props}
       >
         {withDecoration
-          ? svgs.map(({ src, position, random, size }, i) => (
+          ? randomBorder.map(({ src, position, size }, i) => (
               <Image
                 src={`/svgs/${src}`}
-                className={cn(`absolute z-40`, random, position)}
+                className={cn(`absolute z-40`, position)}
                 width={size}
                 height={size}
                 alt=""
