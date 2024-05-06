@@ -6,9 +6,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "~/components/ui/sheet";
 import { Navigation } from "./Navigation";
-import { Drawer, DrawerContent, DrawerTrigger } from "~/components/ui/drawer";
-import { Button } from "~/components/ui/button";
-import Basket from "./Basket";
+import { Button, buttonVariants } from "~/components/ui/button";
 
 export function useDialog() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +23,6 @@ export function useDialog() {
 
 export default function Header() {
   const menuDialog = useDialog();
-  const basketDialog = useDialog();
 
   function handleLinkClick() {
     menuDialog.dismiss();
@@ -40,7 +37,7 @@ export default function Header() {
           aria-hidden={true}
           width={150}
           height={350}
-          className="absolute bottom-0 left-0 z-20 translate-x-[-45%] translate-y-[85%] object-cover"
+          className="absolute bottom-0 left-0 z-20 translate-x-[-55%] translate-y-[85%] object-cover md:translate-x-[-45%]"
         />
         <Image
           src="drappeggio2.svg"
@@ -48,26 +45,24 @@ export default function Header() {
           aria-hidden={true}
           width={150}
           height={350}
-          className="absolute bottom-0 right-0 z-20 translate-x-[45%] translate-y-[85%] object-cover"
+          className="absolute bottom-0 right-0 z-20 translate-x-[55%] translate-y-[85%] object-cover md:translate-x-[45%]"
         />
         <Link href="/" className="block text-xl font-bold tracking-tight">
           <Image src="logo.svg" alt="logo" width={200} height={50} />
         </Link>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-0 @xs/header:gap-4 md:gap-8">
           <Navigation
             className="hidden @3xl/header:flex"
             onLinkClick={handleLinkClick}
           />
-          <Drawer {...basketDialog}>
-            <DrawerContent>
-              <Basket />
-            </DrawerContent>
-            <DrawerTrigger asChild onClick={basketDialog.trigger}>
-              <Button variant={"ghost"} size={"icon"}>
-                <ShoppingCart className="fill-primary" />
-              </Button>
-            </DrawerTrigger>
-          </Drawer>
+
+          <Link
+            href="/basket"
+            className={buttonVariants({ variant: "link", size: "icon" })}
+          >
+            <ShoppingCart className="fill-primary" />
+          </Link>
+
           <Sheet {...menuDialog}>
             <SheetContent>
               <Navigation variant="vertical" onLinkClick={handleLinkClick} />
@@ -77,7 +72,7 @@ export default function Header() {
               onClick={menuDialog.trigger}
               className="@3xl/header:hidden"
             >
-              <Button variant={"ghost"} size={"icon"}>
+              <Button variant={"link"} size={"icon"}>
                 <Menu className="fill-primary" />
               </Button>
             </SheetTrigger>

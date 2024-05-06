@@ -42,13 +42,13 @@
   }
 
   * {
-    @apply max-w-full border-border;
+    @apply box-border max-w-full border-border;
   }
   html {
-    @apply scroll-smooth;
+    @apply overflow-x-hidden scroll-smooth;
   }
   body {
-    @apply min-h-dvh bg-background text-foreground;
+    @apply min-h-dvh overflow-x-hidden bg-background text-foreground;
   }
 }
 
