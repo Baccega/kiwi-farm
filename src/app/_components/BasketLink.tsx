@@ -3,13 +3,12 @@
 import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
 import { buttonVariants } from "~/components/ui/button";
-import { BasketContext } from "../providers";
+import { useBasketStore } from "../providers";
 
 export default function BasketLink() {
   const pathname = usePathname();
-  const { basket } = useContext(BasketContext) ?? {};
+  const basket = useBasketStore((state) => state.basket);
 
   return (
     <Link
