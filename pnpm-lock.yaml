@@ -67,6 +67,9 @@ devDependencies:
   '@redux-devtools/extension':
     specifier: ^3.3.0
     version: 3.3.0(redux@5.0.1)
+  '@savvywombat/tailwindcss-grid-areas':
+    specifier: ^4.0.0
+    version: 4.0.0(tailwindcss@3.4.3)
   '@tailwindcss/container-queries':
     specifier: ^0.1.1
     version: 0.1.1(tailwindcss@3.4.3)
@@ -1099,6 +1102,15 @@ packages:
 
   /@rushstack/eslint-patch@1.10.2:
     resolution: {integrity: sha512-hw437iINopmQuxWPSUEvqE56NCPsiU8N4AYtfHmJFckclktzK9YQJieD3XkDCDH4OjL+C7zgPUh73R/nrcHrqw==}
+    dev: true
+
+  /@savvywombat/tailwindcss-grid-areas@4.0.0(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-gjEGTltsGfy+AJQqhkuQKQGp/SB0XzXT3ZNmrOfuwPGF5DLg5GsN5XHiaYhudMvmBwRp+9k6wrZhHBM0lhEgJA==}
+    engines: {node: '>=16.20.2'}
+    peerDependencies:
+      tailwindcss: ^3.0.1
+    dependencies:
+      tailwindcss: 3.4.3
     dev: true
 
   /@swc/counter@0.1.3:

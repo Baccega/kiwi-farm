@@ -12,7 +12,6 @@ export default function ProductCard(props: { product: Product }) {
     <div
       className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4"
       onClick={() => {
-        console.log("Add to basket", product);
         addProductToBasket(product);
       }}
     >

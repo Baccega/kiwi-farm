@@ -1,11 +1,11 @@
 import "~/styles/globals.css";
 
-import { Roboto } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import Providers from "./providers";
 
-const roboto = Roboto({
+const font = Bricolage_Grotesque({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
@@ -43,9 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`min-dvh ${roboto.className} grid grid-rows-[1fr,auto]`}
-      >
+      <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
         <Providers>
           <Header />
           {children}

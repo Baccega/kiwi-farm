@@ -28,28 +28,28 @@ export function Navigation(props: NavigationProps) {
   return (
     <nav className={cn(navigationVariants({ variant, className }))} {...rest}>
       <Link
-        href="#azienda"
+        href="/#azienda"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Azienda
       </Link>
       <Link
-        href="#prodotti"
+        href="/#prodotti"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Prodotti
       </Link>
       <Link
-        href="#spaccio"
+        href="/#spaccio"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Spaccio
       </Link>
       <Link
-        href="#contatti"
+        href="/#contatti"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >

@@ -84,11 +84,30 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      gridTemplateAreas: {
+        "basket-product-sm": [
+          "image name name",
+          "image price price",
+          "image quantity quantity",
+        ],
+        "basket-product": [
+          "image name name",
+          "image price quantity",
+          "image price quantity",
+        ],
+      },
+      gridTemplateColumns: {
+        "basket-product": "8rem 1fr 1fr",
+      },
+      gridTemplateRows: {
+        "basket-product": "auto 2rem 3rem",
+      },
     },
   },
   plugins: [
     require("tailwindcss-animate"),
     require("@tailwindcss/container-queries"),
+    require("@savvywombat/tailwindcss-grid-areas"),
   ],
 } satisfies Config;
 

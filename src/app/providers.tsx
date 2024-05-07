@@ -6,6 +6,7 @@ import type {} from "@redux-devtools/extension"; // required for devtools typing
 
 interface BasketState {
   basket: BasketProduct[];
+  emptyBasket: () => void;
   removeProductFromBasket: (id: number) => void;
   addProductToBasket: (product: Product) => void;
   setProductQuantity: (id: number, newQuantity: number) => void;
@@ -16,6 +17,7 @@ export const useBasketStore = create<BasketState>()(
     persist(
       (set) => ({
         basket: [],
+        emptyBasket: () => set({ basket: [] }),
         removeProductFromBasket: (id: number) =>
           set((state) => ({
             basket: state.basket.filter((product) => product.id !== id),
