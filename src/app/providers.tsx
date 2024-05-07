@@ -3,6 +3,17 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { type Product, type BasketProduct } from "~/types/Product";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "~/components/ui/alert-dialog";
+import { createContext, useState } from "react";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -58,6 +69,55 @@ export const useBasketStore = create<BasketState>()(
   ),
 );
 
+type OpenAlertProps = {
+  title: string;
+  description: string;
+  onConfirm: () => void;
+};
+
+export const AlertContext = createContext<{
+  openAlert: (props: OpenAlertProps) => void;
+} | null>(null);
+
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
+
+  function closeAlert() {
+    setIsAlertOpen(false);
+  }
+
+  function openAlert(props: OpenAlertProps) {
+    setTitle(props.title);
+    setDescription(props.description);
+    setOnConfirm(() => props.onConfirm);
+    setIsAlertOpen(true);
+  }
+
+  function handleConfirm() {
+    if (!onConfirm) return;
+    onConfirm();
+  }
+
+  return (
+    <AlertContext.Provider value={{ openAlert }}>
+      <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+        <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{title}</AlertDialogTitle>
+            <AlertDialogDescription>{description}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={closeAlert}>Annulla</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirm}>
+              Conferma
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+        {children}
+      </AlertDialog>
+    </AlertContext.Provider>
+  );
 }

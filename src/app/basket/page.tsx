@@ -1,13 +1,25 @@
 "use client";
 
 import { Button } from "~/components/ui/button";
-import { useBasketStore } from "../providers";
+import { AlertContext, useBasketStore } from "../providers";
 import { Coins, Trash } from "lucide-react";
 import BasketProduct from "./_components/BasketProduct";
+import { useContext } from "react";
 
 export default function BasketPage() {
   const basket = useBasketStore((state) => state.basket);
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
+
+  const { openAlert } = useContext(AlertContext) ?? {};
+
+  function handleEmptyBasket() {
+    if (!openAlert) return;
+    openAlert({
+      title: "Sei sicuro di voler svuotare il carrello",
+      description: "Questa azione non può essere annullata.",
+      onConfirm: emptyBasket,
+    });
+  }
 
   return (
     <main className="text-primary-80">
@@ -22,32 +34,50 @@ export default function BasketPage() {
           </h2>
         </span>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {basket?.map((product) => (
-            <BasketProduct basketProduct={product} key={product.id} />
-          ))}
-          {basket?.map((product) => (
-            <BasketProduct basketProduct={product} key={product.id} />
-          ))}
-        </div>
+        {basket?.length !== 0 ? (
+          <>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {basket?.map((product) => (
+                <BasketProduct basketProduct={product} key={product.id} />
+              ))}
+              {basket?.map((product) => (
+                <BasketProduct basketProduct={product} key={product.id} />
+              ))}
+            </div>
 
-        <div className="flex flex-col gap-2 md:flex-row">
-          <Button
-            className="flex items-center gap-2"
-            // onClick={() =>
-            //   setBasket && setBasket((prev) => [...prev, MOCK_PRODUCT])
-            // }
-          >
-            <Coins /> Acquista questi prodotti
-          </Button>
-          <Button
-            className="flex items-center gap-2"
-            variant={"outline"}
-            onClick={emptyBasket}
-          >
-            <Trash /> Svuota il carrello
-          </Button>
-        </div>
+            <div className="flex items-baseline gap-3">
+              <h3 className="text-3xl">Totale: </h3>
+              <p className="text-2xl font-bold">
+                {Number(
+                  basket?.reduce(
+                    (acc, { product, quantity }) =>
+                      acc + product.price * quantity,
+                    0,
+                  ),
+                ).toFixed(2)}{" "}
+                €
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2 md:flex-row">
+              <Button
+                className="flex items-center gap-2"
+                // onClick={() =>
+                //   setBasket && setBasket((prev) => [...prev, MOCK_PRODUCT])
+                // }
+              >
+                <Coins /> Acquista questi prodotti
+              </Button>
+              <Button
+                className="flex items-center gap-2"
+                variant={"outline"}
+                onClick={handleEmptyBasket}
+              >
+                <Trash /> Svuota il carrello
+              </Button>
+            </div>
+          </>
+        ) : null}
       </section>
     </main>
   );
