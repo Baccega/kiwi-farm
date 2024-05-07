@@ -1,8 +1,18 @@
 import { getRandomElement } from "~/lib/utils";
 
 const flowers = [
-  //   ["fiore1.svg"],
-  //   ["fiore2.svg"],
+  [
+    `flower-1-white.svg`,
+    `flower-1-orange.svg`,
+    `flower-1-blue.svg`,
+    `flower-1-red.svg`,
+  ],
+  [
+    `flower-2-white.svg`,
+    `flower-2-orange.svg`,
+    `flower-2-blue.svg`,
+    `flower-2-red.svg`,
+  ],
   ["fiore3.svg"],
   [
     `flower-4-white.svg`,
