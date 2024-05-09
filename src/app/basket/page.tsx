@@ -1,10 +1,12 @@
 "use client";
 
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import { AlertContext, useBasketStore } from "../providers";
 import { Coins, Trash } from "lucide-react";
 import BasketProduct from "./_components/BasketProduct";
 import { useContext } from "react";
+import Link from "next/link";
+import { cn } from "~/lib/utils";
 
 export default function BasketPage() {
   const basket = useBasketStore((state) => state.basket);
@@ -51,7 +53,8 @@ export default function BasketPage() {
                 {Number(
                   basket?.reduce(
                     (acc, { product, quantity }) =>
-                      acc + product.price * quantity,
+                      // product.price
+                      acc + 0 * quantity,
                     0,
                   ),
                 ).toFixed(2)}{" "}
@@ -60,14 +63,12 @@ export default function BasketPage() {
             </div>
 
             <div className="flex flex-col gap-2 md:flex-row">
-              <Button
-                className="flex items-center gap-2"
-                // onClick={() =>
-                //   setBasket && setBasket((prev) => [...prev, MOCK_PRODUCT])
-                // }
+              <Link
+                href="/checkout"
+                className={cn(buttonVariants(), "flex items-center gap-2")}
               >
                 <Coins /> Acquista questi prodotti
-              </Button>
+              </Link>
               <Button
                 className="flex items-center gap-2"
                 variant={"outline"}

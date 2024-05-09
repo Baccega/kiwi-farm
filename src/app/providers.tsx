@@ -1,7 +1,7 @@
 "use client";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import { type Product, type BasketProduct } from "~/types/Product";
+import { type BasketProduct } from "~/types/Product";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
 import {
   AlertDialog,
@@ -14,13 +14,14 @@ import {
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
 import { createContext, useState } from "react";
+import type Stripe from "stripe";
 
 interface BasketState {
   basket: BasketProduct[];
   emptyBasket: () => void;
-  removeProductFromBasket: (id: number) => void;
-  addProductToBasket: (product: Product) => void;
-  setProductQuantity: (id: number, newQuantity: number) => void;
+  removeProductFromBasket: (id: string) => void;
+  addProductToBasket: (product: Stripe.Product) => void;
+  setProductQuantity: (id: string, newQuantity: number) => void;
 }
 
 export const useBasketStore = create<BasketState>()(
@@ -29,11 +30,11 @@ export const useBasketStore = create<BasketState>()(
       (set) => ({
         basket: [],
         emptyBasket: () => set({ basket: [] }),
-        removeProductFromBasket: (id: number) =>
+        removeProductFromBasket: (id: string) =>
           set((state) => ({
             basket: state.basket.filter((product) => product.id !== id),
           })),
-        setProductQuantity: (id: number, newQuantity: number) =>
+        setProductQuantity: (id: string, newQuantity: number) =>
           set((state) => ({
             basket: state.basket.map((product) =>
               product.id === id
@@ -41,7 +42,7 @@ export const useBasketStore = create<BasketState>()(
                 : product,
             ),
           })),
-        addProductToBasket: (product: Product) =>
+        addProductToBasket: (product: Stripe.Product) =>
           set((state) => {
             if (
               !state.basket.find(

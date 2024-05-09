@@ -1,8 +1,8 @@
 "use client";
-import { type Product } from "~/types/Product";
 import { useBasketStore } from "../providers";
+import type Stripe from "stripe";
 
-export default function ProductCard(props: { product: Product }) {
+export default function ProductCard(props: { product: Stripe.Product }) {
   const { product } = props;
 
   const addProductToBasket = useBasketStore(
@@ -16,8 +16,9 @@ export default function ProductCard(props: { product: Product }) {
       }}
     >
       <h2>{product.name}</h2>
+      <h2>{product.default_price?.toString()}</h2>
       {/* <p>{product.description}</p> */}
-      <p>{product.price} €</p>
+      {/* <p>{product.price} €</p> */}
     </div>
   );
 }
