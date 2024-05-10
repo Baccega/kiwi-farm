@@ -6,7 +6,7 @@ import { Coins, Trash } from "lucide-react";
 import BasketProduct from "./_components/BasketProduct";
 import { useContext } from "react";
 import Link from "next/link";
-import { cn } from "~/lib/utils";
+import { cn, getFormattedPrice } from "~/lib/utils";
 
 export default function BasketPage() {
   const basket = useBasketStore((state) => state.basket);
@@ -42,9 +42,6 @@ export default function BasketPage() {
               {basket?.map((product) => (
                 <BasketProduct basketProduct={product} key={product.id} />
               ))}
-              {basket?.map((product) => (
-                <BasketProduct basketProduct={product} key={product.id} />
-              ))}
             </div>
 
             <div className="flex items-baseline gap-3">
@@ -52,9 +49,8 @@ export default function BasketPage() {
               <p className="text-2xl font-bold">
                 {Number(
                   basket?.reduce(
-                    (acc, { product, quantity }) =>
-                      // product.price
-                      acc + 0 * quantity,
+                    (acc, { price, quantity }) =>
+                      getFormattedPrice(price) * quantity + acc,
                     0,
                   ),
                 ).toFixed(2)}{" "}

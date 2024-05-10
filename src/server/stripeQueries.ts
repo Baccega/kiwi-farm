@@ -10,3 +10,9 @@ export async function getStripeProducts(limit = 100) {
 
   return data;
 }
+
+export async function getStripePrices() {
+  const { data } = await stripe.prices.list({ currency: "eur" });
+
+  return data;
+}

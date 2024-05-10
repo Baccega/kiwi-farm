@@ -20,7 +20,7 @@ interface BasketState {
   basket: BasketProduct[];
   emptyBasket: () => void;
   removeProductFromBasket: (id: string) => void;
-  addProductToBasket: (product: Stripe.Product) => void;
+  addProductToBasket: (product: Stripe.Product, price: Stripe.Price) => void;
   setProductQuantity: (id: string, newQuantity: number) => void;
 }
 
@@ -42,7 +42,7 @@ export const useBasketStore = create<BasketState>()(
                 : product,
             ),
           })),
-        addProductToBasket: (product: Stripe.Product) =>
+        addProductToBasket: (product: Stripe.Product, price: Stripe.Price) =>
           set((state) => {
             if (
               !state.basket.find(
@@ -55,6 +55,7 @@ export const useBasketStore = create<BasketState>()(
                   {
                     id: product.id,
                     product,
+                    price,
                     quantity: 1,
                   },
                 ],
