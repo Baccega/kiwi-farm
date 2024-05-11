@@ -9,7 +9,7 @@ export default async function Header() {
     <header className="sticky top-0 z-50 h-header border-b-2 border-b-primary bg-white text-primary">
       <div className="container relative flex items-center justify-between py-4 @container/header md:px-16">
         <Image
-          src="drappeggio2.svg"
+          src="/drappeggio2.svg"
           alt=""
           aria-hidden={true}
           width={150}
@@ -18,7 +18,7 @@ export default async function Header() {
           className="auto absolute bottom-0 left-0 z-20 w-36 translate-x-[-55%] translate-y-[85%] object-cover md:translate-x-[-45%]"
         />
         <Image
-          src="drappeggio2.svg"
+          src="/drappeggio2.svg"
           alt=""
           priority
           aria-hidden={true}
@@ -28,7 +28,7 @@ export default async function Header() {
         />
         <Link href="/" className="block text-xl font-bold tracking-tight">
           <Image
-            src="logo.svg"
+            src="/logo.svg"
             alt="logo"
             width={200}
             height={50}
