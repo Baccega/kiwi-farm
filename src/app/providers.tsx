@@ -15,6 +15,7 @@ import {
 } from "~/components/ui/alert-dialog";
 import { createContext, useState } from "react";
 import type Stripe from "stripe";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -81,6 +82,8 @@ export const AlertContext = createContext<{
   openAlert: (props: OpenAlertProps) => void;
 } | null>(null);
 
+const queryClient = new QueryClient();
+
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -104,22 +107,26 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <AlertContext.Provider value={{ openAlert }}>
-      <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
-        <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
-          <AlertDialogHeader>
-            <AlertDialogTitle>{title}</AlertDialogTitle>
-            <AlertDialogDescription>{description}</AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={closeAlert}>Annulla</AlertDialogCancel>
-            <AlertDialogAction onClick={handleConfirm}>
-              Conferma
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-        {children}
-      </AlertDialog>
-    </AlertContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AlertContext.Provider value={{ openAlert }}>
+        <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+          <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
+            <AlertDialogHeader>
+              <AlertDialogTitle>{title}</AlertDialogTitle>
+              <AlertDialogDescription>{description}</AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={closeAlert}>
+                Annulla
+              </AlertDialogCancel>
+              <AlertDialogAction onClick={handleConfirm}>
+                Conferma
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+          {children}
+        </AlertDialog>
+      </AlertContext.Provider>
+    </QueryClientProvider>
   );
 }
