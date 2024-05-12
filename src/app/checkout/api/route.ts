@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { z } from "zod";
+import { createCheckoutSessionRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export const dynamic = "force-dynamic";
@@ -27,10 +27,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(err, { status: 500 });
   }
 }
-
-export const createCheckoutSessionRequestSchema = z.object({
-  items: z.array(z.object({ price: z.string(), quantity: z.number() })),
-});
 
 export async function POST(req: NextRequest) {
   try {
