@@ -5,12 +5,16 @@ import { useStripeSession } from "./_hooks/useStripeSession";
 import { useBasketStore } from "~/app/providers";
 
 export default function CheckoutPage() {
-  const { status, customerEmail } = useStripeSession();
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const sessionId = urlParams.get("session_id");
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
+  const { status, customerEmail, error } = useStripeSession(
+    sessionId,
+    emptyBasket,
+  );
 
-  emptyBasket();
-
-  if (status === "open") {
+  if (status === "open" || !sessionId || error) {
     return redirect("/");
   }
 
@@ -22,13 +26,20 @@ export default function CheckoutPage() {
     <main className="text-primary-80">
       <section
         id="checkout-success"
-        className="container relative min-h-section md:px-16"
+        className="container relative flex min-h-section flex-col gap-2 md:px-16"
       >
-        <h1 className="text-3xl font-bold">
-          {status === "complete"
-            ? `🎉 Grazie per il tuo acquisto, ${customerEmail}! 🎉`
-            : "Loading..."}
-        </h1>
+        {status === "complete" ? (
+          <>
+            <h1 className="text-center text-3xl font-bold">
+              🎉 Grazie per il tuo acquisto 🎉
+            </h1>
+            <p className="text-center text-xl font-bold">
+              Una ricevuta è stata inviata a `{customerEmail}`
+            </p>
+          </>
+        ) : (
+          "Loading..."
+        )}
       </section>
     </main>
   );

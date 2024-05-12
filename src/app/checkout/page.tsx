@@ -1,12 +1,13 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { useBasketStore } from "../providers";
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
 import useStripe from "./_hooks/useStripe";
+import { redirect } from "next/navigation";
 
 export default function CheckoutPage() {
   const basket = useBasketStore((state) => state.basket);
@@ -16,16 +17,20 @@ export default function CheckoutPage() {
   //   queryKey: ["checkout-session"],
   //   queryFn: createStripeCheckoutSession,
   // });
+
+  if (basket.length === 0) {
+    redirect("/");
+  }
+
   return (
     <main className="text-primary-80">
       <section
         id="checkout"
-        className="container relative min-h-section md:px-16 py-10 bg-primary"
+        className="container relative min-h-section bg-primary py-10 md:px-16"
       >
         <EmbeddedCheckoutProvider {...stripeProps}>
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
-        {/* {isLoading ? "LOADING..." : JSON.stringify(data)} */}
       </section>
     </main>
   );

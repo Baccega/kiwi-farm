@@ -11,8 +11,10 @@
 - [x] Attach database to UI
 - [ ] ~~Add authentication (w/ clerk)~~
 - [x] "taint" (server-only)
+- [x] Setup stripe
+- [ ] Use react-query to fetch data?
 - [ ] Error management (w/ Sentry)
 - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
-- [ ] Setup stripe (w/ Server Actions)
 - [ ] Add intl support
+- [ ] Deploy in my server
