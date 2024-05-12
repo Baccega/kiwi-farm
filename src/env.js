@@ -18,6 +18,7 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     STRIPE_SECRET_KEY: z.string(),
+    SENTRY_AUTH_TOKEN: z.string(),
   },
 
   /**
@@ -38,6 +39,7 @@ export const env = createEnv({
     POSTGRES_URL: process.env.POSTGRES_URL,
     NODE_ENV: process.env.NODE_ENV,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
     NEXT_PUBLIC_STRIPE_PUBLIC_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },

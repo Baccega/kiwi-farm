@@ -13,7 +13,7 @@
 - [x] "taint" (server-only)
 - [x] Setup stripe
 - [ ] Use react-query to fetch data?
-- [ ] Error management (w/ Sentry)
+- [x] Error management (w/ Sentry)
 - [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
 - [ ] Add intl support
