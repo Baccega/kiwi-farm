@@ -14,7 +14,7 @@
 - [x] Setup stripe
 - [ ] Use react-query to fetch data?
 - [x] Error management (w/ Sentry)
-- [ ] Analytics (posthog)
+- [x] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
 - [ ] Add intl support
 - [ ] Deploy in my server

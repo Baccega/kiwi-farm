@@ -30,10 +30,9 @@ export function getRandomCustomBorder(
     BOTTOM_RIGHT_3,
   ],
 ) {
-  const flower = getRandomElement(flowers) ?? flowers[0];
 
   return positions.map((position) => ({
-    src: flower,
+    src: getRandomElement(flowers) ?? flowers[0],
     position,
     size: getRandomElement(sizes),
   }));

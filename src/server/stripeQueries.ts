@@ -1,18 +1,25 @@
 import "server-only";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2024-04-10",
-});
+
+async function fetchStripe<T>(path: string): Promise<Stripe.ApiList<T>> {
+  const res = await fetch(`https://api.stripe.com/v1/${path}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`,
+    },
+    next: { revalidate: 3600 },
+  });
+  return (await res.json()) as Stripe.ApiList<T>;
+}
 
 export async function getStripeProducts(limit = 100) {
-  const { data } = await stripe.products.list({ limit });
+  const { data } = await fetchStripe<Stripe.Product>("products");
 
   return data;
 }
 
 export async function getStripePrices() {
-  const { data } = await stripe.prices.list({ currency: "eur" });
+  const { data } = await fetchStripe<Stripe.Price>("prices?currency=eur");
 
   return data;
 }

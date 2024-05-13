@@ -4,7 +4,7 @@ import { CustomBorder } from "~/components/customBorder";
 import ProductCard from "./ProductCard";
 import { getStripePrices, getStripeProducts } from "~/server/stripeQueries";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600
 
 export default async function ProductList() {
   const products = await getStripeProducts();
