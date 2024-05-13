@@ -1,25 +1,10 @@
 import { getRandomElement } from "~/lib/utils";
 
 const flowers = [
-  [
-    `flower-1-white.svg`,
-    `flower-1-orange.svg`,
-    `flower-1-blue.svg`,
-    `flower-1-red.svg`,
-  ],
-  [
-    `flower-2-white.svg`,
-    `flower-2-orange.svg`,
-    `flower-2-blue.svg`,
-    `flower-2-red.svg`,
-  ],
-  ["fiore3.svg"],
-  [
-    `flower-4-white.svg`,
-    `flower-4-orange.svg`,
-    `flower-4-blue.svg`,
-    `flower-4-red.svg`,
-  ],
+  "flower-1-mono.svg",
+  "flower-2-mono.svg",
+  "flower-3-mono.svg",
+  "flower-4-mono.svg",
 ] as const;
 
 export const TOP_LEFT = "-top-6 -left-5";
@@ -45,10 +30,10 @@ export function getRandomCustomBorder(
     BOTTOM_RIGHT_3,
   ],
 ) {
-  const flowerType = getRandomElement(flowers) ?? flowers[0];
+  const flower = getRandomElement(flowers) ?? flowers[0];
 
   return positions.map((position) => ({
-    src: getRandomElement(flowerType),
+    src: flower,
     position,
     size: getRandomElement(sizes),
   }));
