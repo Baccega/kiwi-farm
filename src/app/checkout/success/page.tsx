@@ -3,11 +3,11 @@
 import { redirect } from "next/navigation";
 import { useStripeSession } from "./_hooks/useStripeSession";
 import { useBasketStore } from "~/app/providers";
+import { useUrlParams } from "./_hooks/useUrlParams";
 
 export default function CheckoutPage() {
-  const queryString = window?.location?.search ?? "";
-  const urlParams = new URLSearchParams(queryString);
-  const sessionId = urlParams.get("session_id");
+  const urlParams = useUrlParams();
+  const sessionId = urlParams?.get("session_id") ?? "";
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
   const { status, customerEmail, error } = useStripeSession(
     sessionId,
