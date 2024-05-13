@@ -16,6 +16,8 @@ import {
 import { createContext, useState } from "react";
 import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -84,6 +86,13 @@ export const AlertContext = createContext<{
 
 const queryClient = new QueryClient();
 
+if (typeof window !== "undefined") {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: "/ingest",
+    ui_host: "https://eu.i.posthog.com"
+  })
+}
+
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -107,26 +116,28 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <AlertContext.Provider value={{ openAlert }}>
-        <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
-          <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
-            <AlertDialogHeader>
-              <AlertDialogTitle>{title}</AlertDialogTitle>
-              <AlertDialogDescription>{description}</AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel onClick={closeAlert}>
-                Annulla
-              </AlertDialogCancel>
-              <AlertDialogAction onClick={handleConfirm}>
-                Conferma
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-          {children}
-        </AlertDialog>
-      </AlertContext.Provider>
-    </QueryClientProvider>
+    <PostHogProvider client={posthog}>
+      <QueryClientProvider client={queryClient}>
+        <AlertContext.Provider value={{ openAlert }}>
+          <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+            <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
+              <AlertDialogHeader>
+                <AlertDialogTitle>{title}</AlertDialogTitle>
+                <AlertDialogDescription>{description}</AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={closeAlert}>
+                  Annulla
+                </AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirm}>
+                  Conferma
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+            {children}
+          </AlertDialog>
+        </AlertContext.Provider>
+      </QueryClientProvider>
+    </PostHogProvider>
   );
 }

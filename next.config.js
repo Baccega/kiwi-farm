@@ -9,6 +9,19 @@ const coreConfig = {
   images: {
     remotePatterns: [{ hostname: "files.stripe.com" }],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://eu-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://eu.i.posthog.com/:path*",
+      },
+    ];
+  },
+  skipTrailingSlashRedirect: true, 
 };
 
 import { withSentryConfig } from "@sentry/nextjs";
