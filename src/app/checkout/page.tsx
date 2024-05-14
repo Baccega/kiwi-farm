@@ -26,7 +26,7 @@ export default function CheckoutPage() {
     <main className="text-primary-80">
       <section
         id="checkout"
-        className="container relative min-h-section bg-primary py-10 md:px-16"
+        className="container relative min-h-page bg-primary py-10 md:px-16"
       >
         <EmbeddedCheckoutProvider {...stripeProps}>
           <EmbeddedCheckout />

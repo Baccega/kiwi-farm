@@ -32,7 +32,8 @@ export default function BasketPage() {
         <span>
           <h1 className="text-5xl">Carrello</h1>
           <h2 className="pl-1 text-xl">
-            Hai {basket?.length ?? 0} prodotti nel carrello
+            Hai {basket?.length ?? 0} prodott{basket?.length == 1 ? "o" : "i"}{" "}
+            nel carrello
           </h2>
         </span>
 
