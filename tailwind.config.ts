@@ -26,6 +26,7 @@ const config = {
       },
       minHeight: {
         section: "calc(90dvh - var(--header-height))",
+        page: "calc(100vh - var(--header-height) - 68px) ",
       },
       colors: {
         border: "hsl(var(--border))",

@@ -36,17 +36,18 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
         <Providers>
           <Header />
-          {children}
+          {props.children}
+          <div id="modal-root" />
+          {props.modal}
           <Footer />
         </Providers>
       </body>

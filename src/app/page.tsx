@@ -11,7 +11,7 @@ import { CustomBorder } from "~/components/customBorder";
 
 export default function HomePage() {
   return (
-    <main className="flex h-fit flex-col text-primary-80">
+    <main className="flex h-fit flex-col text-primary-80 overflow-x-hidden">
       <section
         id="hero"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
