@@ -3,7 +3,7 @@ import ProductPage from "~/app/products/[id]/page";
 
 export default function ProductsModal(props: { params: { id: string } }) {
   return (
-    <Modal>
+    <Modal className="">
       <ProductPage {...props} />
     </Modal>
   );

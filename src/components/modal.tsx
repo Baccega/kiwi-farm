@@ -5,7 +5,13 @@ import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { Dialog, DialogContent } from "./ui/dialog";
 
-export function Modal({ children }: { children: React.ReactNode }) {
+export function Modal({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const [dialogOpen, setDialogOpen] = useState(true);
   const router = useRouter();
 
@@ -18,7 +24,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
   return createPortal(
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
-      <DialogContent>{children}</DialogContent>
+      <DialogContent className={className}>{children}</DialogContent>
     </Dialog>,
     document.getElementById("modal-root")!,
   );

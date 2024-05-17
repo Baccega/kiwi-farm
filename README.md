@@ -16,5 +16,6 @@
 - [x] Error management (w/ Sentry)
 - [x] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
+- [ ] Cookies and legal stuff (<https://posthog.com/docs/privacy/gdpr-compliance>)
 - [ ] Add intl support
 - [ ] Deploy in my server

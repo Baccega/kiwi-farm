@@ -23,7 +23,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="text-primary-80">
+    <main className="pt-header text-primary-80">
       <section
         id="checkout"
         className="container relative min-h-page bg-primary py-10 md:px-16"

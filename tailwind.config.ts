@@ -28,6 +28,9 @@ const config = {
         section: "calc(90dvh - var(--header-height))",
         page: "calc(100vh - var(--header-height) - 68px) ",
       },
+      padding: {
+        header: "var(--header-height)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -96,12 +99,26 @@ const config = {
           "image price quantity",
           "image price quantity",
         ],
+        "product-sm": [
+          "image image",
+          "name name",
+          "description description",
+          "price price",
+        ],
+        product: [
+          "image name",
+          "image description",
+          "image price",
+          ". . ",
+        ],
       },
       gridTemplateColumns: {
         "basket-product": "8rem 1fr 1fr",
+        product: "2fr 3fr",
       },
       gridTemplateRows: {
         "basket-product": "auto 2rem 3rem",
+        product: "300px 2rem 5rem 3rem",
       },
     },
   },

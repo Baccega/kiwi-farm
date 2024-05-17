@@ -6,7 +6,7 @@ import MenuButton from "./MenuButton";
 
 export default async function Header() {
   return (
-    <header className="sticky top-0 z-50 h-header border-b-2 border-b-primary bg-white text-primary">
+    <header className="fixed left-0 right-0 top-0 z-50 h-header border-b-2 border-b-primary bg-white text-primary">
       <div className="container relative flex items-center justify-between py-4 @container/header md:px-16">
         <Image
           src="/svgs/drappeggio4.svg"

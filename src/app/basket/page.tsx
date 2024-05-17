@@ -24,7 +24,7 @@ export default function BasketPage() {
   }
 
   return (
-    <main className="text-primary-80">
+    <main className="pt-header text-primary-80">
       <section
         id="basket"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] flex-col gap-8 py-8 md:px-16"
