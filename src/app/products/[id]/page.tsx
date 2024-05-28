@@ -1,27 +1,45 @@
 import Image from "next/image";
 import { getStripePrice, getStripeProduct } from "~/server/stripeQueries";
 import { ProductBasketData } from "./_components/productBasketData";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "~/components/ui/carousel";
 
 export default async function Page(props: { params: { id: string } }) {
   const product = await getStripeProduct(props.params.id);
   const price = await getStripePrice(product.default_price?.toString() ?? "");
 
   return (
-    <div className="grid-areas-product-sm md:grid-areas-product grid-cols-product grid-rows-product relative grid gap-4">
-      <h1 className="text-2xl font-bold grid-in-name">{product.name}</h1>
-      <p className="grid-in-description">{product.description}</p>
-      <figure className="w-[300px] h-[300px] relative block grid-in-image">
-        {product.images[0] !== null ? (
-          <Image
-            src={product.images?.[0] ?? "placeholder.png"}
-            alt={product.name ?? ""}
-            width={300}
-            height={300}
-            className="w-[300px] h-[300px] z-20 rounded-lg object-cover"
-          />
-        ) : null}
-      </figure>
-      <ProductBasketData product={product} price={price} />
-    </div>
+    <main className="gap-4 pt-header">
+      <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
+        <figure className="relative h-80 w-full basis-80 px-12">
+          <Carousel opts={{ loop: true, align: "start" }}>
+            <CarouselContent>
+              {product.images.map((image, index) => (
+                <CarouselItem key={index} className="relative h-80">
+                  <Image
+                    src={image ?? "placeholder.png"}
+                    alt={product.name ?? ""}
+                    fill={true}
+                    className="z-20 rounded-lg object-cover"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </figure>
+        <div className="flex grow flex-col gap-4">
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <p className="">{product.description}</p>
+          <ProductBasketData product={product} price={price} />
+        </div>
+      </section>
+    </main>
   );
 }

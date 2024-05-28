@@ -41,7 +41,7 @@ export default function ProductQuantityChanger(props: {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-start">
       <span className="flex items-center justify-center">
         <Button
           variant="outline"
