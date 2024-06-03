@@ -14,7 +14,7 @@ export default function CheckoutPage() {
     emptyBasket,
   );
 
-  if (status === "open" || !sessionId || error) {
+  if (status === "open" || error) {
     return redirect("/");
   }
 
@@ -23,10 +23,10 @@ export default function CheckoutPage() {
   //   queryFn: createStripeCheckoutSession,
   // });
   return (
-    <main className="text-primary-80">
+    <main className="pt-header text-primary-80">
       <section
         id="checkout-success"
-        className="container relative flex min-h-section flex-col gap-2 md:px-16"
+        className="container relative flex min-h-section flex-col gap-2 pt-header md:px-16"
       >
         {status === "complete" ? (
           <>
@@ -38,7 +38,7 @@ export default function CheckoutPage() {
             </p>
           </>
         ) : (
-          "Loading..."
+          <p>Loading...</p>
         )}
       </section>
     </main>
