@@ -1,4 +1,11 @@
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
@@ -9,9 +16,22 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 
+const SERVICES = [
+  {
+    id: "dog-training",
+    image: "/kiwi.jpg",
+    name: "Addestramento cani",
+  },
+  {
+    id: "self-picking",
+    image: "/kiwi.jpg",
+    name: "Autoraccolta",
+  },
+];
+
 export default function HomePage() {
   return (
-    <main className="pt-header flex h-fit flex-col overflow-x-hidden text-primary-80">
+    <main className="flex h-fit flex-col overflow-x-hidden pt-header text-primary-80">
       <section
         id="hero"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
@@ -56,7 +76,7 @@ export default function HomePage() {
         description={
           <>
             Siamo una famiglia un legame profondo con il nostro territorio, che
-            curiamo e coltiviamo da almeno sei generazionsi. <br />
+            curiamo e coltiviamo da almeno sei generazioni. <br />
             Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro
             orgoglio
           </>
@@ -71,6 +91,7 @@ export default function HomePage() {
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
+          <h2 className="col-span-full text-5xl">I Nostri Prodotti</h2>
           <Suspense
             fallback={[1, 2, 3, 4, 5, 6].map((id) => (
               <div key={id} className="flex flex-col space-y-3">
@@ -86,6 +107,36 @@ export default function HomePage() {
           </Suspense>
         </div>
       </section>
+      <section
+        id="prodotti"
+        className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
+      >
+        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
+          <h2 className="col-span-full text-5xl">I Nostri Servizi</h2>
+          {SERVICES.map((service) => (
+            <Link
+              href={`/services/${service.id}`}
+              scroll={false}
+              key={service.id}
+            >
+              <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-transform hover:scale-105">
+                {service.image !== null ? (
+                  <Image
+                    src={service.image ?? "placeholder.png"}
+                    fill={true}
+                    alt={service.name ?? ""}
+                    className="z-20 rounded-lg object-cover"
+                  />
+                ) : null}
+                <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
+                  <h2>{service.name}</h2>
+                </span>
+              </CustomBorder>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <HeroSection
         variant="imgLeft"
         id="spaccio"
@@ -167,6 +218,9 @@ export default function HomePage() {
               >
                 +39 346 058 6379
               </Link>
+            </span>
+            <span className="flex justify-center gap-4 md:justify-start">
+              <BriefcaseBusiness /> P.IVA 04682830288
             </span>
           </div>
         </div>
