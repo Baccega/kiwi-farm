@@ -15,29 +15,31 @@ export default async function Page(props: { params: { id: string } }) {
 
   return (
     <main className="gap-4 pt-header">
-      <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
-        <figure className="relative h-80 w-full basis-80 px-12">
-          <Carousel opts={{ loop: true, align: "start" }}>
-            <CarouselContent>
-              {product.images.map((image, index) => (
-                <CarouselItem key={index} className="relative h-80">
-                  <Image
-                    src={image ?? "placeholder.png"}
-                    alt={product.name ?? ""}
-                    fill={true}
-                    className="z-20 rounded-lg object-cover"
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </figure>
-        <div className="flex grow flex-col gap-4">
-          <h1 className="text-3xl font-bold">{product.name}</h1>
-          <p className="">{product.description}</p>
-          <ProductBasketData product={product} price={price} />
+      <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:px-16">
+        <h1 className="px-4 text-3xl font-bold md:px-0">{product.name}</h1>
+        <div className="flex h-full flex-col gap-8 md:flex-row">
+          <figure className="relative h-80 w-full min-w-96 basis-80 px-12">
+            <Carousel opts={{ loop: true, align: "start" }}>
+              <CarouselContent>
+                {product.images.map((image, index) => (
+                  <CarouselItem key={index} className="relative h-80">
+                    <Image
+                      src={image ?? "placeholder.png"}
+                      alt={product.name ?? ""}
+                      fill={true}
+                      className="z-20 rounded-lg object-cover"
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </figure>
+          <div className="flex grow flex-col gap-4">
+            <p className="">{product.description}</p>
+            <ProductBasketData product={product} price={price} />
+          </div>
         </div>
       </section>
     </main>

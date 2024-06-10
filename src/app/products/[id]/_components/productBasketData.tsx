@@ -32,7 +32,7 @@ export function ProductBasketData(props: {
             )}{" "}
             €
             <span className="text-sm font-light tracking-wide">
-              {getFormattedPrice(price)} € / pz
+              {getFormattedPrice(price)} € / {product.unit_label ?? "pz"}
             </span>
           </p>
           <ProductQuantityChanger basketProduct={basketProduct} />
