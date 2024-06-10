@@ -23,9 +23,12 @@ export default async function ProductList() {
             key={product.id}
           >
             <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-transform hover:scale-105">
-              {product.images[0] !== null ? (
+              {product.metadata?.images?.split(",")[0] !== null ? (
                 <Image
-                  src={product.images?.[0] ?? "placeholder.png"}
+                  src={
+                    product.metadata?.images?.split(",")?.[0] ??
+                    "/placeholder.png"
+                  }
                   fill={true}
                   alt={product.name ?? ""}
                   className="z-20 rounded-lg object-cover"

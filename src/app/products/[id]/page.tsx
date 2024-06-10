@@ -21,10 +21,10 @@ export default async function Page(props: { params: { id: string } }) {
           <figure className="relative h-80 w-full min-w-96 basis-80 px-12">
             <Carousel opts={{ loop: true, align: "start" }}>
               <CarouselContent>
-                {product.images.map((image, index) => (
+                {product.metadata?.images?.split(",").map((image, index) => (
                   <CarouselItem key={index} className="relative h-80">
                     <Image
-                      src={image ?? "placeholder.png"}
+                      src={image ?? "/placeholder.png"}
                       alt={product.name ?? ""}
                       fill={true}
                       className="z-20 rounded-lg object-cover"
