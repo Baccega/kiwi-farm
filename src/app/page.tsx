@@ -15,6 +15,7 @@ import ProductList from "./_components/ProductList";
 import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
+import Faq from "./_components/Faq";
 
 const SERVICES = [
   {
@@ -148,6 +149,15 @@ export default function HomePage() {
         ctaText="Vieni a trovarci"
         ctaHref="#contatti"
       />
+
+      <section
+        id="faq"
+        className="container relative flex h-full min-h-section scroll-mt-[--header-height] flex-col items-center justify-center border-b py-24 text-center md:px-16"
+      >
+        <h2 className="pb-4 text-5xl">Domande frequenti</h2>
+        <Faq />
+      </section>
+
       <section
         id="contatti"
         className="min-h-50 scroll-mt-[--header-height] border-b bg-primary-80"

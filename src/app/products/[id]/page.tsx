@@ -37,7 +37,7 @@ export default async function Page(props: { params: { id: string } }) {
             </Carousel>
           </figure>
           <div className="flex grow flex-col gap-4">
-            <p className="">{product.description}</p>
+            <p className="">{product.metadata?.it_description}</p>
             <ProductBasketData product={product} price={price} />
           </div>
         </div>
