@@ -154,7 +154,7 @@ export default function HomePage() {
         id="faq"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] flex-col items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <h2 className="pb-4 text-5xl">Domande frequenti</h2>
+        <h2 className="pb-6 text-5xl">Domande frequenti</h2>
         <Faq />
       </section>
 
