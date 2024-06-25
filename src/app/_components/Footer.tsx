@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary-80">
       <div className="container flex flex-col items-center justify-between py-1 text-sm text-white md:flex-row md:px-16">
-        <nav className="flex gap-4 md:-translate-x-4">
+        <nav className="flex flex-col gap-x-2 md:-translate-x-4 md:flex-row">
           <Link
             href="/privacy"
             className={buttonVariants({ variant: "link", inverted: true })}
@@ -21,10 +21,16 @@ export default function Footer() {
             Cookies
           </Link>
           <Link
-            href="/credits"
+            href="/terms-and-conditions"
             className={buttonVariants({ variant: "link", inverted: true })}
           >
-            Credits
+            Termini e condizioni
+          </Link>
+          <Link
+            href="/returns"
+            className={buttonVariants({ variant: "link", inverted: true })}
+          >
+            Resi
           </Link>
         </nav>
         <p className="">©{year} Società agricola Kiwi Farm S.S.</p>

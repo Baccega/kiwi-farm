@@ -11,7 +11,7 @@ export default async function Page() {
         facciamo riferimento sia alle Informazioni sul dispositivo che alle
         Informazioni sugli ordini.
       </p>
-      <h2 className="pt-6 text-2xl">RACCOLTA DATI PERSONALI</h2>
+      <h2 className="pt-6 text-2xl">Raccolta dati personali</h2>
       <p className="">
         Quando visiti il Sito, raccogliamo automaticamente determinate
         informazioni presenti sul tuo dispositivo, tra cui dati del browser,
@@ -38,7 +38,7 @@ export default async function Page() {
         e numero di telefono. Definiremo questi dati “Informazioni sugli
         ordini”.
       </p>
-      <h2 className="pt-6 text-2xl">COME UTILIZZIAMO I TUOI DATI PERSONALI?</h2>
+      <h2 className="pt-6 text-2xl">Come utilizziamo i tuoi dati personali?</h2>
       <p className="">
         Generalmente utilizziamo le Informazioni sugli ordini per evadere gli
         ordini effettuati tramite il Sito (il che include l&apos;elaborazione
@@ -55,7 +55,7 @@ export default async function Page() {
         parte dei nostri clienti, e per valutare il successo delle nostre
         campagne pubblicitarie e di marketing).{" "}
       </p>
-      <h2 className="pt-6 text-2xl">DIVULGAZIONE DEI TUOI DATI PERSONALI</h2>
+      <h2 className="pt-6 text-2xl">Divulgazione dei tuoi dati personali</h2>
       <p className="">
         Condividiamo i tuoi Dati personali con le aziende di terze parti che ci
         aiutano nello svolgimento delle attività sopra descritte. Utilizziamo
@@ -71,7 +71,7 @@ export default async function Page() {
         mandati di perquisizione o altre richieste legali di dati ricevute, o
         comunque per tutelare i nostri diritti.
       </p>
-      {/* <h2 className="pt-6 text-2xl">PUBBLICITÀ COMPORTAMENTALE</h2>
+      {/* <h2 className="pt-6 text-2xl">Pubblicità comportamentale</h2>
       <p className="">
         Come descritto sopra, utilizziamo i tuoi Dati personali per fornirti
         pubblicità mirata o comunicazioni di marketing che riteniamo possano
@@ -88,13 +88,13 @@ export default async function Page() {
         visitando il portale di recesso dalla pubblicità digitale di Digital
         Advertising Alliance: http://optout.aboutads.info/.
       </p> */}
-      <h2 className="pt-6 text-2xl">DO NOT TRACK</h2>
+      <h2 className="pt-6 text-2xl">Do not track</h2>
       <p className="">
         Tieni presente che non alteriamo le modalità di raccolta dati del nostro
         Sito e le pratiche di utilizzo dei dati in presenza del segnale Do Not
         Track del tuo browser.
       </p>
-      <h2 className="pt-6 text-2xl">I TUOI DIRITTI</h2>
+      <h2 className="pt-6 text-2xl">I tuoi diritti</h2>
       <p className="">
         Se risiedi in Europa, hai il diritto di accedere ai dati personali che
         ti riguardano in nostro possesso e di richiederne l&apos;aggiornamento,
@@ -107,23 +107,23 @@ export default async function Page() {
         a ciò, tieni presente che i tuoi dati saranno trasferiti in paesi
         extraeuropei tra cui il Canada e gli Stati Uniti.
       </p>
-      <h2 className="pt-6 text-2xl">CONSERVAZIONE DEI DATI</h2>
+      <h2 className="pt-6 text-2xl">Conservazione dei dati</h2>
       <p className="">
         Quando effettui degli ordini tramite il Sito, conserviamo le
         Informazioni sugli ordini nei nostri archivi, tranne se e fino a quando
         non ci chiedi di eliminare tali informazioni.
       </p>
-      <h2 className="pt-6 text-2xl">MINORI</h2>
+      <h2 className="pt-6 text-2xl">Minori</h2>
       <p className="">
         Il Sito non è destinato a persone di età inferiore a 18 anni.
       </p>
-      <h2 className="pt-6 text-2xl">MODIFICHE</h2>
+      <h2 className="pt-6 text-2xl">Modifiche</h2>
       <p className="">
         Di volta in volta potremo aggiornare la presente Informativa sulla
         privacy, ad esempio in modo che rifletta le modifiche alle nostre
         procedure, oppure per altre ragioni operative, legali o normative.
       </p>
-      <h2 className="pt-6 text-2xl">CONTATTACI</h2>
+      <h2 className="pt-6 text-2xl">Contattaci</h2>
       <p className="">
         Per maggiori informazioni sulle nostre procedure in materia di privacy,
         se hai domande o se vuoi presentare un reclamo, inviaci un&apos;email a
