@@ -13,11 +13,23 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "~/components/ui/drawer";
+import { buttonVariants } from "~/components/ui/button";
+import { useCookiesConsent } from "./_hooks/cookies";
+import { cn } from "~/lib/utils";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -86,18 +98,25 @@ export const AlertContext = createContext<{
 
 const queryClient = new QueryClient();
 
-if (typeof window !== "undefined") {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-    api_host: "/ingest",
-    ui_host: "https://eu.i.posthog.com"
-  })
-}
-
 export default function Providers({ children }: { children: React.ReactNode }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
+  const [cookiesDrawerOpen, setCookiesDrawerOpen] = useState(false);
+
+  const { hasCookiesConsent, setHasCookiesConsent } = useCookiesConsent();
+
+  // Open the cookies drawer if the user hasn't consented yet
+  useEffect(() => {
+    if (hasCookiesConsent === null) {
+      setCookiesDrawerOpen(true);
+    }
+  }, [hasCookiesConsent]);
+
+  function handleCookiesDrawerOpenChange(open: boolean) {
+    setCookiesDrawerOpen(open);
+  }
 
   function closeAlert() {
     setIsAlertOpen(false);
@@ -116,28 +135,67 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <PostHogProvider client={posthog}>
-      <QueryClientProvider client={queryClient}>
-        <AlertContext.Provider value={{ openAlert }}>
-          <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
-            <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
-              <AlertDialogHeader>
-                <AlertDialogTitle>{title}</AlertDialogTitle>
-                <AlertDialogDescription>{description}</AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel onClick={closeAlert}>
-                  Annulla
-                </AlertDialogCancel>
-                <AlertDialogAction onClick={handleConfirm}>
-                  Conferma
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-            {children}
-          </AlertDialog>
-        </AlertContext.Provider>
-      </QueryClientProvider>
-    </PostHogProvider>
+    <Drawer
+      open={cookiesDrawerOpen}
+      onOpenChange={handleCookiesDrawerOpenChange}
+    >
+      <PostHogProvider client={posthog}>
+        <QueryClientProvider client={queryClient}>
+          <AlertContext.Provider value={{ openAlert }}>
+            <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+              <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>{title}</AlertDialogTitle>
+                  <AlertDialogDescription>{description}</AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel onClick={closeAlert}>
+                    Annulla
+                  </AlertDialogCancel>
+                  <AlertDialogAction onClick={handleConfirm}>
+                    Conferma
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+              {children}
+            </AlertDialog>
+          </AlertContext.Provider>
+        </QueryClientProvider>
+      </PostHogProvider>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Cookies</DrawerTitle>
+          <DrawerDescription>
+            Accettando i cookies si acconsente all&apos;uso di{" "}
+            <strong>PostHog</strong> (Data analytics) e <strong>Sentry</strong>{" "}
+            (Error reporting) durante la navigazione sul sito.
+          </DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter className="md:flex-row">
+          <DrawerClose
+            onClick={() => setHasCookiesConsent(true)}
+            className={cn(
+              buttonVariants({
+                variant: "default",
+              }),
+              "w-full md:w-96",
+            )}
+          >
+            Accetta tutti
+          </DrawerClose>
+          <DrawerClose
+            onClick={() => setHasCookiesConsent(false)}
+            className={cn(
+              buttonVariants({
+                variant: "outline",
+              }),
+              "w-full md:w-96",
+            )}
+          >
+            Solo i cookies strettamente necessari
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 }
