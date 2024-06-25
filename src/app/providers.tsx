@@ -28,7 +28,6 @@ import {
   DrawerTitle,
 } from "~/components/ui/drawer";
 import { buttonVariants } from "~/components/ui/button";
-import { useCookiesConsent } from "./_hooks/cookies";
 import { cn } from "~/lib/utils";
 
 interface BasketState {
@@ -86,6 +85,31 @@ export const useBasketStore = create<BasketState>()(
   ),
 );
 
+interface CookiesBannerState {
+  cookiesDrawerOpen: boolean;
+  hasCookiesConsent: boolean | null;
+  setCookiesDrawerOpen: (open: boolean) => void;
+  setHasCookiesConsent: (hasConsent: boolean) => void;
+}
+
+export const useCookiesStore = create<CookiesBannerState>()(
+  devtools(
+    persist(
+      (set) => ({
+        cookiesDrawerOpen: false,
+        hasCookiesConsent: null,
+        setCookiesDrawerOpen: (open: boolean) =>
+          set({ cookiesDrawerOpen: open }),
+        setHasCookiesConsent: (hasConsent: boolean) =>
+          set({ hasCookiesConsent: hasConsent }),
+      }),
+      {
+        name: "cookies-storage",
+      },
+    ),
+  ),
+);
+
 type OpenAlertProps = {
   title: string;
   description: string;
@@ -103,15 +127,30 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
-  const [cookiesDrawerOpen, setCookiesDrawerOpen] = useState(false);
 
-  const { hasCookiesConsent, setHasCookiesConsent } = useCookiesConsent();
+  const cookiesDrawerOpen = useCookiesStore((state) => state.cookiesDrawerOpen);
+  const hasCookiesConsent = useCookiesStore((state) => state.hasCookiesConsent);
+  const setCookiesDrawerOpen = useCookiesStore(
+    (state) => state.setCookiesDrawerOpen,
+  );
+  const setHasCookiesConsent = useCookiesStore(
+    (state) => state.setHasCookiesConsent,
+  );
 
   // Open the cookies drawer if the user hasn't consented yet
   useEffect(() => {
     if (hasCookiesConsent === null) {
       setCookiesDrawerOpen(true);
     }
+  }, [hasCookiesConsent, setCookiesDrawerOpen]);
+
+  // Enable Posthog if the user has consented
+  useEffect(() => {
+    if (typeof window === "undefined" || !hasCookiesConsent) return;
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+      api_host: "/ingest",
+      ui_host: "https://eu.i.posthog.com",
+    });
   }, [hasCookiesConsent]);
 
   function handleCookiesDrawerOpenChange(open: boolean) {

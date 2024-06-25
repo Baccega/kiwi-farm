@@ -11,7 +11,7 @@ async function fetchStripe<T>(path: string): Promise<T> {
   return (await res.json()) as T;
 }
 
-export async function getStripeProducts(limit = 100) {
+export async function getStripeProducts() {
   const { data } =
     await fetchStripe<Stripe.ApiList<Stripe.Product>>("products");
 
