@@ -25,6 +25,7 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10 rounded-full",
         link: "px-2",
+        "inline-link": "",
       },
       inverted: {
         true: "text-primary-foreground",

@@ -29,6 +29,7 @@ import {
 } from "~/components/ui/drawer";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
+import Link from "next/link";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -206,8 +207,46 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           <DrawerTitle>Cookies</DrawerTitle>
           <DrawerDescription>
             Accettando i cookies si acconsente all&apos;uso di{" "}
-            <strong>PostHog</strong> (Data analytics) e <strong>Sentry</strong>{" "}
-            (Error reporting) durante la navigazione sul sito.
+            <Link
+              className={buttonVariants({
+                variant: "link",
+                size: "inline-link",
+              })}
+              href={"https://posthog.com/"}
+            >
+              PostHog (Data analytics)
+            </Link>{" "}
+            e{" "}
+            <Link
+              className={buttonVariants({
+                variant: "link",
+                size: "inline-link",
+              })}
+              href={"https://sentry.io/welcome/"}
+            >
+              Sentry (Error reporting)
+            </Link>{" "}
+            durante la navigazione sul sito. Leggi le nostre{" "}
+            <Link
+              className={buttonVariants({
+                variant: "link",
+                size: "inline-link",
+              })}
+              href={"/privacy"}
+            >
+              Privacy Policy
+            </Link>{" "}
+            e{" "}
+            <Link
+              className={buttonVariants({
+                variant: "link",
+                size: "inline-link",
+              })}
+              href={"/terms-and-conditions"}
+            >
+              Termini e condizioni
+            </Link>{" "}
+            per maggiori informazioni.
           </DrawerDescription>
         </DrawerHeader>
         <DrawerFooter className="md:flex-row">
