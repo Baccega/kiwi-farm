@@ -1,5 +1,8 @@
-FROM node:20.9.0-alpine as base
-RUN apk add --no-cache g++ make py3-pip libc6-compat
+FROM node:20.9.0-slim as base
+# RUN apk add --no-cache g++ make py3-pip libc6-compat
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /app
 COPY package*.json ./
 EXPOSE 3000
@@ -7,14 +10,14 @@ EXPOSE 3000
 FROM base as builder
 WORKDIR /app
 COPY . .
-RUN pnpm run build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm run build
 
 
 FROM base as production
 WORKDIR /app
 
 ENV NODE_ENV=production
-RUN pnpm ci
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm ci
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
