@@ -4,7 +4,8 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 WORKDIR /app
-COPY package*.json ./
+COPY package.json ./
+COPY pnpm-lock.yaml ./
 EXPOSE 3000
 
 FROM base as builder
