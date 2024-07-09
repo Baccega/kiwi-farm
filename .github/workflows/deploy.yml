@@ -24,7 +24,7 @@ jobs:
       - run: echo "$SSH_KEY" >> ~/.ssh/github-action
       - run: chmod 400 ~/.ssh/github-action
       - run: echo -e "Host vps\n\tUser root\n\tHostname 212.227.85.17\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-      - run: echo "$PROD_ENV" >> ~/.env
+      - run: echo "$PROD_ENV" >> ./.env
       - run: pnpm install --frozen-lockfile
       - run: ls -la
       - run: pwd
