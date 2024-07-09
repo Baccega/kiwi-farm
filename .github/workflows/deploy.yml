@@ -26,7 +26,7 @@ jobs:
       - run: echo -e "Host vps\n\tUser root\n\tHostname 212.227.85.17\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
       - run: echo "$PROD_ENV" >> ~/.env
       - run: pnpm install --frozen-lockfile
-      - run: ls
+      - run: ls -la
       - run: pnpm run build
       - run: rsync -re ssh ./.next/ vps:/var/www/.next
     #   - run: ssh vps "pm2 restart kiwi-farm"
