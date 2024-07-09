@@ -4,6 +4,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import Providers from "./providers";
+import { cookies } from "next/headers";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -40,10 +41,14 @@ export default function RootLayout(props: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
+
+  const cookieStore = cookies();
+  const hasCookiesConsent = Boolean(cookieStore.get("hasCookiesConsent"));
+
   return (
     <html lang="en">
       <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
-        <Providers>
+        <Providers hasCookiesConsent={hasCookiesConsent}>
           <Header />
           {props.children}
           <div id="modal-root" />

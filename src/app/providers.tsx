@@ -13,23 +13,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
+  Drawer
 } from "~/components/ui/drawer";
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
-import Link from "next/link";
+import CookiesBanner from "./_components/CookieBanner";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -123,36 +115,19 @@ export const AlertContext = createContext<{
 
 const queryClient = new QueryClient();
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  hasCookiesConsent,
+}: {
+  hasCookiesConsent: boolean;
+  children: React.ReactNode;
+}) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
-
-  const cookiesDrawerOpen = useCookiesStore((state) => state.cookiesDrawerOpen);
-  const hasCookiesConsent = useCookiesStore((state) => state.hasCookiesConsent);
-  const setCookiesDrawerOpen = useCookiesStore(
-    (state) => state.setCookiesDrawerOpen,
-  );
-  const setHasCookiesConsent = useCookiesStore(
-    (state) => state.setHasCookiesConsent,
-  );
-
-  // Open the cookies drawer if the user hasn't consented yet
-  useEffect(() => {
-    if (hasCookiesConsent === null) {
-      setCookiesDrawerOpen(true);
-    }
-  }, [hasCookiesConsent, setCookiesDrawerOpen]);
-
-  // Enable Posthog if the user has consented
-  useEffect(() => {
-    if (typeof window === "undefined" || !hasCookiesConsent) return;
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-      api_host: "/ingest",
-      ui_host: "https://eu.i.posthog.com",
-    });
-  }, [hasCookiesConsent]);
+  const [cookiesDrawerOpen, setCookiesDrawerOpen] =
+    useState(!hasCookiesConsent);
 
   function handleCookiesDrawerOpenChange(open: boolean) {
     setCookiesDrawerOpen(open);
@@ -202,78 +177,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           </AlertContext.Provider>
         </QueryClientProvider>
       </PostHogProvider>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Cookies</DrawerTitle>
-          <DrawerDescription>
-            Accettando i cookies si acconsente all&apos;uso di{" "}
-            <Link
-              className={buttonVariants({
-                variant: "link",
-                size: "inline-link",
-              })}
-              href={"https://posthog.com/"}
-            >
-              PostHog (Data analytics)
-            </Link>{" "}
-            e{" "}
-            <Link
-              className={buttonVariants({
-                variant: "link",
-                size: "inline-link",
-              })}
-              href={"https://sentry.io/welcome/"}
-            >
-              Sentry (Error reporting)
-            </Link>{" "}
-            durante la navigazione sul sito. Leggi le nostre{" "}
-            <Link
-              className={buttonVariants({
-                variant: "link",
-                size: "inline-link",
-              })}
-              href={"/privacy"}
-            >
-              Privacy Policy
-            </Link>{" "}
-            e{" "}
-            <Link
-              className={buttonVariants({
-                variant: "link",
-                size: "inline-link",
-              })}
-              href={"/terms-and-conditions"}
-            >
-              Termini e condizioni
-            </Link>{" "}
-            per maggiori informazioni.
-          </DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter className="md:flex-row">
-          <DrawerClose
-            onClick={() => setHasCookiesConsent(true)}
-            className={cn(
-              buttonVariants({
-                variant: "default",
-              }),
-              "w-full md:w-96",
-            )}
-          >
-            Accetta tutti
-          </DrawerClose>
-          <DrawerClose
-            onClick={() => setHasCookiesConsent(false)}
-            className={cn(
-              buttonVariants({
-                variant: "outline",
-              }),
-              "w-full md:w-96",
-            )}
-          >
-            Solo i cookies strettamente necessari
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
+      <CookiesBanner hasCookiesConsent={hasCookiesConsent} />
     </Drawer>
   );
 }
