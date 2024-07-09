@@ -1,0 +1,31 @@
+name: Deploy Next App
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+      PROD_ENV: ${{secrets.PROD_ENV}}
+    steps:
+      - uses: actions/checkout@master
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+            version: 8
+            run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: 20
+            cache: 'pnpm'
+      - run: mkdir ~/.ssh
+      - run: echo "$SSH_KEY" >> ~/.ssh/github-action
+      - run: chmod 400 ~/.ssh/github-action
+      - run: echo -e "Host vps\n\tUser root\n\tHostname 212.227.85.17\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+      - run: echo "$PROD_ENV" >> ~/.env
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - run: rsync -re ssh ./.next/ vps:/var/www/.next
+    #   - run: ssh vps "pm2 restart kiwi-farm"
