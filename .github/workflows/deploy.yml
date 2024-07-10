@@ -29,4 +29,4 @@ jobs:
       - run: pnpm run build
       - run: rsync -re ssh ./.next/ vps:/var/www/.next
       - run: rsync -re ssh ./.env vps:/var/www/.env
-    #   - run: ssh vps "pm2 restart kiwi-farm"
+      - run: ssh vps "pm2 restart kiwi-farm"
