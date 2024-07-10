@@ -12,7 +12,7 @@ import {
   DrawerTitle,
 } from "~/components/ui/drawer";
 import { cn } from "~/lib/utils";
-import setHasCookiesConsent from "~/server/cookies";
+import { setHasCookiesConsent } from "~/server/cookies";
 
 export default function CookiesBanner({
   hasCookiesConsent,
@@ -20,7 +20,11 @@ export default function CookiesBanner({
   hasCookiesConsent: boolean;
 }) {
   async function handleConsentApproval() {
-    await setHasCookiesConsent();
+    await setHasCookiesConsent(true);
+  }
+
+  async function handleRemoveConsent() {
+    await setHasCookiesConsent(false);
   }
 
   // Enable Posthog if the user has consented
@@ -99,6 +103,7 @@ export default function CookiesBanner({
             }),
             "w-full md:w-96",
           )}
+          onClick={() => handleRemoveConsent()}
         >
           Solo i cookies strettamente necessari
         </DrawerClose>
