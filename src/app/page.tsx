@@ -28,6 +28,12 @@ const SERVICES = [
     image: "/kiwi.jpg",
     name: "Autoraccolta",
   },
+  {
+    id: "farmers-market",
+    image: "/spaccio.jpg",
+    name: "Il nostro spaccio",
+    imgClassname: "object-right",
+  },
 ];
 
 export default function HomePage() {
@@ -126,7 +132,10 @@ export default function HomePage() {
                     src={service.image ?? "placeholder.png"}
                     fill={true}
                     alt={service.name ?? ""}
-                    className="z-20 rounded-lg object-cover"
+                    className={cn(
+                      "z-20 rounded-lg object-cover",
+                      service.imgClassname,
+                    )}
                   />
                 ) : null}
                 <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
@@ -137,18 +146,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      <HeroSection
-        variant="imgLeft"
-        id="spaccio"
-        description="Il Nostro Spaccio"
-        imgSrc="/spaccio.jpg"
-        imgAlt="Foto spaccio"
-        imgClassname="object-right"
-        title="Il Nostro Spaccio"
-        ctaText="Vieni a trovarci"
-        ctaHref="#contatti"
-      />
 
       <section
         id="faq"
