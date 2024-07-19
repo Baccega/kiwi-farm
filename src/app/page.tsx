@@ -91,7 +91,7 @@ export default function HomePage() {
         imgSrc="/enea.jpg"
         imgAlt="Foto famiglia"
         ctaText="Vieni a trovarci"
-        ctaHref="#contatti"
+        ctaHref="/contacts"
       />
       <section
         id="prodotti"
@@ -115,7 +115,7 @@ export default function HomePage() {
         </div>
       </section>
       <section
-        id="prodotti"
+        id="servizi"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">

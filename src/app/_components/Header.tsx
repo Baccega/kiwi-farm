@@ -36,7 +36,7 @@ export default async function Header() {
             className="h-auto w-52"
           />
         </Link>
-        <div className="flex items-center gap-0 @xs/header:gap-4 @3xl/header:flex-row-reverse md:gap-8">
+        <div className="flex items-center gap-0 @xs/header:gap-4 @4xl/header:flex-row-reverse md:gap-8">
           <BasketLink />
           <MenuButton />
         </div>

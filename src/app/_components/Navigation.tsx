@@ -42,14 +42,21 @@ export function Navigation(props: NavigationProps) {
         Prodotti
       </Link>
       <Link
-        href="/#spaccio"
+        href="/farmers-market"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Spaccio
       </Link>
       <Link
-        href="/#contatti"
+        href="#servizi"
+        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
+        onClick={onLinkClick}
+      >
+        Servizi
+      </Link>
+      <Link
+        href="/contacts"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
