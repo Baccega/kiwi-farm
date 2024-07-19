@@ -20,12 +20,12 @@ import Faq from "./_components/Faq";
 const SERVICES = [
   {
     id: "dog-training",
-    image: "/kiwi.jpg",
+    image: "/anakin.jpg",
     name: "Addestramento cani",
   },
   {
     id: "self-picking",
-    image: "/kiwi.jpg",
+    image: "/self-picking.jpg",
     name: "Autoraccolta",
   },
   {
