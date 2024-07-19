@@ -11,6 +11,14 @@ export default async function ProductList() {
   const products = await getStripeProducts();
   const prices = await getStripePrices();
 
+  if (products?.length === 0) {
+    return (
+      <CustomBorder className="col-span-full flex h-product w-product items-center justify-center bg-primary-80 text-white">
+        <p>Non ci sono prodotti disponibili al momento</p>
+      </CustomBorder>
+    );
+  }
+
   return (
     <>
       {products.map((product) => {
