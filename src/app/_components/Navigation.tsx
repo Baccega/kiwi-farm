@@ -42,13 +42,6 @@ export function Navigation(props: NavigationProps) {
         Prodotti
       </Link>
       <Link
-        href="/farmers-market"
-        className={cn(buttonVariants({ variant: "link" }), "text-xl")}
-        onClick={onLinkClick}
-      >
-        Spaccio
-      </Link>
-      <Link
         href="#servizi"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}

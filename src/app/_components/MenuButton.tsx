@@ -29,7 +29,7 @@ export default function MenuButton() {
   return (
     <>
       <Navigation
-        className="hidden @4xl/header:flex"
+        className="hidden @3xl/header:flex"
         onLinkClick={handleLinkClick}
       />
       <Sheet {...menuDialog}>
@@ -39,7 +39,7 @@ export default function MenuButton() {
         <SheetTrigger
           asChild
           onClick={menuDialog.trigger}
-          className="@4xl/header:hidden"
+          className="@3xl/header:hidden"
         >
           <Button variant={"ghost"} size={"icon"}>
             <Menu className="fill-primary" />
