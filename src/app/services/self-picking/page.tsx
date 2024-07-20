@@ -14,7 +14,7 @@ export default async function Page() {
         </figure>
         <div className="flex grow flex-col gap-4">
           <h1 className="text-3xl font-bold">Autoraccolta</h1>
-          <h2 className="text-xl">Vieni a raccogliere i tuoi kiwi direttamente dall'albero!</h2>
+          <h2 className="text-xl">Vieni a raccogliere i tuoi kiwi direttamente dall&apos;albero!</h2>
           <p className="">
             Servizio disponibile tutti i giorni dal 25 ottobre in poi dalle 8:00 alle 17:00.
           </p>
