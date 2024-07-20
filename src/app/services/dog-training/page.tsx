@@ -15,14 +15,8 @@ export default async function Page() {
         <div className="flex grow flex-col gap-4">
           <h1 className="text-3xl font-bold">Addestramento cani</h1>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            malesuada, est vel aliquet aliquet, justo ex lacinia metus, ut
-            fermentum neque nunc et est. Nullam nec nunc nec nibh lacinia
-            tincidunt. Nullam id nunc auctor, ultricies mi sit amet, auctor
-            libero. Nullam nec nunc nec nibh lacinia tincidunt. Nullam id nunc
-            auctor, ultricies mi sit amet, auctor libero. Nullam nec nunc nec
-            nibh lacinia tincidunt. Nullam id nunc auctor, ultricies mi sit
-            amet, auctor libero.{" "}
+            Il nostro addestramento cani è disponibile per tutte le razze e
+            taglie.
           </p>
         </div>
       </section>

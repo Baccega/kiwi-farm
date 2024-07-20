@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
   return (
@@ -14,15 +15,17 @@ export default async function Page() {
         </figure>
         <div className="flex grow flex-col gap-4">
           <h1 className="text-3xl font-bold">Il nostro spaccio</h1>
+          <h2 className="text-xl">
+            Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri
+            prodotti!
+          </h2>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            malesuada, est vel aliquet aliquet, justo ex lacinia metus, ut
-            fermentum neque nunc et est. Nullam nec nunc nec nibh lacinia
-            tincidunt. Nullam id nunc auctor, ultricies mi sit amet, auctor
-            libero. Nullam nec nunc nec nibh lacinia tincidunt. Nullam id nunc
-            auctor, ultricies mi sit amet, auctor libero. Nullam nec nunc nec
-            nibh lacinia tincidunt. Nullam id nunc auctor, ultricies mi sit
-            amet, auctor libero.{" "}
+            Il nostro spaccio è sempre aperto e si trova in Via Restello 19,
+            Villa del Conte (PD) (
+            <Link href="https://maps.app.goo.gl/eDN69XbVXrhpmTSHA">
+              Google maps
+            </Link>
+            )
           </p>
         </div>
       </section>

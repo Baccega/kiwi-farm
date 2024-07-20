@@ -14,15 +14,15 @@ export default async function Page() {
         </figure>
         <div className="flex grow flex-col gap-4">
           <h1 className="text-3xl font-bold">Autoraccolta</h1>
+          <h2 className="text-xl">Vieni a raccogliere i tuoi kiwi direttamente dall'albero!</h2>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            malesuada, est vel aliquet aliquet, justo ex lacinia metus, ut
-            fermentum neque nunc et est. Nullam nec nunc nec nibh lacinia
-            tincidunt. Nullam id nunc auctor, ultricies mi sit amet, auctor
-            libero. Nullam nec nunc nec nibh lacinia tincidunt. Nullam id nunc
-            auctor, ultricies mi sit amet, auctor libero. Nullam nec nunc nec
-            nibh lacinia tincidunt. Nullam id nunc auctor, ultricies mi sit
-            amet, auctor libero.{" "}
+            Servizio disponibile tutti i giorni dal 25 ottobre in poi dalle 8:00 alle 17:00.
+          </p>
+          <p className="">
+            I bambini sono i benvenuti!
+          </p>
+          <p className="">
+            Consigliamo abbigliamento e scarpe comode o stivali.
           </p>
         </div>
       </section>
