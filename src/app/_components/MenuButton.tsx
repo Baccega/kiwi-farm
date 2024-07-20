@@ -32,7 +32,7 @@ export default function MenuButton() {
         className="hidden @3xl/header:flex"
         onLinkClick={handleLinkClick}
       />
-      <Sheet {...menuDialog}>
+      <Sheet {...menuDialog.props}>
         <SheetContent>
           <Navigation variant="vertical" onLinkClick={handleLinkClick} />
         </SheetContent>

@@ -42,7 +42,7 @@ export function Navigation(props: NavigationProps) {
         Prodotti
       </Link>
       <Link
-        href="#servizi"
+        href="/#servizi"
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
