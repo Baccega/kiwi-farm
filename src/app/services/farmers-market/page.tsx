@@ -1,5 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Il nostro spaccio',
+  description: 'Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!',
+}
 
 export default async function Page() {
   return (

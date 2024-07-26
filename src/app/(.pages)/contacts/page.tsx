@@ -8,6 +8,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Contatti',
+  description: 'Tutti i contatti per raggiungere Le Giumelle',
+}
 
 export default async function Page() {
   return (

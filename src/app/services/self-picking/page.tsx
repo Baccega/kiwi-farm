@@ -1,4 +1,10 @@
 import Image from "next/image";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Autoraccolta kiwi',
+  description: 'Vieni a raccogliere i tuoi kiwi direttamente dall\'albero!',
+}
 
 export default async function Page() {
   return (

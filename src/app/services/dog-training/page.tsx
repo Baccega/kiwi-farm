@@ -1,4 +1,10 @@
+import { type Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: 'Addestramento cani',
+  description: 'Il nostro addestramento cani è disponibile per tutte le razze e taglie.',
+}
 
 export default async function Page() {
   return (
