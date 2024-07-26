@@ -11,8 +11,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 
 const coreConfig = withNextIntl({
+  output: 'standalone',
   images: {
     remotePatterns: [{ hostname: "files.stripe.com" }],
+    formats: ["image/avif", "image/webp"],
   },
   async rewrites() {
     return [
