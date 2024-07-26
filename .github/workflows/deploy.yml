@@ -28,6 +28,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
       - run: ssh vps "rm -rf /var/www/.next"
-      - run: rsync -reL ssh ./.next/ vps:/var/www/.next
-      - run: rsync -reL ssh ./.env vps:/var/www/.env
+      - run: rsync -re -L ssh ./.next/ vps:/var/www/.next
+      - run: rsync -re -L ssh ./.env vps:/var/www/.env
       - run: ssh vps "source ~/.nvm/nvm.sh && pm2 restart kiwi-farm"
