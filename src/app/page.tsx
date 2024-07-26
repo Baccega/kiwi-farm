@@ -16,6 +16,7 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
+import { useTranslations } from "next-intl";
 
 const SERVICES = [
   {
@@ -37,6 +38,8 @@ const SERVICES = [
 ];
 
 export default function HomePage() {
+  const t = useTranslations("HomePage");
+
   return (
     <main className="flex h-fit flex-col overflow-x-hidden pt-header text-primary-80">
       <section
@@ -59,33 +62,30 @@ export default function HomePage() {
         </CustomBorder>
         <div className="z-30 flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
-            <h1 className="text-5xl">Gli Specialisti del Kiwi dal 1986</h1>
+            <h1 className="text-5xl">{t("title")}</h1>
             <p className="text-xl text-primary-60">
-              Una azienda agricola a conduzione familiare
+              {t('subtitle')}
             </p>
           </div>
           <div className="flex flex-col gap-4 md:flex-row ">
             <Link href="#prodotti" className={cn(buttonVariants(), "w-fit")}>
-              Acquista i nostri prodotti
+              {t('buyOurProducts')}
             </Link>
             <Link
               href="#azienda"
               className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
             >
-              Scopri la nostra azienda
+              {t('discoverOurBusiness')}
             </Link>
           </div>
         </div>
       </section>
       <HeroSection
         id="azienda"
-        title="La Nostra Azienda"
+        title={t('business')}
         description={
           <>
-            Siamo una famiglia un legame profondo con il nostro territorio, che
-            curiamo e coltiviamo da almeno sei generazioni. <br />
-            Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro
-            orgoglio
+            {t('businessDescription')}
           </>
         }
         imgSrc="/enea.jpg"

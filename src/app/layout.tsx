@@ -5,6 +5,8 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import Providers from "./providers";
 import { cookies } from "next/headers";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -37,24 +39,27 @@ export const metadata = {
   ],
 };
 
-export default function RootLayout(props: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
-
+  const locale = await getLocale();
+  const messages = await getMessages();
   const cookieStore = cookies();
   const hasCookiesConsent = Boolean(cookieStore.get("hasCookiesConsent"));
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
-        <Providers hasCookiesConsent={hasCookiesConsent}>
-          <Header />
-          {props.children}
-          <div id="modal-root" />
-          {props.modal}
-          <Footer />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers hasCookiesConsent={hasCookiesConsent}>
+            <Header />
+            {props.children}
+            <div id="modal-root" />
+            {props.modal}
+            <Footer />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

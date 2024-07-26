@@ -5,7 +5,12 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const coreConfig = {
+
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
+const coreConfig = withNextIntl({
   images: {
     remotePatterns: [{ hostname: "files.stripe.com" }],
   },
@@ -21,8 +26,8 @@ const coreConfig = {
       },
     ];
   },
-  skipTrailingSlashRedirect: true, 
-};
+  skipTrailingSlashRedirect: true,
+});
 
 import { withSentryConfig } from "@sentry/nextjs";
 
