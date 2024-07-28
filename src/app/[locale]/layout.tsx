@@ -57,7 +57,6 @@ export function generateStaticParams() {
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
-  modal: React.ReactNode;
   params: { locale: string };
 }) {
   const messages = await getMessages();
@@ -79,7 +78,6 @@ export default async function RootLayout(props: {
             <Header locale={props.params.locale} />
             {props.children}
             <div id="modal-root" />
-            {props.modal}
             <Footer locale={props.params.locale} />
           </Providers>
         </NextIntlClientProvider>

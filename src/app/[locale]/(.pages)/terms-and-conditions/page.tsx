@@ -1,4 +1,8 @@
-export default async function Page() {
+import { unstable_setRequestLocale } from "next-intl/server";
+
+export default async function Page(props: { params: { locale: string } }) {
+  unstable_setRequestLocale(props.params.locale);
+
   return (
     <main className="container flex min-h-section flex-col gap-4 px-6 pb-10 pt-header md:px-16">
       <h1 className="pt-6 text-4xl font-bold">Termini e Condizioni</h1>

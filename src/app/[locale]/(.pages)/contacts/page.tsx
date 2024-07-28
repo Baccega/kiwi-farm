@@ -9,13 +9,16 @@ import {
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
 import { type Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
-  title: 'Contatti',
-  description: 'Tutti i contatti per raggiungere Le Giumelle',
-}
+  title: "Contatti",
+  description: "Tutti i contatti per raggiungere Le Giumelle",
+};
 
-export default async function Page() {
+export default async function Page(props: { params: { locale: string } }) {
+  unstable_setRequestLocale(props.params.locale);
+
   return (
     <main className="container flex min-h-section flex-col gap-4 px-6 pb-10 pt-header md:px-16">
       <h1 className="pt-6 text-4xl font-bold">Contatti</h1>

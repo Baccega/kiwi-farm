@@ -5,7 +5,7 @@ import { useStripeSession } from "./_hooks/useStripeSession";
 import { useBasketStore } from "~/app/[locale]/providers";
 import { useUrlParams } from "./_hooks/useUrlParams";
 
-export default function CheckoutPage() {
+export default function CheckoutPage() {;
   const urlParams = useUrlParams();
   const sessionId = urlParams?.get("session_id") ?? "";
   const emptyBasket = useBasketStore((state) => state.emptyBasket);

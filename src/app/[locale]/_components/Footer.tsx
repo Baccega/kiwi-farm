@@ -1,11 +1,11 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import React from "react";
 import { buttonVariants } from "~/components/ui/button";
 import { DrawerTrigger } from "~/components/ui/drawer";
 
-export default function Footer(props: { locale: string }) {
-  const t = useTranslations("Footer");
+export default async function Footer(props: { locale: string }) {
+  const t = await getTranslations("Footer");
   const year = new Date().getFullYear();
   return (
     <footer className="bg-primary-80">

@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
-  title: 'Il nostro spaccio',
-  description: 'Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!',
-}
+  title: "Il nostro spaccio",
+  description:
+    "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!",
+};
 
-export default async function Page() {
+export default async function Page(props: { params: { locale: string } }) {
+  unstable_setRequestLocale(props.params.locale);
   return (
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">

@@ -16,9 +16,10 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-export default async function HomePage() {
+export default async function HomePage(props: { params: { locale: string } }) {
+  unstable_setRequestLocale(props.params.locale);
   const t = await getTranslations();
 
   const SERVICES = [
