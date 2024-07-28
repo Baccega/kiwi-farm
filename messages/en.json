@@ -1,14 +1,10 @@
 {
   "HomePage": {
-    "title": "Gli Specialisti del Kiwi dal 1986",
+    "title": "EN",
     "subtitle": "Una azienda agricola a conduzione familiare",
     "buyOurProducts": "Acquista i nostri prodotti",
     "discoverOurBusiness": "Scopri la nostra azienda",
     "businessDescription": "Siamo una famiglia un legame profondo con il nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro orgoglio",
     "business": "La Nostra Azienda"
-  },
-  "Metadata": {
-    "HomePage-title": "Le Giumelle",
-    "HomePage-description": "Scopri la nostra azienda agricola ed acquista i nostri prodotti"
   }
 }

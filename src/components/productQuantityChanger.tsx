@@ -1,6 +1,6 @@
 import { Minus, Plus, Trash } from "lucide-react";
 import { Button } from "./ui/button";
-import { AlertContext, useBasketStore } from "~/app/providers";
+import { AlertContext, useBasketStore } from "~/app/[locale]/providers";
 import { useContext } from "react";
 import { type BasketProduct } from "~/types/Product";
 

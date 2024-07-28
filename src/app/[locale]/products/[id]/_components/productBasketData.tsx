@@ -1,7 +1,7 @@
 "use client";
 import { ShoppingBasket } from "lucide-react";
 import type Stripe from "stripe";
-import { useBasketStore } from "~/app/providers";
+import { useBasketStore } from "~/app/[locale]/providers";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
 import { Button } from "~/components/ui/button";
 import { getFormattedPrice } from "~/lib/utils";
