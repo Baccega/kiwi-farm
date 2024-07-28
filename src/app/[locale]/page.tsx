@@ -129,6 +129,7 @@ export default async function HomePage() {
                   <Image
                     src={service.image ?? "placeholder.png"}
                     fill={true}
+                    unoptimized
                     alt={service.name ?? ""}
                     className={cn(
                       "z-20 rounded-lg object-cover",
