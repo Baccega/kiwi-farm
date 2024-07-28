@@ -5,6 +5,57 @@
     "buyOurProducts": "Acquista i nostri prodotti",
     "discoverOurBusiness": "Scopri la nostra azienda",
     "businessDescription": "Siamo una famiglia un legame profondo con il nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro orgoglio",
-    "business": "La Nostra Azienda"
+    "business": "La Nostra Azienda",
+    "servicesTitle": "I Nostri Servizi",
+    "productsTitle": "I Nostri Prodotti",
+    "FaqTitle": "Domande frequenti",
+    "businessAlt": "Foto famiglia",
+    "businessCta": "Vieni a trovarci"
+  },
+  "Metadata": {
+    "HomePage-title": "Le Giumelle",
+    "HomePage-description": "Scopri la nostra azienda agricola ed acquista i nostri prodotti"
+  },
+  "Services": {
+    "dogTraining": "Addestramento Cani",
+    "selfPicking": "Autoraccolta",
+    "farmersMarket": "Il nostro spaccio"
+  },
+  "Faq": {
+    "q1": "Dove spediamo?",
+    "q2": "Come conservare i kiwi?",
+    "q3": "Come fare maturare i kiwi in 4-7 giorni?",
+    "q4": "Come fare maturare i kiwi in 7-10 giorni?",
+    "a4": "Conservare i kiwi a temperatura ambiente.",
+    "a3": "Riporre i kiwi in un sacchetto di carta ben chiuso insieme a frutta che rilascia etilene, come mele, pere o banane.",
+    "a2": {
+      "1": "I kiwi possono durare da alcune settimane a diversi mesi, a seconda delle precauzioni adottate. Le precauzioni sono:",
+      "2": "Separare periodicamente i frutti che maturano più rapidamente.",
+      "3": "Conservare i frutti in una cassetta, in un luogo buio, asciutto e fresco, lontano da altra frutta che rilascia etilene, come mele, pere o banane (in alternativa, in frigorifero).",
+      "4": "È possibile lavarli, sbucciarli e congelarli per conservarli fino a 10 mesi. In questo caso, saranno più adatti per frullati, succhi, confetture, gelati o torte."
+    },
+    "a1": "Effettuiamo spedizioni in tutta Europa tramite DHL. I tempi di consegna variano in base alla destinazione, con una media di 3-5 giorni lavorativi."
+  },
+  "Contacts": {
+    "address": "Via Restello 19, Villa del Conte, Italy",
+    "phone": "+39 346 058 6379",
+    "piva": "P.IVA 04682830288",
+    "email": "info@legiumelle.it"
+  },
+  "Cookies": {
+    "bannerTitle": "Cookies",
+    "bannerDescription": "Accettando i cookies si acconsente all'uso di <posthog>PostHog (Data analytics)</posthog> e <sentry>Sentry (Error reporting)</sentry> durante la navigazione sul sito. Leggi le nostre <privacyPolicy>Privacy Policy</privacyPolicy> e <termsAndConditions>Termini e condizioni</termsAndConditions> per maggiori informazioni.",
+    "acceptAll": "Accetta tutti",
+    "onlyNecessary": "Solo i cookies strettamente necessari"
+  },
+  "Footer": {
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "termsAndConditions": "Termini e condizioni",
+    "returns": "Resi",
+    "copyright": "©{year} Società agricola Kiwi Farm S.S."
+  },
+  "Products": {
+    "noProductsAvailable": "Non ci sono prodotti disponibili al momento"
   }
 }
