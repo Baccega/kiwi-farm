@@ -21,6 +21,7 @@ export interface NavigationProps
     VariantProps<typeof navigationVariants> {
   onLinkClick?: () => void;
   className?: string;
+  locale: string;
 }
 
 export function Navigation(props: NavigationProps) {
@@ -28,28 +29,28 @@ export function Navigation(props: NavigationProps) {
   return (
     <nav className={cn(navigationVariants({ variant, className }))} {...rest}>
       <Link
-        href="/#azienda"
+        href={`/${props.locale}/#azienda`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Azienda
       </Link>
       <Link
-        href="/#prodotti"
+        href={`/${props.locale}/#prodotti`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Prodotti
       </Link>
       <Link
-        href="/#servizi"
+        href={`/${props.locale}/#servizi`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         Servizi
       </Link>
       <Link
-        href="/contacts"
+        href={`/${props.locale}/contacts`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >

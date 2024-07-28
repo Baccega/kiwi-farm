@@ -72,12 +72,15 @@ export default async function RootLayout(props: {
     <html lang={props.params.locale}>
       <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
         <NextIntlClientProvider messages={messages}>
-          <Providers hasCookiesConsent={hasCookiesConsent}>
-            <Header />
+          <Providers
+            locale={props.params.locale}
+            hasCookiesConsent={hasCookiesConsent}
+          >
+            <Header locale={props.params.locale} />
             {props.children}
             <div id="modal-root" />
             {props.modal}
-            <Footer />
+            <Footer locale={props.params.locale} />
           </Providers>
         </NextIntlClientProvider>
       </body>

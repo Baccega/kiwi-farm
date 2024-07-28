@@ -18,9 +18,7 @@ import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
-import {
-  Drawer
-} from "~/components/ui/drawer";
+import { Drawer } from "~/components/ui/drawer";
 import CookiesBanner from "./_components/CookieBanner";
 
 interface BasketState {
@@ -118,8 +116,10 @@ const queryClient = new QueryClient();
 export default function Providers({
   children,
   hasCookiesConsent,
+  locale,
 }: {
   hasCookiesConsent: boolean;
+  locale: string;
   children: React.ReactNode;
 }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
@@ -177,7 +177,7 @@ export default function Providers({
           </AlertContext.Provider>
         </QueryClientProvider>
       </PostHogProvider>
-      <CookiesBanner hasCookiesConsent={hasCookiesConsent} />
+      <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} />
     </Drawer>
   );
 }

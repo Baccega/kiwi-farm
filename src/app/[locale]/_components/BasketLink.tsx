@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import { buttonVariants } from "~/components/ui/button";
 import { useBasketStore } from "../providers";
 
-export default function BasketLink() {
+export default function BasketLink(props: { locale: string }) {
   const pathname = usePathname();
   const basket = useBasketStore((state) => state.basket);
 
   return (
     <Link
-      href="/basket"
+      href={`/${props.locale}/basket`}
       className={buttonVariants({
         variant: "ghost",
         size: "icon",

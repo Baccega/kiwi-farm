@@ -16,29 +16,29 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-const SERVICES = [
-  {
-    id: "dog-training",
-    image: "/anakin.jpg",
-    name: "Addestramento cani",
-  },
-  {
-    id: "self-picking",
-    image: "/self-picking.jpg",
-    name: "Autoraccolta",
-  },
-  {
-    id: "farmers-market",
-    image: "/spaccio.jpg",
-    name: "Il nostro spaccio",
-    imgClassname: "object-right",
-  },
-];
+export default async function HomePage() {
+  const t = await getTranslations();
 
-export default function HomePage() {
-  const t = useTranslations("HomePage");
+  const SERVICES = [
+    {
+      id: "dog-training",
+      image: "/anakin.jpg",
+      name: t("Services.dogTraining"),
+    },
+    {
+      id: "self-picking",
+      image: "/self-picking.jpg",
+      name: t("Services.selfPicking"),
+    },
+    {
+      id: "farmers-market",
+      image: "/spaccio.jpg",
+      name: t("Services.farmersMarket"),
+      imgClassname: "object-right",
+    },
+  ];
 
   return (
     <main className="flex h-fit flex-col overflow-x-hidden pt-header text-primary-80">
@@ -62,35 +62,29 @@ export default function HomePage() {
         </CustomBorder>
         <div className="z-30 flex flex-col items-center gap-14">
           <div className="flex flex-col items-center gap-6">
-            <h1 className="text-5xl">{t("title")}</h1>
-            <p className="text-xl text-primary-60">
-              {t('subtitle')}
-            </p>
+            <h1 className="text-5xl">{t("HomePage.title")}</h1>
+            <p className="text-xl text-primary-60">{t("HomePage.subtitle")}</p>
           </div>
           <div className="flex flex-col gap-4 md:flex-row ">
             <Link href="#prodotti" className={cn(buttonVariants(), "w-fit")}>
-              {t('buyOurProducts')}
+              {t("HomePage.buyOurProducts")}
             </Link>
             <Link
               href="#azienda"
               className={cn(buttonVariants({ variant: "outline" }), "w-fit")}
             >
-              {t('discoverOurBusiness')}
+              {t("HomePage.discoverOurBusiness")}
             </Link>
           </div>
         </div>
       </section>
       <HeroSection
         id="azienda"
-        title={t('business')}
-        description={
-          <>
-            {t('businessDescription')}
-          </>
-        }
+        title={t("HomePage.business")}
+        description={<>{t("HomePage.businessDescription")}</>}
         imgSrc="/enea.jpg"
-        imgAlt="Foto famiglia"
-        ctaText="Vieni a trovarci"
+        imgAlt={t("HomePage.businessAlt")}
+        ctaText={t("HomePage.businessCta")}
         ctaHref="/contacts"
       />
       <section
@@ -98,7 +92,9 @@ export default function HomePage() {
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
-          <h2 className="col-span-full text-5xl">I Nostri Prodotti</h2>
+          <h2 className="col-span-full text-5xl">
+            {t("HomePage.productsTitle")}
+          </h2>
           <Suspense
             fallback={[1, 2, 3, 4, 5, 6].map((id) => (
               <div key={id} className="flex flex-col space-y-3">
@@ -119,7 +115,9 @@ export default function HomePage() {
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
         <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
-          <h2 className="col-span-full text-5xl">I Nostri Servizi</h2>
+          <h2 className="col-span-full text-5xl">
+            {t("HomePage.servicesTitle")}
+          </h2>
           {SERVICES.map((service) => (
             <Link
               href={`/services/${service.id}`}
@@ -151,7 +149,7 @@ export default function HomePage() {
         id="faq"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] flex-col items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <h2 className="pb-6 text-5xl">Domande frequenti</h2>
+        <h2 className="pb-6 text-5xl">{t("HomePage.FaqTitle")}</h2>
         <Faq />
       </section>
 
@@ -197,7 +195,7 @@ export default function HomePage() {
                   size: "link",
                 })}
               >
-                Via Restello 19, Villa del Conte, Italy
+                {t("Contacts.address")}
               </Link>
             </span>
             <span className="flex justify-center gap-2 md:justify-start">
@@ -210,7 +208,7 @@ export default function HomePage() {
                   size: "link",
                 })}
               >
-                info@legiumelle.it
+                {t("Contacts.email")}
               </Link>
             </span>
             <span className="flex justify-center gap-2 md:justify-start">
@@ -223,11 +221,11 @@ export default function HomePage() {
                   size: "link",
                 })}
               >
-                +39 346 058 6379
+                {t("Contacts.phone")}
               </Link>
             </span>
             <span className="flex justify-center gap-4 md:justify-start">
-              <BriefcaseBusiness /> P.IVA 04682830288
+              <BriefcaseBusiness /> {t("Contacts.piva")}
             </span>
           </div>
         </div>

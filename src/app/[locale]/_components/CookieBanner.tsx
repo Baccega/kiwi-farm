@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import posthog from "posthog-js";
 import { useEffect } from "react";
@@ -16,9 +17,13 @@ import { setHasCookiesConsent } from "~/server/cookies";
 
 export default function CookiesBanner({
   hasCookiesConsent,
+  locale,
 }: {
   hasCookiesConsent: boolean;
+  locale: string;
 }) {
+  const t = useTranslations("Cookies");
+
   async function handleConsentApproval() {
     await setHasCookiesConsent(true);
   }
@@ -39,49 +44,54 @@ export default function CookiesBanner({
   return (
     <DrawerContent>
       <DrawerHeader>
-        <DrawerTitle>Cookies</DrawerTitle>
+        <DrawerTitle>{t("bannerTitle")}</DrawerTitle>
         <DrawerDescription>
-          Accettando i cookies si acconsente all&apos;uso di{" "}
-          <Link
-            className={buttonVariants({
-              variant: "link",
-              size: "inline-link",
-            })}
-            href={"https://posthog.com/"}
-          >
-            PostHog (Data analytics)
-          </Link>{" "}
-          e{" "}
-          <Link
-            className={buttonVariants({
-              variant: "link",
-              size: "inline-link",
-            })}
-            href={"https://sentry.io/welcome/"}
-          >
-            Sentry (Error reporting)
-          </Link>{" "}
-          durante la navigazione sul sito. Leggi le nostre{" "}
-          <Link
-            className={buttonVariants({
-              variant: "link",
-              size: "inline-link",
-            })}
-            href={"/privacy"}
-          >
-            Privacy Policy
-          </Link>{" "}
-          e{" "}
-          <Link
-            className={buttonVariants({
-              variant: "link",
-              size: "inline-link",
-            })}
-            href={"/terms-and-conditions"}
-          >
-            Termini e condizioni
-          </Link>{" "}
-          per maggiori informazioni.
+          {t.rich("bannerDescription", {
+            posthog: (chunks) => (
+              <Link
+                className={buttonVariants({
+                  variant: "link",
+                  size: "inline-link",
+                })}
+                href={"https://posthog.com/"}
+              >
+                {chunks}
+              </Link>
+            ),
+            sentry: (chunks) => (
+              <Link
+                className={buttonVariants({
+                  variant: "link",
+                  size: "inline-link",
+                })}
+                href={"https://sentry.io/welcome/"}
+              >
+                {chunks}
+              </Link>
+            ),
+            privacyPolicy: (chunks) => (
+              <Link
+                className={buttonVariants({
+                  variant: "link",
+                  size: "inline-link",
+                })}
+                href={`/${locale}/privacy`}
+              >
+                {chunks}
+              </Link>
+            ),
+            termsAndConditions: (chunks) => (
+              <Link
+                className={buttonVariants({
+                  variant: "link",
+                  size: "inline-link",
+                })}
+                href={`/${locale}/terms-and-conditions`}
+              >
+                {chunks}
+              </Link>
+            ),
+          })}
         </DrawerDescription>
       </DrawerHeader>
       <DrawerFooter className="md:flex-row">
@@ -94,7 +104,7 @@ export default function CookiesBanner({
             "w-full md:w-96",
           )}
         >
-          Accetta tutti
+          {t('acceptAll')}
         </DrawerClose>
         <DrawerClose
           className={cn(
@@ -105,7 +115,7 @@ export default function CookiesBanner({
           )}
           onClick={() => handleRemoveConsent()}
         >
-          Solo i cookies strettamente necessari
+          {t('onlyNecessary')}
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>

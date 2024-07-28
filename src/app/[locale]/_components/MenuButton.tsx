@@ -19,7 +19,7 @@ export function useDialog() {
   };
 }
 
-export default function MenuButton() {
+export default function MenuButton(props: { locale: string }) {
   const menuDialog = useDialog();
 
   function handleLinkClick() {
@@ -31,10 +31,15 @@ export default function MenuButton() {
       <Navigation
         className="hidden @3xl/header:flex"
         onLinkClick={handleLinkClick}
+        locale={props.locale}
       />
       <Sheet {...menuDialog.props}>
         <SheetContent>
-          <Navigation variant="vertical" onLinkClick={handleLinkClick} />
+          <Navigation
+            locale={props.locale}
+            variant="vertical"
+            onLinkClick={handleLinkClick}
+          />
         </SheetContent>
         <SheetTrigger
           asChild

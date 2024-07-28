@@ -4,7 +4,7 @@ import React from "react";
 import BasketLink from "./BasketLink";
 import MenuButton from "./MenuButton";
 
-export default async function Header() {
+export default async function Header(props: { locale: string }) {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 h-header border-b-2 border-b-primary bg-white text-primary">
       <div className="container relative flex items-center justify-between py-4 @container/header md:px-16">
@@ -26,7 +26,10 @@ export default async function Header() {
           height={160}
           className="auto absolute bottom-0 right-0 z-20 w-40 translate-x-[55%] translate-y-[87%] object-cover md:translate-x-[45%]"
         />
-        <Link href="/" className="block text-xl font-bold tracking-tight">
+        <Link
+          href={`/${props.locale}`}
+          className="block text-xl font-bold tracking-tight"
+        >
           <Image
             src="/logo.svg"
             alt="logo"
@@ -37,8 +40,8 @@ export default async function Header() {
           />
         </Link>
         <div className="flex items-center gap-0 @xs/header:gap-4 @3xl/header:flex-row-reverse md:gap-8">
-          <BasketLink />
-          <MenuButton />
+          <BasketLink locale={props.locale} />
+          <MenuButton locale={props.locale} />
         </div>
       </div>
     </header>

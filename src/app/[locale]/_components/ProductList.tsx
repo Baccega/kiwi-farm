@@ -4,17 +4,19 @@ import { CustomBorder } from "~/components/customBorder";
 import { getStripePrices, getStripeProducts } from "~/server/stripeQueries";
 import Link from "next/link";
 import { getFormattedPrice } from "~/lib/utils";
+import { getTranslations } from "next-intl/server";
 
 export const revalidate = 3600;
 
 export default async function ProductList() {
   const products = await getStripeProducts();
   const prices = await getStripePrices();
+  const t = await getTranslations("Products");
 
   if (products?.length === 0) {
     return (
       <CustomBorder className="col-span-full flex h-product w-product items-center justify-center bg-primary-80 text-white">
-        <p>Non ci sono prodotti disponibili al momento</p>
+        <p>{t("noProductsAvailable")}</p>
       </CustomBorder>
     );
   }
