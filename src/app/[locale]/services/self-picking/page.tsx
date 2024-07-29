@@ -1,12 +1,21 @@
 import Image from "next/image";
-import { type Metadata } from "next";
+
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import selfPickingImage from "/public/self-picking.jpg";
 
-export const metadata: Metadata = {
-  title: "Autoraccolta kiwi",
-  description: "Vieni a raccogliere i tuoi kiwi direttamente dall'albero!",
-};
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("SelfPicking.title"),
+    description: t("SelfPicking.description"),
+  };
+}
 
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);

@@ -8,20 +8,30 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
-import { type Metadata } from "next";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Contatti",
-  description: "Tutti i contatti per raggiungere Le Giumelle",
-};
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("Contacts.title"),
+    description: t("Contacts.description"),
+  };
+}
 
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
+  const t = await getTranslations("Contacts");
 
   return (
     <main className="container flex min-h-section flex-col gap-4 px-6 pb-10 pt-header md:px-16">
-      <h1 className="pt-6 text-4xl font-bold">Contatti</h1>
+      <h1 className="pt-6 text-4xl font-bold">{t('title')}</h1>
+      <h2 className="pt-6 text-xl">{t('description')}</h2>
       <div className="flex translate-x-2 flex-col gap-3 md:gap-4">
         <span className="flex justify-center gap-2 md:justify-start">
           <Facebook />
@@ -32,7 +42,7 @@ export default async function Page(props: { params: { locale: string } }) {
               size: "link",
             })}
           >
-            Segui la nostra pagina Facebook
+            {t('facebook')}
           </Link>
         </span>
         <span className="flex justify-center gap-2 md:justify-start">
@@ -44,7 +54,7 @@ export default async function Page(props: { params: { locale: string } }) {
               size: "link",
             })}
           >
-            Seguici su Instagram
+            {t('instagram')}
           </Link>
         </span>
         <span className="flex justify-center gap-2 md:justify-start">
@@ -56,7 +66,7 @@ export default async function Page(props: { params: { locale: string } }) {
               size: "link",
             })}
           >
-            Via Restello 19, Villa del Conte, Italy
+            {t('address')}
           </Link>
         </span>
         <span className="flex justify-center gap-2 md:justify-start">
@@ -68,7 +78,7 @@ export default async function Page(props: { params: { locale: string } }) {
               size: "link",
             })}
           >
-            info@legiumelle.it
+            {t('email')}
           </Link>
         </span>
         <span className="flex justify-center gap-2 md:justify-start">
@@ -80,11 +90,11 @@ export default async function Page(props: { params: { locale: string } }) {
               size: "link",
             })}
           >
-            +39 346 058 6379
+            {t('phone')}
           </Link>
         </span>
         <span className="flex justify-center gap-4 md:justify-start">
-          <BriefcaseBusiness /> P.IVA 04682830288
+          <BriefcaseBusiness /> {t('piva')}
         </span>
       </div>
     </main>

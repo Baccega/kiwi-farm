@@ -26,8 +26,8 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
-    title: t("HomePage-title"),
-    description: t("HomePage-description"),
+    title: t("HomePage.title"),
+    description: t("HomePage.subtitle"),
     icons: [
       {
         rel: "icon",

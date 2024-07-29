@@ -1,7 +1,7 @@
 {
   "HomePage": {
     "title": "Gli Specialisti del Kiwi dal 1986",
-    "subtitle": "Una azienda agricola a conduzione familiare",
+    "subtitle": "Una azienda agricola veneta a conduzione familiare",
     "buyOurProducts": "Acquista i nostri prodotti",
     "discoverOurBusiness": "Scopri la nostra azienda",
     "businessDescription": "Siamo una famiglia un legame profondo con il nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro orgoglio",
@@ -13,8 +13,26 @@
     "businessCta": "Vieni a trovarci"
   },
   "Metadata": {
-    "HomePage-title": "Le Giumelle",
-    "HomePage-description": "Scopri la nostra azienda agricola ed acquista i nostri prodotti"
+    "HomePage": {
+      "title": "Le Giumelle | Azienda agricola veneta dal 1986",
+      "description": "Scopri la nostra azienda agricola e acquista i nostri prodotti"
+    },
+    "DogTraining": {
+      "title": "Le Giumelle | Addestramento cani",
+      "description": "Il nostro addestramento cani è disponibile per tutte le razze e taglie."
+    },
+    "SelfPicking": {
+      "title": "Le Giumelle | Autoraccolta",
+      "description": "Vieni a raccogliere i tuoi kiwi direttamente dall'albero!"
+    },
+    "FarmersMarket": {
+      "title": "Le Giumelle | Il nostro spaccio",
+      "description": "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti dal vivo!"
+    },
+    "Contacts": {
+      "title": "Le Giumelle | Contatti",
+      "description": "Tutti i contatti per raggiungere Le Giumelle"
+    }
   },
   "Services": {
     "dogTraining": {
@@ -48,10 +66,14 @@
     "a1": "Effettuiamo spedizioni in tutta Europa tramite DHL. I tempi di consegna variano in base alla destinazione, con una media di 3-5 giorni lavorativi."
   },
   "Contacts": {
+    "title": "Contatti",
+    "description": "Tutti i contatti per raggiungere Le Giumelle",
     "address": "Via Restello 19, Villa del Conte, Italy",
     "phone": "+39 346 058 6379",
     "piva": "P.IVA 04682830288",
-    "email": "info@legiumelle.it"
+    "email": "info@legiumelle.it",
+    "facebook": "Segui la nostra pagina Facebook",
+    "instagram": "Seguici su Instagram"
   },
   "Cookies": {
     "bannerTitle": "Cookies",

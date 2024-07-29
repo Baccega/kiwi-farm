@@ -1,15 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { type Metadata } from "next";
+
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import spaccioImage from "/public/spaccio.jpg";
 
-export const metadata: Metadata = {
-  title: "Il nostro spaccio",
-  description:
-    "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!",
-};
 
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("FarmersMarket.title"),
+    description: t("FarmersMarket.description"),
+  };
+}
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
   const t = await getTranslations("Services");

@@ -1,25 +1,6 @@
 import {
-  getTranslations,
   unstable_setRequestLocale,
 } from "next-intl/server";
-import { AVAILABLE_LOCALES } from "~/middleware";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({ locale, namespace: "Metadata" });
-
-  return {
-    title: t("HomePage-title"),
-    description: t("HomePage-description"),
-  };
-}
-
-export function generateStaticParams() {
-  return AVAILABLE_LOCALES.map((locale) => ({ locale }));
-}
 
 export default async function Layout(props: {
   children: React.ReactNode;

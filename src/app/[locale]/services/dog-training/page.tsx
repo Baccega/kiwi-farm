@@ -1,14 +1,20 @@
-import { type Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import anakinImage from "/public/anakin.jpg";
 
-export const metadata: Metadata = {
-  title: "Addestramento cani",
-  description:
-    "Il nostro addestramento cani è disponibile per tutte le razze e taglie.",
-};
 
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("DogTraining.title"),
+    description: t("DogTraining.description"),
+  };
+}
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
   const t = await getTranslations("Services");
