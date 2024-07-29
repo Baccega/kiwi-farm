@@ -16,6 +16,9 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
+import anakinImage from "/public/anakin.jpg";
+import selfPickingImage from "/public/self-picking.jpg";
+import spaccioImage from "/public/spaccio.jpg";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 export default async function HomePage(props: { params: { locale: string } }) {
@@ -25,17 +28,17 @@ export default async function HomePage(props: { params: { locale: string } }) {
   const SERVICES = [
     {
       id: "dog-training",
-      image: "/anakin.jpg",
+      image: anakinImage,
       name: t("Services.dogTraining.title"),
     },
     {
       id: "self-picking",
-      image: "/self-picking.jpg",
+      image: selfPickingImage,
       name: t("Services.selfPicking.title"),
     },
     {
       id: "farmers-market",
-      image: "/spaccio.jpg",
+      image: spaccioImage,
       name: t("Services.farmersMarket.title"),
       imgClassname: "object-right",
     },
@@ -130,7 +133,6 @@ export default async function HomePage(props: { params: { locale: string } }) {
                   <Image
                     src={service.image ?? "/placeholder.png"}
                     fill={true}
-                    unoptimized
                     alt={service.name ?? ""}
                     className={cn(
                       "z-20 rounded-lg object-cover",

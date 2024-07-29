@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import spaccioImage from "/public/spaccio.jpg";
 
 export const metadata: Metadata = {
   title: "Il nostro spaccio",
@@ -18,7 +19,7 @@ export default async function Page(props: { params: { locale: string } }) {
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
-            src={"/spaccio.jpg" ?? "/placeholder.png"}
+            src={spaccioImage ?? "/placeholder.png"}
             alt={""}
             fill={true}
             className="z-20 rounded-lg object-cover"
