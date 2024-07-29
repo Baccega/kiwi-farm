@@ -17,7 +17,7 @@ export default async function Page(props: { params: { locale: string } }) {
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
             unoptimized
-            src={"/anakin.jpg" ?? "placeholder.png"}
+            src={"/anakin.jpg" ?? "/placeholder.png"}
             alt={""}
             fill={true}
             className="z-20 rounded-lg object-cover"

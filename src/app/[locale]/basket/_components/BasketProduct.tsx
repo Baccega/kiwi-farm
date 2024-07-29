@@ -19,7 +19,7 @@ export default function BasketProduct(props: BasketProductProps) {
       <div className="grid h-full w-full grid-cols-basket-product grid-rows-basket-product items-center gap-2 grid-areas-basket-product-sm @md/basket-product:grid-areas-basket-product">
         <figure className="relative h-full w-32 rounded-lg rounded-r-none border-r-2 border-primary bg-primary grid-in-image">
           <Image
-            src={product?.images?.[0] ?? "placeholder.png"}
+            src={product?.images?.[0] ?? "/placeholder.png"}
             className="rounded-lg rounded-r-none object-cover"
             fill
             alt={""}

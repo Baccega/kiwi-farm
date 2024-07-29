@@ -128,7 +128,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
               <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-transform hover:scale-105">
                 {service.image !== null ? (
                   <Image
-                    src={service.image ?? "placeholder.png"}
+                    src={service.image ?? "/placeholder.png"}
                     fill={true}
                     unoptimized
                     alt={service.name ?? ""}
