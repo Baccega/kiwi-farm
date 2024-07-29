@@ -4,8 +4,10 @@ import { redirect } from "next/navigation";
 import { useStripeSession } from "./_hooks/useStripeSession";
 import { useBasketStore } from "~/app/[locale]/providers";
 import { useUrlParams } from "./_hooks/useUrlParams";
+import { useTranslations } from "next-intl";
 
-export default function CheckoutPage() {;
+export default function CheckoutPage() {
+  const t = useTranslations("Checkout");
   const urlParams = useUrlParams();
   const sessionId = urlParams?.get("session_id") ?? "";
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
@@ -30,15 +32,13 @@ export default function CheckoutPage() {;
       >
         {status === "complete" ? (
           <>
-            <h1 className="text-center text-3xl font-bold">
-              🎉 Grazie per il tuo acquisto 🎉
-            </h1>
+            <h1 className="text-center text-3xl font-bold">{t("title")}</h1>
             <p className="text-center text-xl font-bold">
-              Una ricevuta è stata inviata a `{customerEmail}`
+              {t("description", { customerEmail: customerEmail })}
             </p>
           </>
         ) : (
-          <p>Loading...</p>
+          <p>{t('loading')}</p>
         )}
       </section>
     </main>

@@ -7,8 +7,10 @@ import BasketProduct from "./_components/BasketProduct";
 import { useContext } from "react";
 import Link from "next/link";
 import { cn, getFormattedPrice } from "~/lib/utils";
+import { useTranslations } from "next-intl";
 
 export default function BasketPage() {
+  const t = useTranslations("Basket");
   const basket = useBasketStore((state) => state.basket);
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
 
@@ -17,8 +19,8 @@ export default function BasketPage() {
   function handleEmptyBasket() {
     if (!openAlert) return;
     openAlert({
-      title: "Sei sicuro di voler svuotare il carrello",
-      description: "Questa azione non può essere annullata.",
+      title: t("emptyCartAlertTitle"),
+      description: t("emptyCartAlertDescription"),
       onConfirm: emptyBasket,
     });
   }
@@ -30,10 +32,9 @@ export default function BasketPage() {
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] flex-col gap-8 py-8 md:px-16"
       >
         <span>
-          <h1 className="text-5xl">Carrello</h1>
+          <h1 className="text-5xl">{t("title")}</h1>
           <h2 className="pl-1 text-xl">
-            Hai {basket?.length ?? 0} prodott{basket?.length == 1 ? "o" : "i"}{" "}
-            nel carrello
+            {t("youHaveXProducts", { products: basket?.length ?? 0 })}
           </h2>
         </span>
 
@@ -46,7 +47,7 @@ export default function BasketPage() {
             </div>
 
             <div className="flex items-baseline gap-3">
-              <h3 className="text-3xl">Totale: </h3>
+              <h3 className="text-3xl">{t("total")}</h3>
               <p className="text-2xl font-bold">
                 {Number(
                   basket?.reduce(
@@ -64,14 +65,14 @@ export default function BasketPage() {
                 href="/checkout"
                 className={cn(buttonVariants(), "flex items-center gap-2")}
               >
-                <Coins /> Acquista questi prodotti
+                <Coins /> {t("buyButton")}
               </Link>
               <Button
                 className="flex items-center gap-2"
                 variant={"outline"}
                 onClick={handleEmptyBasket}
               >
-                <Trash /> Svuota il carrello
+                <Trash /> {t("emptyButton")}
               </Button>
             </div>
           </>

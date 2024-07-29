@@ -1,5 +1,5 @@
 import { type Metadata } from "next";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
+  const t = await getTranslations("Services");
   return (
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
@@ -23,11 +24,8 @@ export default async function Page(props: { params: { locale: string } }) {
           />
         </figure>
         <div className="flex grow flex-col gap-4">
-          <h1 className="text-3xl font-bold">Addestramento cani</h1>
-          <p className="">
-            Il nostro addestramento cani è disponibile per tutte le razze e
-            taglie.
-          </p>
+          <h1 className="text-3xl font-bold">{t("dogTraining.title")}</h1>
+          <p className="">{t("dogTraining.description")}</p>
         </div>
       </section>
     </main>

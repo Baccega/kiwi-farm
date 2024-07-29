@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Metadata } from "next";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "Il nostro spaccio",
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
+  const t = await getTranslations("Services");
+
   return (
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
@@ -23,18 +25,16 @@ export default async function Page(props: { params: { locale: string } }) {
           />
         </figure>
         <div className="flex grow flex-col gap-4">
-          <h1 className="text-3xl font-bold">Il nostro spaccio</h1>
-          <h2 className="text-xl">
-            Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri
-            prodotti!
-          </h2>
+          <h1 className="text-3xl font-bold">{t("farmersMarket.title")}</h1>
+          <h2 className="text-xl">{t("farmersMarket.description")}</h2>
           <p className="">
-            Il nostro spaccio è sempre aperto e si trova in Via Restello 19,
-            Villa del Conte (PD) (
-            <Link href="https://maps.app.goo.gl/eDN69XbVXrhpmTSHA">
-              Google maps
-            </Link>
-            )
+            {t.rich("farmersMarket.description2", {
+              gmaps: (chunk) => (
+                <Link href="https://maps.app.goo.gl/eDN69XbVXrhpmTSHA">
+                  {chunk}
+                </Link>
+              ),
+            })}
           </p>
         </div>
       </section>

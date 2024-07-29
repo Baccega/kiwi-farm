@@ -8,7 +8,7 @@ import { getTranslations } from "next-intl/server";
 
 export const revalidate = 3600;
 
-export default async function ProductList() {
+export default async function ProductList(props: { locale: string }) {
   const products = await getStripeProducts();
   const prices = await getStripePrices();
   const t = await getTranslations("Products");
@@ -28,7 +28,7 @@ export default async function ProductList() {
 
         return (
           <Link
-            href={`/products/${product.id}`}
+            href={`/${props.locale}/products/${product.id}`}
             scroll={false}
             key={product.id}
           >

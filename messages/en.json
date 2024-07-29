@@ -1,6 +1,6 @@
 {
   "HomePage": {
-    "title": "EN",
+    "title": "Gli Specialisti del Kiwi dal 1986",
     "subtitle": "Una azienda agricola a conduzione familiare",
     "buyOurProducts": "Acquista i nostri prodotti",
     "discoverOurBusiness": "Scopri la nostra azienda",
@@ -17,9 +17,20 @@
     "HomePage-description": "Scopri la nostra azienda agricola ed acquista i nostri prodotti"
   },
   "Services": {
-    "dogTraining": "Addestramento Cani",
-    "selfPicking": "Autoraccolta",
-    "farmersMarket": "Il nostro spaccio"
+    "dogTraining": {
+      "title": "Addestramento cani",
+      "description": "Il nostro addestramento cani è disponibile per tutte le razze e taglie."
+    },
+    "selfPicking": {
+      "title": "Autoraccolta",
+      "description": "Vieni a raccogliere i tuoi kiwi direttamente dall'albero!",
+      "description2": "Servizio disponibile tutti i giorni dal 25 ottobre in poi dalle 8:00 alle 17:00.<br></br>I bambini sono i benvenuti!<br></br>Consigliamo abbigliamento e scarpe comode o stivali."
+    },
+    "farmersMarket": {
+      "title": "Il nostro spaccio",
+      "description": "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!",
+      "description2": "Il nostro spaccio è sempre aperto e si trova in Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
+    }
   },
   "Faq": {
     "q1": "Dove spediamo?",
@@ -57,5 +68,19 @@
   },
   "Products": {
     "noProductsAvailable": "Non ci sono prodotti disponibili al momento"
+  },
+  "Basket": {
+    "title": "Carrello",
+    "youHaveXProducts": "Hai {products, plural, =0 {0 prodotti} =1 {1 prodotto} other {# prodotti}} nel carrello",
+    "total": "Totale:",
+    "buyButton": "Acquista questi prodotti",
+    "emptyButton": "Svuota il carrello",
+    "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
+    "emptyCartAlertDescription": "Questa azione non può essere annullata."
+  },
+  "Checkout": {
+    "title": "🎉 Grazie per il tuo acquisto 🎉",
+    "description": "Una ricevuta è stata inviata a `{customerEmail}`",
+    "loading": "Caricamento..."
   }
 }

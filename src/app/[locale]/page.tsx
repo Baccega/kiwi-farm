@@ -26,17 +26,17 @@ export default async function HomePage(props: { params: { locale: string } }) {
     {
       id: "dog-training",
       image: "/anakin.jpg",
-      name: t("Services.dogTraining"),
+      name: t("Services.dogTraining.title"),
     },
     {
       id: "self-picking",
       image: "/self-picking.jpg",
-      name: t("Services.selfPicking"),
+      name: t("Services.selfPicking.title"),
     },
     {
       id: "farmers-market",
       image: "/spaccio.jpg",
-      name: t("Services.farmersMarket"),
+      name: t("Services.farmersMarket.title"),
       imgClassname: "object-right",
     },
   ];
@@ -107,7 +107,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
               </div>
             ))}
           >
-            <ProductList />
+            <ProductList locale={props.params.locale} />
           </Suspense>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
           </h2>
           {SERVICES.map((service) => (
             <Link
-              href={`/services/${service.id}`}
+              href={`/${props.params.locale}/services/${service.id}`}
               scroll={false}
               key={service.id}
             >
