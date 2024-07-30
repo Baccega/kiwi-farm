@@ -3,6 +3,7 @@ import Link from "next/link";
 import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 import { buttonVariants } from "~/components/ui/button";
+import { useTranslations } from "next-intl";
 
 const navigationVariants = cva("flex", {
   variants: {
@@ -26,6 +27,8 @@ export interface NavigationProps
 
 export function Navigation(props: NavigationProps) {
   const { variant, onLinkClick, className, ...rest } = props;
+  const t = useTranslations();
+
   return (
     <nav className={cn(navigationVariants({ variant, className }))} {...rest}>
       <Link
@@ -33,28 +36,28 @@ export function Navigation(props: NavigationProps) {
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
-        Azienda
+        {t("Navigation.1")}
       </Link>
       <Link
         href={`/${props.locale}/#prodotti`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
-        Prodotti
+        {t("Navigation.2")}
       </Link>
       <Link
         href={`/${props.locale}/#servizi`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
-        Servizi
+        {t("Navigation.3")}
       </Link>
       <Link
         href={`/${props.locale}/contacts`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
-        Contatti
+        {t("Navigation.4")}
       </Link>
     </nav>
   );

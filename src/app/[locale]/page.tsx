@@ -89,7 +89,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
         imgSrc="/enea.jpg"
         imgAlt={t("HomePage.businessAlt")}
         ctaText={t("HomePage.businessCta")}
-        ctaHref="/contacts"
+        ctaHref={`/${props.params.locale}/contacts`}
       />
       <section
         id="prodotti"

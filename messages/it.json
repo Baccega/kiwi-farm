@@ -104,5 +104,11 @@
     "title": "🎉 Grazie per il tuo acquisto 🎉",
     "description": "Una ricevuta è stata inviata a `{customerEmail}`",
     "loading": "Caricamento..."
+  },
+  "Navigation": {
+    "1": "Azienda",
+    "2": "Prodotti",
+    "3": "Servizi",
+    "4": "Contatti"
   }
 }

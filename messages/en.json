@@ -104,5 +104,11 @@
     "title": "🎉 Thank you for your purchase 🎉",
     "description": "A receipt has been sent to `{customerEmail}`",
     "loading": "Loading..."
+  },
+  "Navigation": {
+    "1": "Our Business",
+    "2": "Products",
+    "3": "Services",
+    "4": "Contact us"
   }
 }

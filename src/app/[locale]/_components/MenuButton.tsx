@@ -29,7 +29,7 @@ export default function MenuButton(props: { locale: string }) {
   return (
     <>
       <Navigation
-        className="hidden @3xl/header:flex"
+        className="hidden @4xl/header:flex pr-2"
         onLinkClick={handleLinkClick}
         locale={props.locale}
       />
@@ -44,7 +44,7 @@ export default function MenuButton(props: { locale: string }) {
         <SheetTrigger
           asChild
           onClick={menuDialog.trigger}
-          className="@3xl/header:hidden"
+          className="@4xl/header:hidden"
         >
           <Button variant={"ghost"} size={"icon"}>
             <Menu className="fill-primary" />
