@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import BasketLink from "./BasketLink";
 import MenuButton from "./MenuButton";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default async function Header(props: { locale: string }) {
   return (
@@ -41,6 +42,7 @@ export default async function Header(props: { locale: string }) {
         </Link>
         <div className="flex items-center gap-0 @xs/header:gap-4 @3xl/header:flex-row-reverse md:gap-8">
           <BasketLink locale={props.locale} />
+          <LanguageSwitcher locale={props.locale} />
           <MenuButton locale={props.locale} />
         </div>
       </div>

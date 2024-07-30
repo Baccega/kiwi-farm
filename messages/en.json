@@ -1,86 +1,108 @@
 {
   "HomePage": {
-    "title": "Gli Specialisti del Kiwi dal 1986",
-    "subtitle": "Una azienda agricola a conduzione familiare",
-    "buyOurProducts": "Acquista i nostri prodotti",
-    "discoverOurBusiness": "Scopri la nostra azienda",
-    "businessDescription": "Siamo una famiglia un legame profondo con il nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro orgoglio",
-    "business": "La Nostra Azienda",
-    "servicesTitle": "I Nostri Servizi",
-    "productsTitle": "I Nostri Prodotti",
-    "FaqTitle": "Domande frequenti",
-    "businessAlt": "Foto famiglia",
-    "businessCta": "Vieni a trovarci"
+    "title": "The Kiwi Specialists since 1986",
+    "subtitle": "A family-run agricultural business from Veneto",
+    "buyOurProducts": "Buy our products",
+    "discoverOurBusiness": "Discover our business",
+    "businessDescription": "We are a family with a deep bond to our land, which we have nurtured and farmed for at least six generations. Since 1986, kiwis have been our main crop and our pride",
+    "business": "Our Business",
+    "servicesTitle": "Our Services",
+    "productsTitle": "Our Products",
+    "FaqTitle": "Frequently Asked Questions",
+    "businessAlt": "Family photo",
+    "businessCta": "Come visit us"
   },
   "Metadata": {
-    "HomePage-title": "Le Giumelle",
-    "HomePage-description": "Scopri la nostra azienda agricola ed acquista i nostri prodotti"
+    "HomePage": {
+      "title": "Le Giumelle | Veneto agricultural business since 1986",
+      "description": "Discover our farm and buy our products"
+    },
+    "DogTraining": {
+      "title": "Le Giumelle | Dog Training",
+      "description": "Our dog training is available for all breeds and sizes."
+    },
+    "SelfPicking": {
+      "title": "Le Giumelle | Self-picking",
+      "description": "Come and pick your kiwis directly from the tree!"
+    },
+    "FarmersMarket": {
+      "title": "Le Giumelle | Our outlet",
+      "description": "Come visit our outlet to see all our products live!"
+    },
+    "Contacts": {
+      "title": "Le Giumelle | Contacts",
+      "description": "All the contacts to reach Le Giumelle"
+    }
   },
   "Services": {
     "dogTraining": {
-      "title": "Addestramento cani",
-      "description": "Il nostro addestramento cani è disponibile per tutte le razze e taglie."
+      "title": "Dog Training",
+      "description": "Our dog training is available for all breeds and sizes."
     },
     "selfPicking": {
-      "title": "Autoraccolta",
-      "description": "Vieni a raccogliere i tuoi kiwi direttamente dall'albero!",
-      "description2": "Servizio disponibile tutti i giorni dal 25 ottobre in poi dalle 8:00 alle 17:00.<br></br>I bambini sono i benvenuti!<br></br>Consigliamo abbigliamento e scarpe comode o stivali."
+      "title": "Self-picking",
+      "description": "Come and pick your kiwis directly from the tree!",
+      "description2": "Service available every day from October 25 onwards from 8:00 AM to 5:00 PM.<br></br>Children are welcome!<br></br>We recommend comfortable clothing and shoes or boots."
     },
     "farmersMarket": {
-      "title": "Il nostro spaccio",
-      "description": "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!",
-      "description2": "Il nostro spaccio è sempre aperto e si trova in Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
+      "title": "Our outlet",
+      "description": "Come visit us at our outlet to discover all our products!",
+      "description2": "Our outlet is always open and is located at Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
     }
   },
   "Faq": {
-    "q1": "Dove spediamo?",
-    "q2": "Come conservare i kiwi?",
-    "q3": "Come fare maturare i kiwi in 4-7 giorni?",
-    "q4": "Come fare maturare i kiwi in 7-10 giorni?",
-    "a4": "Conservare i kiwi a temperatura ambiente.",
-    "a3": "Riporre i kiwi in un sacchetto di carta ben chiuso insieme a frutta che rilascia etilene, come mele, pere o banane.",
+    "q1": "Where do we ship?",
+    "q2": "How to store kiwis?",
+    "q3": "How to ripen kiwis in 4-7 days?",
+    "q4": "How to ripen kiwis in 7-10 days?",
+    "a4": "Store the kiwis at room temperature.",
+    "a3": "Place kiwis in a tightly sealed paper bag with fruits that emit ethylene, such as apples, pears, or bananas.",
     "a2": {
-      "1": "I kiwi possono durare da alcune settimane a diversi mesi, a seconda delle precauzioni adottate. Le precauzioni sono:",
-      "2": "Separare periodicamente i frutti che maturano più rapidamente.",
-      "3": "Conservare i frutti in una cassetta, in un luogo buio, asciutto e fresco, lontano da altra frutta che rilascia etilene, come mele, pere o banane (in alternativa, in frigorifero).",
-      "4": "È possibile lavarli, sbucciarli e congelarli per conservarli fino a 10 mesi. In questo caso, saranno più adatti per frullati, succhi, confetture, gelati o torte."
+      "1": "Kiwis can last from a few weeks to several months, depending on the precautions taken. The precautions are:",
+      "2": "Periodically separate the fruits that ripen more quickly.",
+      "3": "Store the fruits in a crate, in a dark, dry, and cool place, away from other fruits that release ethylene, like apples, pears, or bananas (alternatively, in the refrigerator).",
+      "4": "It is possible to wash, peel, and freeze them to preserve them for up to 10 months. In this case, they will be more suitable for smoothies, juices, jams, ice creams, or cakes."
     },
-    "a1": "Effettuiamo spedizioni in tutta Europa tramite DHL. I tempi di consegna variano in base alla destinazione, con una media di 3-5 giorni lavorativi."
+    "a1": "We ship throughout Europe via DHL. Delivery times vary depending on the destination, with an average of 3-5 business days."
   },
   "Contacts": {
+    "title": "Contacts",
+    "description": "All the contacts to reach Le Giumelle",
     "address": "Via Restello 19, Villa del Conte, Italy",
     "phone": "+39 346 058 6379",
-    "piva": "P.IVA 04682830288",
-    "email": "info@legiumelle.it"
+    "piva": "VAT No. 04682830288",
+    "email": "info@legiumelle.it",
+    "facebook": "Follow our Facebook page",
+    "instagram": "Follow us on Instagram"
   },
   "Cookies": {
     "bannerTitle": "Cookies",
-    "bannerDescription": "Accettando i cookies si acconsente all'uso di <posthog>PostHog (Data analytics)</posthog> e <sentry>Sentry (Error reporting)</sentry> durante la navigazione sul sito. Leggi le nostre <privacyPolicy>Privacy Policy</privacyPolicy> e <termsAndConditions>Termini e condizioni</termsAndConditions> per maggiori informazioni.",
-    "acceptAll": "Accetta tutti",
-    "onlyNecessary": "Solo i cookies strettamente necessari"
+    "bannerDescription": "By accepting cookies, you consent to the use of <posthog>PostHog (Data analytics)</posthog> and <sentry>Sentry (Error reporting)</sentry> while browsing the site. Read our <privacyPolicy>Privacy Policy</privacyPolicy> and <termsAndConditions>Terms and Conditions</termsAndConditions> for more information.",
+    "acceptAll": "Accept all",
+    "onlyNecessary": "Only necessary cookies"
   },
   "Footer": {
     "privacy": "Privacy",
     "cookies": "Cookies",
-    "termsAndConditions": "Termini e condizioni",
-    "returns": "Resi",
+    "termsAndConditions": "Terms and Conditions",
+    "returns": "Returns",
     "copyright": "©{year} Società agricola Kiwi Farm S.S."
   },
   "Products": {
-    "noProductsAvailable": "Non ci sono prodotti disponibili al momento"
+    "noProductsAvailable": "No products available at the moment"
   },
   "Basket": {
-    "title": "Carrello",
-    "youHaveXProducts": "Hai {products, plural, =0 {0 prodotti} =1 {1 prodotto} other {# prodotti}} nel carrello",
-    "total": "Totale:",
-    "buyButton": "Acquista questi prodotti",
-    "emptyButton": "Svuota il carrello",
-    "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
-    "emptyCartAlertDescription": "Questa azione non può essere annullata."
+    "title": "Cart",
+    "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in the cart",
+    "total": "Total:",
+    "buyButton": "Buy these products",
+    "emptyButton": "Empty the cart",
+    "emptyCartAlertTitle": "Are you sure you want to empty the cart",
+    "emptyCartAlertDescription": "This action cannot be undone."
   },
   "Checkout": {
-    "title": "🎉 Grazie per il tuo acquisto 🎉",
-    "description": "Una ricevuta è stata inviata a `{customerEmail}`",
-    "loading": "Caricamento..."
+    "title": "🎉 Thank you for your purchase 🎉",
+    "description": "A receipt has been sent to `{customerEmail}`",
+    "loading": "Loading..."
   }
 }

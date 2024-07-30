@@ -27,7 +27,7 @@ export async function generateMetadata({
 
   return {
     title: t("HomePage.title"),
-    description: t("HomePage.subtitle"),
+    description: t("HomePage.description"),
     icons: [
       {
         rel: "icon",
