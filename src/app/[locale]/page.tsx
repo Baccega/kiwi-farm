@@ -69,7 +69,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
             <h1 className="text-5xl">{t("HomePage.title")}</h1>
             <p className="text-xl text-primary-60">{t("HomePage.subtitle")}</p>
           </div>
-          <div className="flex flex-col gap-4 md:flex-row ">
+          <div className="flex flex-col items-center gap-4 md:flex-row ">
             <Link href="#prodotti" className={cn(buttonVariants(), "w-fit")}>
               {t("HomePage.buyOurProducts")}
             </Link>

@@ -40,7 +40,7 @@ export default async function Header(props: { locale: string }) {
             className="h-auto w-52"
           />
         </Link>
-        <div className="flex items-center gap-0 @xs/header:gap-4 @4xl/header:flex-row-reverse md:gap-6">
+        <div className="flex items-center gap-1 @md/header:gap-4 @4xl/header:flex-row-reverse md:gap-6">
           <BasketLink locale={props.locale} />
           <LanguageSwitcher locale={props.locale} />
           <MenuButton locale={props.locale} />
