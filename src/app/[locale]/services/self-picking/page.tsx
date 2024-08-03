@@ -3,7 +3,6 @@ import Image from "next/image";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import selfPickingImage from "/public/self-picking.jpg";
 
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -14,6 +13,9 @@ export async function generateMetadata({
   return {
     title: t("SelfPicking.title"),
     description: t("SelfPicking.description"),
+    openGraph: {
+      images: [selfPickingImage.src],
+    },
   };
 }
 

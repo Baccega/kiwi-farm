@@ -2,7 +2,6 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import anakinImage from "/public/anakin.jpg";
 
-
 export async function generateMetadata({
   params: { locale },
 }: {
@@ -13,8 +12,12 @@ export async function generateMetadata({
   return {
     title: t("DogTraining.title"),
     description: t("DogTraining.description"),
+    openGraph: {
+      images: [anakinImage.src],
+    },
   };
 }
+
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
   const t = await getTranslations("Services");
@@ -23,7 +26,7 @@ export default async function Page(props: { params: { locale: string } }) {
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
-            src={anakinImage ?? "/placeholder.png"}
+            src={anakinImage}
             alt={""}
             fill={true}
             className="z-20 rounded-lg object-cover"
