@@ -28,6 +28,7 @@ export async function generateMetadata({
   return {
     title: t("HomePage.title"),
     description: t("HomePage.description"),
+    metadataBase: new URL('https://legiumelle.it'),
     icons: [
       {
         rel: "icon",
