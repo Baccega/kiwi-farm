@@ -50,7 +50,7 @@ export async function generateMetadata({
       { rel: "icon", url: "/favicon.ico" },
     ],
     openGraph: {
-      images: ["/apple-touch-icon.png"],
+      images: ["/logo-full.jpg"],
     },
   };
 }
