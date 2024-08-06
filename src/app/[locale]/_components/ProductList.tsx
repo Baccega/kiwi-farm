@@ -39,6 +39,7 @@ export default async function ProductList(props: { locale: string }) {
                     product.metadata?.images?.split(",")?.[0] ??
                     "/placeholder.png"
                   }
+                  sizes="20rem"
                   fill={true}
                   alt={product.name ?? ""}
                   className="z-20 rounded-lg object-cover"

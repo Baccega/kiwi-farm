@@ -16,9 +16,9 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
-import anakinImage from "/public/anakin.jpg";
-import selfPickingImage from "/public/self-picking.jpg";
-import spaccioImage from "/public/spaccio.jpg";
+import anakinImage from "/public/services/anakin.jpg";
+import selfPickingImage from "/public/services/self-picking.jpg";
+import spaccioImage from "/public/services/spaccio.jpg";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 export default async function HomePage(props: { params: { locale: string } }) {
@@ -57,11 +57,12 @@ export default async function HomePage(props: { params: { locale: string } }) {
           className="absolute bottom-0 top-0 h-full w-full border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4"
         >
           <Image
-            src="/kiwi2.jpg"
+            src="/products/kiwi2.jpg"
             aria-hidden="true"
             className="-z-10 block object-cover opacity-30 grayscale"
             alt=""
             fill
+            sizes="100vw"
           />
         </CustomBorder>
         <div className="z-30 flex flex-col items-center gap-14">
@@ -138,6 +139,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
                       "z-20 rounded-lg object-cover",
                       service.imgClassname,
                     )}
+                    sizes="20rem"
                   />
                 ) : null}
                 <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">

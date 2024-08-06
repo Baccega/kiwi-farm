@@ -1,6 +1,6 @@
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import anakinImage from "/public/anakin.jpg";
+import anakinImage from "/public/services/anakin.jpg";
 
 export async function generateMetadata({
   params: { locale },
@@ -27,9 +27,10 @@ export default async function Page(props: { params: { locale: string } }) {
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
             src={anakinImage}
-            alt={""}
+            alt={"Dog Training"}
             fill={true}
             className="z-20 rounded-lg object-cover"
+            sizes="(max-width: 768px) 100vw, 20rem"
           />
         </figure>
         <div className="flex grow flex-col gap-4">

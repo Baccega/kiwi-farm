@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import selfPickingImage from "/public/self-picking.jpg";
+import selfPickingImage from "/public/services/self-picking.jpg";
 
 export async function generateMetadata({
   params: { locale },
@@ -29,8 +29,9 @@ export default async function Page(props: { params: { locale: string } }) {
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
             src={selfPickingImage}
-            alt={""}
+            alt={"Self Picking"}
             fill={true}
+            sizes="(max-width: 768px) 100vw, 20rem"
             className="z-20 rounded-lg object-cover"
           />
         </figure>
