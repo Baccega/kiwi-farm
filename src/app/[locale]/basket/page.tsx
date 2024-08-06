@@ -9,7 +9,7 @@ import Link from "next/link";
 import { cn, getFormattedPrice } from "~/lib/utils";
 import { useTranslations } from "next-intl";
 
-export default function BasketPage() {
+export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
   const basket = useBasketStore((state) => state.basket);
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
@@ -62,7 +62,7 @@ export default function BasketPage() {
 
             <div className="flex flex-col gap-2 md:flex-row">
               <Link
-                href="/checkout"
+                href={`/${props.params.locale}/checkout`}
                 className={cn(buttonVariants(), "flex items-center gap-2")}
               >
                 <Coins /> {t("buyButton")}
