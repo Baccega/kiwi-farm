@@ -111,5 +111,9 @@
     "2": "Prodotti",
     "3": "Servizi",
     "4": "Contatti"
+  },
+  "NotFoundPage": {
+    "title": "Pagina non trovata",
+    "link": "Torna alla homepage"
   }
 }

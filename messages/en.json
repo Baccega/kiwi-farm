@@ -111,5 +111,9 @@
     "2": "Products",
     "3": "Services",
     "4": "Contact us"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "link": "Back to the homepage"
   }
 }

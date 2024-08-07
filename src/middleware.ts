@@ -10,6 +10,8 @@ export default createMiddleware({
   defaultLocale: "it",
 });
 
+// The locales here must be hardcoded
+// https://next-intl-docs.vercel.app/docs/routing/middleware#matcher-avoid-hardcoding
 export const config = {
   matcher: ["/", "/(it|en)/:path*"],
 };
