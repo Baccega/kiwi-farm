@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "NODE_ENV=production next build",
+    "build": "next build",
     "db:push": "drizzle-kit push:pg",
     "db:studio": "drizzle-kit studio",
     "dev": "next dev",
