@@ -7,8 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       disallow: [
-        ...AVAILABLE_LOCALES.map((loc) => `${loc}/checkout`),
-        ...AVAILABLE_LOCALES.map((loc) => `${loc}/basket`),
+        ...AVAILABLE_LOCALES.map((loc) => `/${loc}/checkout`),
+        ...AVAILABLE_LOCALES.map((loc) => `/${loc}/basket`),
       ],
     },
     sitemap: "https://legiumelle.it/sitemap.xml",
