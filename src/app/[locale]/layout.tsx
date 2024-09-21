@@ -73,7 +73,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto]`}>
+      <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto] text-primary-80`}>
         <NextIntlClientProvider messages={messages}>
           <Providers
             locale={props.params.locale}

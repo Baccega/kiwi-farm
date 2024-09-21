@@ -45,7 +45,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
   ];
 
   return (
-    <main className="flex h-fit flex-col overflow-x-hidden pt-header text-primary-80">
+    <main className="flex h-fit flex-col overflow-x-hidden pt-header">
       <section
         id="hero"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
@@ -86,7 +86,16 @@ export default async function HomePage(props: { params: { locale: string } }) {
       <HeroSection
         id="azienda"
         title={t("HomePage.business")}
-        description={<>{t("HomePage.businessDescription")}</>}
+        description={
+          <span className="flex flex-col gap-4">
+            <span>{t("HomePage.businessDescription.1")}</span>
+            <span>
+              {t.rich("HomePage.businessDescription.2", {
+                bold: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </span>
+          </span>
+        }
         imgSrc="/enea.jpg"
         imgAlt={t("HomePage.businessAlt")}
         ctaText={t("HomePage.businessCta")}

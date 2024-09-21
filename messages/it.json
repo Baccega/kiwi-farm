@@ -1,11 +1,14 @@
 {
   "HomePage": {
-    "title": "Gli Specialisti del Kiwi dal 1986",
-    "subtitle": "Una azienda agricola veneta a conduzione familiare",
+    "title": "Kiwi dal 1986",
+    "subtitle": "Azienda agricola a conduzione familiare",
     "buyOurProducts": "Acquista i nostri prodotti",
     "discoverOurBusiness": "Scopri la nostra azienda",
-    "businessDescription": "Siamo una famiglia un legame profondo con il nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Dal 1986 i Kiwi sono la nostra coltivazione principale e il nostro orgoglio",
-    "business": "La Nostra Azienda",
+    "businessDescription": {
+      "1": "Siamo una famiglia di contadini con un legame profondo al nostro territorio, che curiamo e coltiviamo da almeno sei generazioni. Seguendo la tradizione rurale veneta, abbiamo sempre coltivato ortaggi, alberi da frutto e allevato animali da cortile, suini e bachi da seta.",
+      "2": "Dal 1975 al 1995 ci siamo specializzati nella produzione di vacche da latte e da carne, tori e vitelli. Attualmente, stiamo sperimentando nuove tecniche di agricoltura biologica e rigenerativa, unendo frutticoltura e pascolamento controllato. <bold>Dal 1986, i kiwi sono la nostra coltivazione principale e il nostro orgoglio</bold>."
+    },
+    "business": "Chi siamo",
     "servicesTitle": "I Nostri Servizi",
     "productsTitle": "I Nostri Prodotti",
     "FaqTitle": "Domande frequenti",
@@ -14,20 +17,20 @@
   },
   "Metadata": {
     "HomePage": {
-      "title": "Le Giumelle | Azienda agricola veneta dal 1986",
+      "title": "Le Giumelle | Kiwi dal 1986",
       "description": "Scopri la nostra azienda agricola e acquista i nostri prodotti"
     },
     "DogTraining": {
-      "title": "Le Giumelle | Addestramento cani",
-      "description": "Il nostro addestramento cani è disponibile per tutte le razze e taglie."
+      "title": "Le Giumelle | Educazione cinofila",
+      "description": "Addestramento base e guida all'educazione Correzione di comportamenti indesiderati, Socializzazione e attività ludiche, Supporto personalizzato e consigli pratici"
     },
     "SelfPicking": {
       "title": "Le Giumelle | Autoraccolta",
       "description": "Vieni a raccogliere i tuoi kiwi direttamente dall'albero!"
     },
     "FarmersMarket": {
-      "title": "Le Giumelle | Il nostro spaccio",
-      "description": "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti dal vivo!"
+      "title": "Le Giumelle | Mercatino della fiducia",
+      "description": "Vieni a trovarci nel nostro mercatino della fiducia per scoprire tutti i nostri prodotti dal vivo!"
     },
     "Contacts": {
       "title": "Le Giumelle | Contatti",
@@ -36,8 +39,17 @@
   },
   "Services": {
     "dogTraining": {
-      "title": "Addestramento cani",
-      "description": "Il nostro addestramento cani è disponibile per tutte le razze e taglie."
+      "title": "Educazione cinofila",
+      "h1": "Offriamo i seguenti servizi anche a domicilio:",
+      "services": {
+        "1": "Addestramento cinofilo di base e guida all'educazione",
+        "2": "Correzione di comportamenti indesiderati",
+        "3": "Socializzazione e attività ludiche",
+        "4": "Supporto personalizzato e consigli pratici"
+      },
+      "h2": "Contatta il nostro addestratore per una consulenza gratuita:",
+      "address": "Villa del Conte, PD e dintorni",
+      "phone": "+39 340 361 7941 (Enrico)"
     },
     "selfPicking": {
       "title": "Autoraccolta",
@@ -45,9 +57,9 @@
       "description2": "Servizio disponibile tutti i giorni dal 25 ottobre in poi dalle 8:00 alle 17:00.<br></br>I bambini sono i benvenuti!<br></br>Consigliamo abbigliamento e scarpe comode o stivali."
     },
     "farmersMarket": {
-      "title": "Il nostro spaccio",
-      "description": "Vieni a trovarci nel nostro spaccio per scoprire tutti i nostri prodotti!",
-      "description2": "Il nostro spaccio è sempre aperto e si trova in Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
+      "title": "Mercatino della fiducia",
+      "description": "Vieni a trovarci nel nostro mercatino della fiducia per scoprire tutti i nostri prodotti!",
+      "description2": "Mercatino della fiducia è sempre aperto e si trova in Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
     }
   },
   "Faq": {
@@ -67,9 +79,9 @@
   },
   "Contacts": {
     "title": "Contatti",
-    "description": "Tutti i contatti per raggiungere Le Giumelle",
+    "description": "Tutti i contatti per raggiungere Le Giumelle:",
     "address": "Via Restello 19, Villa del Conte, Italy",
-    "phone": "+39 346 058 6379",
+    "phone": "+39 346 058 6379 (Martina)",
     "piva": "P.IVA 04682830288",
     "email": "info@legiumelle.it",
     "facebook": "Segui la nostra pagina Facebook",
@@ -107,7 +119,7 @@
     "loading": "Caricamento..."
   },
   "Navigation": {
-    "1": "Azienda",
+    "1": "Chi siamo",
     "2": "Prodotti",
     "3": "Servizi",
     "4": "Contatti"

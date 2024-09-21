@@ -1,33 +1,36 @@
 {
   "HomePage": {
-    "title": "The Kiwi Specialists since 1986",
-    "subtitle": "A family-run agricultural business from Veneto",
+    "title": "Kiwi since 1986",
+    "subtitle": "Family-run farm",
     "buyOurProducts": "Buy our products",
-    "discoverOurBusiness": "Discover our business",
-    "businessDescription": "We are a family with a deep bond to our land, which we have nurtured and farmed for at least six generations. Since 1986, kiwis have been our main crop and our pride",
-    "business": "Our Business",
+    "discoverOurBusiness": "Discover our farm",
+    "businessDescription": {
+      "1": "We are a family of farmers with a deep connection to our land, which we have been tending and cultivating for at least six generations. Following the Venetian rural tradition, we have always cultivated vegetables, fruit trees, and raised poultry, pigs, and silkworms.",
+      "2": "From 1975 to 1995, we specialized in the production of dairy and beef cows, bulls, and calves. Currently, we are experimenting with new techniques of organic and regenerative agriculture, combining fruit cultivation and controlled pasture. <bold>Since 1986, kiwis have been our main crop and our pride</bold>."
+    },
+    "business": "About Us",
     "servicesTitle": "Our Services",
     "productsTitle": "Our Products",
     "FaqTitle": "Frequently Asked Questions",
     "businessAlt": "Family photo",
-    "businessCta": "Come visit us"
+    "businessCta": "Visit us"
   },
   "Metadata": {
     "HomePage": {
-      "title": "Le Giumelle | Veneto agricultural business since 1986",
+      "title": "Le Giumelle | Kiwis since 1986",
       "description": "Discover our farm and buy our products"
     },
     "DogTraining": {
       "title": "Le Giumelle | Dog Training",
-      "description": "Our dog training is available for all breeds and sizes."
+      "description": "Basic training and education guidance, Correction of undesirable behaviors, Socialization and recreational activities, Personalized support and practical advice"
     },
     "SelfPicking": {
-      "title": "Le Giumelle | Self-picking",
+      "title": "Le Giumelle | Self-Picking",
       "description": "Come and pick your kiwis directly from the tree!"
     },
     "FarmersMarket": {
-      "title": "Le Giumelle | Our outlet",
-      "description": "Come visit our outlet to see all our products live!"
+      "title": "Le Giumelle | Farm Market",
+      "description": "Visit us at our farm Market to discover all our products in person!"
     },
     "Contacts": {
       "title": "Le Giumelle | Contacts",
@@ -37,17 +40,26 @@
   "Services": {
     "dogTraining": {
       "title": "Dog Training",
-      "description": "Our dog training is available for all breeds and sizes."
+      "h1": "We offer the following services also at home:",
+      "services": {
+        "1": "Basic dog training and education guidance",
+        "2": "Correction of undesirable behaviors",
+        "3": "Socialization and recreational activities",
+        "4": "Personalized support and practical advice"
+      },
+      "h2": "Contact our trainer for a free consultation:",
+      "address": "Villa del Conte, PD and surroundings",
+      "phone": "+39 340 361 7941 (Enrico)"
     },
     "selfPicking": {
-      "title": "Self-picking",
+      "title": "Self-Picking",
       "description": "Come and pick your kiwis directly from the tree!",
-      "description2": "Service available every day from October 25 onwards from 8:00 AM to 5:00 PM.<br></br>Children are welcome!<br></br>We recommend comfortable clothing and shoes or boots."
+      "description2": "Service available every day from October 25 onwards from 8:00 to 17:00.<br></br>Children are welcome!<br></br>We recommend comfortable clothing and shoes or boots."
     },
     "farmersMarket": {
-      "title": "Our outlet",
-      "description": "Come visit us at our outlet to discover all our products!",
-      "description2": "Our outlet is always open and is located at Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
+      "title": "Farm Market",
+      "description": "Visit us at our Farm Market to discover all our products!",
+      "description2": "The Farm Market is always open and is located at Via Restello 19, Villa del Conte (PD) (<gmaps>Google maps</gmaps>)"
     }
   },
   "Faq": {
@@ -55,21 +67,21 @@
     "q2": "How to store kiwis?",
     "q3": "How to ripen kiwis in 4-7 days?",
     "q4": "How to ripen kiwis in 7-10 days?",
-    "a4": "Store the kiwis at room temperature.",
-    "a3": "Place kiwis in a tightly sealed paper bag with fruits that emit ethylene, such as apples, pears, or bananas.",
+    "a4": "Store kiwis at room temperature.",
+    "a3": "Place the kiwis in a well-closed paper bag together with fruits that release ethylene, such as apples, pears, or bananas.",
     "a2": {
       "1": "Kiwis can last from a few weeks to several months, depending on the precautions taken. The precautions are:",
       "2": "Periodically separate the fruits that ripen more quickly.",
-      "3": "Store the fruits in a crate, in a dark, dry, and cool place, away from other fruits that release ethylene, like apples, pears, or bananas (alternatively, in the refrigerator).",
-      "4": "It is possible to wash, peel, and freeze them to preserve them for up to 10 months. In this case, they will be more suitable for smoothies, juices, jams, ice creams, or cakes."
+      "3": "Store the fruits in a crate, in a dark, dry, and cool place, away from other fruits that release ethylene, such as apples, pears, or bananas (alternatively, in the refrigerator).",
+      "4": "You can wash them, peel them, and freeze them to store them for up to 10 months. In this case, they will be more suitable for smoothies, juices, jams, ice creams, or cakes."
     },
     "a1": "We ship throughout Europe via DHL. Delivery times vary depending on the destination, with an average of 3-5 business days."
   },
   "Contacts": {
     "title": "Contacts",
-    "description": "All the contacts to reach Le Giumelle",
+    "description": "All the contacts to reach Le Giumelle:",
     "address": "Via Restello 19, Villa del Conte, Italy",
-    "phone": "+39 346 058 6379",
+    "phone": "+39 346 058 6379 (Martina)",
     "piva": "VAT No. 04682830288",
     "email": "info@legiumelle.it",
     "facebook": "Follow our Facebook page",
@@ -79,14 +91,14 @@
     "bannerTitle": "Cookies",
     "bannerDescription": "By accepting cookies, you consent to the use of <posthog>PostHog (Data analytics)</posthog> and <sentry>Sentry (Error reporting)</sentry> while browsing the site. Read our <privacyPolicy>Privacy Policy</privacyPolicy> and <termsAndConditions>Terms and Conditions</termsAndConditions> for more information.",
     "acceptAll": "Accept all",
-    "onlyNecessary": "Only necessary cookies"
+    "onlyNecessary": "Only strictly necessary cookies"
   },
   "Footer": {
     "privacy": "Privacy",
     "cookies": "Cookies",
     "termsAndConditions": "Terms and Conditions",
     "returns": "Returns",
-    "credits": "<sandro>Made by Sandro Baccega</sandro>",
+    "credits": "<sandro>Created by Sandro Baccega</sandro>",
     "copyright": "©{year} Società agricola Kiwi Farm S.S."
   },
   "Products": {
@@ -94,9 +106,9 @@
   },
   "Basket": {
     "title": "Cart",
-    "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in the cart",
+    "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
-    "buyButton": "Buy these products",
+    "buyButton": "Purchase these products",
     "emptyButton": "Empty the cart",
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
     "emptyCartAlertDescription": "This action cannot be undone."
@@ -107,13 +119,13 @@
     "loading": "Loading..."
   },
   "Navigation": {
-    "1": "Our Business",
+    "1": "About Us",
     "2": "Products",
     "3": "Services",
-    "4": "Contact us"
+    "4": "Contacts"
   },
   "NotFoundPage": {
     "title": "Page not found",
-    "link": "Back to the homepage"
+    "link": "Return to homepage"
   }
 }
