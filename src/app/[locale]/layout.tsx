@@ -4,7 +4,6 @@ import { Bricolage_Grotesque } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import Providers from "./providers";
-import { cookies } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
@@ -64,8 +63,6 @@ export default async function RootLayout(props: {
   params: { locale: string };
 }) {
   const messages = await getMessages();
-  const cookieStore = cookies();
-  const hasCookiesConsent = Boolean(cookieStore.get("hasCookiesConsent"));
 
   // Set locale for server components
   // https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing#add-unstable_setrequestlocale-to-all-layouts-and-pages
@@ -77,7 +74,6 @@ export default async function RootLayout(props: {
         <NextIntlClientProvider messages={messages}>
           <Providers
             locale={props.params.locale}
-            hasCookiesConsent={hasCookiesConsent}
           >
             <Header locale={props.params.locale} />
             {props.children}

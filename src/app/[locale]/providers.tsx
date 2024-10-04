@@ -1,7 +1,8 @@
 "use client";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import { type BasketProduct } from "~/types/Product";
+import { getCookie } from "cookies-next";
+import type { BasketProduct } from "~/types/Product";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
 import {
   AlertDialog,
@@ -115,13 +116,12 @@ const queryClient = new QueryClient();
 
 export default function Providers({
   children,
-  hasCookiesConsent,
   locale,
 }: {
-  hasCookiesConsent: boolean;
   locale: string;
   children: React.ReactNode;
 }) {
+  const hasCookiesConsent = Boolean(getCookie("hasCookiesConsent") ?? "false");
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

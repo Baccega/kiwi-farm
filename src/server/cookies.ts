@@ -9,6 +9,8 @@ export async function setHasCookiesConsent(consent: boolean) {
         name: "hasCookiesConsent",
         value: "true",
         httpOnly: true,
+        secure: true,
+        sameSite: "lax",
         path: "/",
       });
     } else {

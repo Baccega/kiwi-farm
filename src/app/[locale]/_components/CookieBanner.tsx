@@ -34,8 +34,8 @@ export default function CookiesBanner({
 
   // Enable Posthog if the user has consented
   useEffect(() => {
-    if (typeof window === "undefined" || !hasCookiesConsent) return;
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    if (typeof window === "undefined" || !hasCookiesConsent || !process.env.NEXT_PUBLIC_POSTHOG_KEY) return;
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
       api_host: "/ingest",
       ui_host: "https://eu.i.posthog.com",
     });
