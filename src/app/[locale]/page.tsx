@@ -105,7 +105,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
         id="prodotti"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
+        <div className="grid w-full grid-cols-[repeat(auto-fill,var(--product-width))] justify-center gap-10">
           <h2 className="col-span-full text-5xl">
             {t("HomePage.productsTitle")}
           </h2>
@@ -128,7 +128,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
         id="servizi"
         className="container relative flex h-full min-h-section scroll-mt-[--header-height] items-center justify-center border-b py-24 text-center md:px-16"
       >
-        <div className="grid grid-cols-[repeat(auto-fill,var(--product-width))] gap-10">
+        <div className="grid w-full grid-cols-[repeat(auto-fill,var(--product-width))] justify-center gap-10">
           <h2 className="col-span-full text-5xl">
             {t("HomePage.servicesTitle")}
           </h2>
