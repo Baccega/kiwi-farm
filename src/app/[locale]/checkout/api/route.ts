@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { ratelimit } from "~/server/ratelimit";
 import { createCheckoutSessionRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -8,15 +7,15 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
-    const identifier = `${request.ip}-${request.headers.get("user-agent") ?? ""}`;
-    const { success } = await ratelimit.limit(identifier);
+    // const identifier = `${request.ip}-${request.headers.get("user-agent") ?? ""}`;
+    // const { success } = await ratelimit.limit(identifier);
 
-    if (!success) {
-      return NextResponse.json(
-        { error: "Rate limit exceeded" },
-        { status: 429 },
-      );
-    }
+    // if (!success) {
+    //   return NextResponse.json(
+    //     { error: "Rate limit exceeded" },
+    //     { status: 429 },
+    //   );
+    // }
 
     const searchParams = request.nextUrl.searchParams;
     const session_id = searchParams.get("session_id");
@@ -41,15 +40,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const identifier = `${req.ip}-${req.headers.get("user-agent") ?? ""}`;
-    const { success } = await ratelimit.limit(identifier);
+    // const identifier = `${req.ip}-${req.headers.get("user-agent") ?? ""}`;
+    // const { success } = await ratelimit.limit(identifier);
 
-    if (!success) {
-      return NextResponse.json(
-        { error: "Rate limit exceeded" },
-        { status: 429 },
-      );
-    }
+    // if (!success) {
+    //   return NextResponse.json(
+    //     { error: "Rate limit exceeded" },
+    //     { status: 429 },
+    //   );
+    // }
 
     const payload: unknown = await req.json();
 
