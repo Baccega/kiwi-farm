@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import spaccioImage from "/public/services/spaccio.jpg";
+import { buttonVariants } from "~/components/ui/button";
 
 export async function generateMetadata({
   params: { locale },
@@ -42,7 +43,10 @@ export default async function Page(props: { params: { locale: string } }) {
           <p className="">
             {t.rich("farmersMarket.description2", {
               gmaps: (chunk) => (
-                <Link href="https://maps.app.goo.gl/eDN69XbVXrhpmTSHA">
+                <Link
+                  className={buttonVariants({ variant: "link", size: "inline-link"})}
+                  href="https://maps.app.goo.gl/eDN69XbVXrhpmTSHA"
+                >
                   {chunk}
                 </Link>
               ),

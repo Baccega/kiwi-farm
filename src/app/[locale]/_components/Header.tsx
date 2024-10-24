@@ -29,7 +29,7 @@ export default async function Header(props: { locale: string }) {
         />
         <Link
           href={`/${props.locale}`}
-          className="block text-xl font-bold tracking-tight"
+          className="block text-xl font-bold tracking-tight transition-transform hover:scale-105 active:scale-95"
         >
           <Image
             src="/logo.svg"
