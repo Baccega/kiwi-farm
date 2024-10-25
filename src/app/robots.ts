@@ -1,5 +1,5 @@
 import { type MetadataRoute } from "next";
-import { AVAILABLE_LOCALES } from "~/middleware";
+import { AVAILABLE_LOCALES } from "~/i18n/routing";
 
 export default function robots(): MetadataRoute.Robots {
   return {

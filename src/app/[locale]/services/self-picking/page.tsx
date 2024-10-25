@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import selfPickingImage from "/public/services/self-picking.jpg";
 
 export async function generateMetadata({
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }
 
 export default async function Page(props: { params: { locale: string } }) {
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
   const t = await getTranslations("Services");
 
   return (

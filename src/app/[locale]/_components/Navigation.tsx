@@ -3,7 +3,7 @@ import Link from "next/link";
 import { type VariantProps, cva } from "class-variance-authority";
 import { cn } from "~/lib/utils";
 import { buttonVariants } from "~/components/ui/button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const navigationVariants = cva("flex", {
   variants: {
@@ -22,38 +22,38 @@ export interface NavigationProps
     VariantProps<typeof navigationVariants> {
   onLinkClick?: () => void;
   className?: string;
-  locale: string;
 }
 
 export function Navigation(props: NavigationProps) {
   const { variant, onLinkClick, className, ...rest } = props;
+  const locale = useLocale();
   const t = useTranslations();
 
   return (
     <nav className={cn(navigationVariants({ variant, className }))} {...rest}>
       <Link
-        href={`/${props.locale}/#azienda`}
+        href={`/${locale}/#azienda`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         {t("Navigation.1")}
       </Link>
       <Link
-        href={`/${props.locale}/#prodotti`}
+        href={`/${locale}/#prodotti`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         {t("Navigation.2")}
       </Link>
       <Link
-        href={`/${props.locale}/#servizi`}
+        href={`/${locale}/#servizi`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >
         {t("Navigation.3")}
       </Link>
       <Link
-        href={`/${props.locale}/contacts`}
+        href={`/${locale}/contacts`}
         className={cn(buttonVariants({ variant: "link" }), "text-xl")}
         onClick={onLinkClick}
       >

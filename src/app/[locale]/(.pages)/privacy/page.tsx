@@ -1,4 +1,5 @@
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+
 
 export async function generateMetadata({
   params: { locale },
@@ -20,7 +21,7 @@ export async function generateMetadata({
 }
 
 export default async function Page(props: { params: { locale: string } }) {
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
 
   return (
     <main className="container flex min-h-section flex-col gap-4 px-6 pb-10 pt-header md:px-16">

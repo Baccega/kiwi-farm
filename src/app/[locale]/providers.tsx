@@ -21,6 +21,7 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { Drawer } from "~/components/ui/drawer";
 import CookiesBanner from "./_components/CookieBanner";
+import { useLocale } from "next-intl";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -114,13 +115,8 @@ export const AlertContext = createContext<{
 
 const queryClient = new QueryClient();
 
-export default function Providers({
-  children,
-  locale,
-}: {
-  locale: string;
-  children: React.ReactNode;
-}) {
+export default function Providers({ children }: { children: React.ReactNode }) {
+  const locale = useLocale();
   const hasCookiesConsent = Boolean(getCookie("hasCookiesConsent") ?? "false");
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -177,7 +173,7 @@ export default function Providers({
           </AlertContext.Provider>
         </QueryClientProvider>
       </PostHogProvider>
-      <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} />
+      {/* <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} /> */}
     </Drawer>
   );
 }

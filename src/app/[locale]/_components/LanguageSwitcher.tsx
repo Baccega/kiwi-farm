@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 import { cn } from "~/lib/utils";
-import { AVAILABLE_LOCALES } from "~/middleware";
+import { AVAILABLE_LOCALES } from "~/i18n/routing";
 
 export default function LanguageSwitcher(props: { locale: string }) {
   const [selectedLanguage, setSelectedLanguage] = useState(props.locale);

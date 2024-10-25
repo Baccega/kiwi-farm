@@ -1,4 +1,4 @@
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import anakinImage from "/public/services/anakin.jpg";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export async function generateMetadata({
 }
 
 export default async function Page(props: { params: { locale: string } }) {
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
   const t = await getTranslations("Services");
   return (
     <main className="gap-4 pt-header">

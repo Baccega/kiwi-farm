@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params: { locale, id },
@@ -37,7 +37,7 @@ export async function generateMetadata({
 export default async function Page(props: {
   params: { id: string; locale: string };
 }) {
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
   const product = await getStripeProduct(props.params.id);
   const price = await getStripePrice(product.default_price?.toString() ?? "");
 

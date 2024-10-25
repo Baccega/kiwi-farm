@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 
 export async function generateMetadata({
@@ -32,7 +32,7 @@ export async function generateMetadata({
 }
 
 export default async function Page(props: { params: { locale: string } }) {
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
   const t = await getTranslations("Contacts");
 
   return (

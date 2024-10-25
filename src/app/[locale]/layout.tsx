@@ -8,9 +8,10 @@ import { NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
   getTranslations,
-  unstable_setRequestLocale,
+  setRequestLocale,
 } from "next-intl/server";
-import { AVAILABLE_LOCALES } from "~/middleware";
+import { AVAILABLE_LOCALES, routing } from "~/i18n/routing";
+import { notFound } from "next/navigation";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -62,18 +63,22 @@ export async function generateMetadata({
 }
 
 export function generateStaticParams() {
-  return AVAILABLE_LOCALES.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const messages = await getMessages();
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(props.params.locale)) {
+    notFound();
+  }
 
   // Set locale for server components
-  // https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing#add-unstable_setrequestlocale-to-all-layouts-and-pages
-  unstable_setRequestLocale(props.params.locale);
+  setRequestLocale(props.params.locale);
+
+  const messages = await getMessages();
 
   return (
     <html lang={props.params.locale}>
@@ -81,7 +86,7 @@ export default async function RootLayout(props: {
         className={`min-dvh ${font.className} grid grid-rows-[1fr,auto] text-primary-80`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Providers locale={props.params.locale}>
+          <Providers>
             <Header locale={props.params.locale} />
             {props.children}
             <div id="modal-root" />

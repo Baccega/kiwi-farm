@@ -1,5 +1,5 @@
 import {
-  unstable_setRequestLocale,
+  setRequestLocale,
 } from "next-intl/server";
 
 export default async function Layout(props: {
@@ -7,8 +7,8 @@ export default async function Layout(props: {
   params: { locale: string };
 }) {
   // Set locale for server components
-  // https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing#add-unstable_setrequestlocale-to-all-layouts-and-pages
-  unstable_setRequestLocale(props.params.locale);
+  // https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing#add-setRequestLocale-to-all-layouts-and-pages
+  setRequestLocale(props.params.locale);
 
   return props.children;
 }

@@ -31,12 +31,10 @@ export default function MenuButton(props: { locale: string }) {
       <Navigation
         className="hidden @4xl/header:flex pr-2"
         onLinkClick={handleLinkClick}
-        locale={props.locale}
       />
       <Sheet {...menuDialog.props}>
         <SheetContent>
           <Navigation
-            locale={props.locale}
             variant="vertical"
             onLinkClick={handleLinkClick}
           />
