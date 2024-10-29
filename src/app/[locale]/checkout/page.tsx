@@ -9,10 +9,10 @@ import {
 import useStripe from "./_hooks/useStripe";
 import { redirect } from "next/navigation";
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props: { params: { locale: string } }) {
   const basket = useBasketStore((state) => state.basket);
 
-  const stripeProps = useStripe(basket);
+  const stripeProps = useStripe(basket, props.params.locale);
   // const { data, isLoading } = useQuery({
   //   queryKey: ["checkout-session"],
   //   queryFn: createStripeCheckoutSession,

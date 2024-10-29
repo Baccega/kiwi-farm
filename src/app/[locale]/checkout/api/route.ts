@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { sendTelegramMessage } from "~/server/telegram";
 import { createCheckoutSessionRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -53,14 +54,16 @@ export async function POST(req: NextRequest) {
     const payload: unknown = await req.json();
 
     // Validate the input items
-    const { items } = createCheckoutSessionRequestSchema.parse(payload);
+    const { locale, items } = createCheckoutSessionRequestSchema.parse(payload);
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       line_items: items,
       mode: "payment",
-      return_url: `${req.headers.get("origin")}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `${req.headers.get("origin")}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     });
+
+    await sendTelegramMessage(`New order received!`);
 
     return NextResponse.json({ clientSecret: session.client_secret });
   } catch (err) {

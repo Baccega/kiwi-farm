@@ -4,6 +4,7 @@ import { z } from "zod";
 export function useStripeSession(
   sessionId: string | null,
   onPaymentCompleted: () => void,
+  locale: string,
 ) {
   const [status, setStatus] = useState<
     "complete" | "expired" | "open" | undefined
@@ -13,9 +14,12 @@ export function useStripeSession(
 
   useEffect(() => {
     async function fetchStripeSession(sessionId: string) {
-      const res = await fetch(`/checkout/api?session_id=${sessionId}`, {
-        method: "GET",
-      });
+      const res = await fetch(
+        `/${locale}/checkout/api?session_id=${sessionId}`,
+        {
+          method: "GET",
+        },
+      );
       const unParsedData: unknown = await res.json();
       const result = z
         .object({
@@ -36,7 +40,7 @@ export function useStripeSession(
     if (sessionId) {
       void fetchStripeSession(sessionId);
     }
-  }, [onPaymentCompleted, sessionId]);
+  }, [locale, onPaymentCompleted, sessionId]);
 
   return { status, customerEmail, error };
 }

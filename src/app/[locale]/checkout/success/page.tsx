@@ -6,7 +6,7 @@ import { useBasketStore } from "~/app/[locale]/providers";
 import { useUrlParams } from "./_hooks/useUrlParams";
 import { useTranslations } from "next-intl";
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props: { params: { locale: string } }) {
   const t = useTranslations("Checkout");
   const urlParams = useUrlParams();
   const sessionId = urlParams?.get("session_id") ?? "";
@@ -14,6 +14,7 @@ export default function CheckoutPage() {
   const { status, customerEmail, error } = useStripeSession(
     sessionId,
     emptyBasket,
+    props.params.locale,
   );
 
   if (status === "open" || error) {
@@ -38,7 +39,7 @@ export default function CheckoutPage() {
             </p>
           </>
         ) : (
-          <p>{t('loading')}</p>
+          <p>{t("loading")}</p>
         )}
       </section>
     </main>
