@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 
 export function useStripeSession(
   sessionId: string | null,
-  onPaymentCompleted: () => void,
+  onPaymentCompleted: () => Promise<void>,
   locale: string,
 ) {
-  const [status, setStatus] = useState<
-    "complete" | "expired" | "open" | undefined
-  >();
-  const [customerEmail, setCustomerEmail] = useState("");
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    async function fetchStripeSession(sessionId: string) {
+  const { data, error } = useQuery({
+    queryKey: ["checkout-session"],
+    queryFn: async () => {
       const res = await fetch(
         `/${locale}/checkout/api?session_id=${sessionId}`,
         {
@@ -27,20 +22,14 @@ export function useStripeSession(
           customer_email: z.string().email(),
         })
         .safeParse(unParsedData);
-
       if (result.success) {
-        setStatus(result.data.status);
-        setCustomerEmail(result.data.customer_email);
-        onPaymentCompleted();
+        await onPaymentCompleted();
+        return result.data;
       } else {
-        setError(true);
+        throw new Error("Unsuccessful");
       }
-    }
+    },
+  });
 
-    if (sessionId) {
-      void fetchStripeSession(sessionId);
-    }
-  }, [locale, onPaymentCompleted, sessionId]);
-
-  return { status, customerEmail, error };
+  return { status: data?.status, customerEmail: data?.customer_email, error };
 }

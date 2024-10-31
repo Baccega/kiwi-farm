@@ -5,15 +5,27 @@ import { useStripeSession } from "./_hooks/useStripeSession";
 import { useBasketStore } from "~/app/[locale]/providers";
 import { useUrlParams } from "./_hooks/useUrlParams";
 import { useTranslations } from "next-intl";
+import { useCallback } from "react";
+import { useTelegramNotification } from "./_hooks/useTelegramNotification";
 
 export default function CheckoutPage(props: { params: { locale: string } }) {
   const t = useTranslations("Checkout");
   const urlParams = useUrlParams();
   const sessionId = urlParams?.get("session_id") ?? "";
   const emptyBasket = useBasketStore((state) => state.emptyBasket);
+  const { isLoading, sendTelegramNotification } = useTelegramNotification(
+    props.params.locale,
+    sessionId,
+  );
+
+  const handlePaymentCompleted = useCallback(async () => {
+    emptyBasket();
+    await sendTelegramNotification();
+  }, [emptyBasket, sendTelegramNotification]);
+
   const { status, customerEmail, error } = useStripeSession(
     sessionId,
-    emptyBasket,
+    handlePaymentCompleted,
     props.params.locale,
   );
 
@@ -31,7 +43,7 @@ export default function CheckoutPage(props: { params: { locale: string } }) {
         id="checkout-success"
         className="container relative flex min-h-section flex-col gap-2 pt-header md:px-16"
       >
-        {status === "complete" ? (
+        {status === "complete" && !isLoading ? (
           <>
             <h1 className="text-center text-3xl font-bold">{t("title")}</h1>
             <p className="text-center text-xl font-bold">
