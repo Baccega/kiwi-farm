@@ -13,6 +13,13 @@ export async function generateMetadata({
   return {
     title: t("SelfPicking.title"),
     description: t("SelfPicking.description"),
+    alternates: {
+      canonical: "/it/services/self-picking",
+      languages: {
+        "it-IT": "/it/services/self-picking",
+        "en-US": "/en/services/self-picking",
+      },
+    },
     openGraph: {
       images: [selfPickingImage.src],
     },

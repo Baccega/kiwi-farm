@@ -15,6 +15,13 @@ export async function generateMetadata({
   return {
     title: t("FarmersMarket.title"),
     description: t("FarmersMarket.description"),
+    alternates: {
+      canonical: "/it/services/farmers-market",
+      languages: {
+        "it-IT": "/it/services/farmers-market",
+        "en-US": "/en/services/farmers-market",
+      },
+    },
     openGraph: {
       images: [spaccioImage.src],
     },

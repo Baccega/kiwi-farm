@@ -20,6 +20,13 @@ export async function generateMetadata({
 
   return {
     title: t("Contacts.title"),
+    alternates: {
+      canonical: "/it/contacts",
+      languages: {
+        "it-IT": "/it/contacts",
+        "en-US": "/en/contacts",
+      },
+    },
     description: t("Contacts.description"),
   };
 }

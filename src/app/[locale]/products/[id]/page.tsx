@@ -10,6 +10,30 @@ import {
 } from "~/components/ui/carousel";
 import { unstable_setRequestLocale } from "next-intl/server";
 
+export async function generateMetadata({
+  params: { locale, id },
+}: {
+  params: { locale: string; id: string };
+}) {
+  // const t = await getTranslations({ locale, namespace: "Metadata" });
+  const product = await getStripeProduct(id);
+
+  
+  return {
+    title: product.name,
+    alternates: {
+      canonical: `/it/products/${id}`,
+      languages: {
+        "it-IT": `/it/products/${id}`,
+        "en-US": `/en/products/${id}`,
+      },
+    },
+    openGraph: {
+      images: product.images,
+    },
+  };
+}
+
 export default async function Page(props: {
   params: { id: string; locale: string };
 }) {

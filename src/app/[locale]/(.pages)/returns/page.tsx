@@ -1,5 +1,24 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  // const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: "Resi",
+    alternates: {
+      canonical: "/it/returns",
+      languages: {
+        "it-IT": "/it/returns",
+        "en-US": "/en/returns",
+      },
+    },
+  };
+}
+
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 

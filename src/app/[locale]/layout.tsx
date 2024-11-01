@@ -27,7 +27,14 @@ export async function generateMetadata({
   return {
     title: t("HomePage.title"),
     description: t("HomePage.description"),
-    metadataBase: new URL('https://legiumelle.it'),
+    metadataBase: new URL("https://legiumelle.it"),
+    alternates: {
+      canonical: "/",
+      languages: {
+        "it-IT": "/it",
+        "en-US": "/en",
+      },
+    },
     icons: [
       {
         rel: "icon",
@@ -70,11 +77,11 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body className={`min-dvh ${font.className} grid grid-rows-[1fr,auto] text-primary-80`}>
+      <body
+        className={`min-dvh ${font.className} grid grid-rows-[1fr,auto] text-primary-80`}
+      >
         <NextIntlClientProvider messages={messages}>
-          <Providers
-            locale={props.params.locale}
-          >
+          <Providers locale={props.params.locale}>
             <Header locale={props.params.locale} />
             {props.children}
             <div id="modal-root" />

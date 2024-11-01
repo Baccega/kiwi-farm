@@ -1,5 +1,24 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  // const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: "Termini e Condizioni",
+    alternates: {
+      canonical: "/it/terms-and-conditions",
+      languages: {
+        "it-IT": "/it/terms-and-conditions",
+        "en-US": "/en/terms-and-conditions",
+      },
+    },
+  };
+}
+
 export default async function Page(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 

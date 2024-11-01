@@ -15,6 +15,13 @@ export async function generateMetadata({
   return {
     title: t("DogTraining.title"),
     description: t("DogTraining.description"),
+    alternates: {
+      canonical: "/it/services/dog-training",
+      languages: {
+        "it-IT": "/it/services/dog-training",
+        "en-US": "/en/services/dog-training",
+      },
+    },
     openGraph: {
       images: [anakinImage.src],
     },
