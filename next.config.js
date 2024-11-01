@@ -16,17 +16,6 @@ const coreConfig = withNextIntl({
     remotePatterns: [{ hostname: "files.stripe.com" }],
     formats: ["image/avif", "image/webp"],
   },
-  headers: async () => [
-    {
-      source: "/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "no-store",
-        },
-      ],
-    },
-  ],
   async rewrites() {
     return [
       {
