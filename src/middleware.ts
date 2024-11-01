@@ -14,6 +14,7 @@ export default createMiddleware({
 // https://next-intl-docs.vercel.app/docs/routing/middleware#matcher-avoid-hardcoding
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|favicon.svg|icons|manifest).*)",
+    "/",
+    "/(it|en)/:path*",
   ],
 };
