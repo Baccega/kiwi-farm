@@ -1,5 +1,6 @@
 "use client";
 import { ShoppingBasket } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type Stripe from "stripe";
 import { useBasketStore } from "~/app/[locale]/providers";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
@@ -11,7 +12,7 @@ export function ProductBasketData(props: {
   price: Stripe.Price;
 }) {
   const { product, price } = props;
-
+  const t = useTranslations("Products");
   const basket = useBasketStore((state) => state.basket);
 
   const addProductToBasket = useBasketStore(
@@ -40,10 +41,11 @@ export function ProductBasketData(props: {
       ) : (
         <Button
           variant={"default"}
+          className="gap-2"
           onClick={() => addProductToBasket(product, price)}
         >
           <ShoppingBasket />
-          Add Product to Basket
+          {t("addProductToBasket")}
         </Button>
       )}
     </div>

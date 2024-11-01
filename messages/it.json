@@ -102,7 +102,8 @@
     "copyright": "©{year} Società agricola Kiwi Farm S.S."
   },
   "Products": {
-    "noProductsAvailable": "Non ci sono prodotti disponibili al momento"
+    "noProductsAvailable": "Non ci sono prodotti disponibili al momento",
+    "addProductToBasket": "Aggiungi prodotto al carrello"
   },
   "Basket": {
     "title": "Carrello",

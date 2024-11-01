@@ -18,7 +18,6 @@ export async function generateMetadata({
   // const t = await getTranslations({ locale, namespace: "Metadata" });
   const product = await getStripeProduct(id);
 
-  
   return {
     title: product.name,
     alternates: {
@@ -65,8 +64,13 @@ export default async function Page(props: {
             </Carousel>
           </figure>
           <div className="flex grow flex-col gap-4">
-            <p className="">{product.metadata?.it_description}</p>
-            <ProductBasketData product={product} price={price} />
+            <p className="">
+              {product.metadata?.[`${props.params.locale}_description`]}
+            </p>
+            <ProductBasketData
+              product={product}
+              price={price}
+            />
           </div>
         </div>
       </section>
