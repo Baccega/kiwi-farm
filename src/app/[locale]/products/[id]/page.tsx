@@ -20,6 +20,7 @@ export async function generateMetadata({
 
   return {
     title: product.name,
+    description: product.metadata?.[`${locale}_description`],
     alternates: {
       canonical: `/it/products/${id}`,
       languages: {
@@ -67,10 +68,7 @@ export default async function Page(props: {
             <p className="">
               {product.metadata?.[`${props.params.locale}_description`]}
             </p>
-            <ProductBasketData
-              product={product}
-              price={price}
-            />
+            <ProductBasketData product={product} price={price} />
           </div>
         </div>
       </section>
