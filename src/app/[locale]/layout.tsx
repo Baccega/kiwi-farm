@@ -10,7 +10,7 @@ import {
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
-import { AVAILABLE_LOCALES, routing } from "~/i18n/routing";
+import { routing } from "~/i18n/routing";
 import { notFound } from "next/navigation";
 
 const font = Bricolage_Grotesque({
