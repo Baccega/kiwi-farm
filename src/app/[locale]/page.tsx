@@ -20,7 +20,6 @@ import anakinImage from "/public/services/anakin.jpg";
 import selfPickingImage from "/public/services/self-picking.jpg";
 import spaccioImage from "/public/services/spaccio.jpg";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
 
 export default async function HomePage(props: { params: { locale: string } }) {
   setRequestLocale(props.params.locale);

@@ -19,7 +19,7 @@ export function useDialog() {
   };
 }
 
-export default function MenuButton(props: { locale: string }) {
+export default function MenuButton() {
   const menuDialog = useDialog();
 
   function handleLinkClick() {

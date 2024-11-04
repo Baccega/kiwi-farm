@@ -173,7 +173,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
           </AlertContext.Provider>
         </QueryClientProvider>
       </PostHogProvider>
-      {/* <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} /> */}
+      <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} />
     </Drawer>
   );
 }

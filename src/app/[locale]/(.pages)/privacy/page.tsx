@@ -1,11 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 
 
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export async function generateMetadata() {
   // const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
