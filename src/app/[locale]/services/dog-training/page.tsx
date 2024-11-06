@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import anakinImage from "/public/services/anakin.jpg";
+import dogTrainingImage from "/public/services/dog-training.jpg";
 import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
@@ -23,7 +23,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      images: [anakinImage.src],
+      images: [dogTrainingImage.src],
     },
   };
 }
@@ -36,7 +36,7 @@ export default async function Page(props: { params: { locale: string } }) {
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
           <Image
-            src={anakinImage}
+            src={dogTrainingImage}
             alt={"Dog Training"}
             fill={true}
             className="z-20 rounded-lg object-cover"

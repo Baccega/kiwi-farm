@@ -16,7 +16,7 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
-import anakinImage from "/public/services/anakin.jpg";
+import dogTrainingImage from "/public/services/dog-training.jpg";
 import selfPickingImage from "/public/services/self-picking.jpg";
 import spaccioImage from "/public/services/spaccio.jpg";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -28,7 +28,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
   const SERVICES = [
     {
       id: "dog-training",
-      image: anakinImage,
+      image: dogTrainingImage,
       name: t("Services.dogTraining.title"),
     },
     {
