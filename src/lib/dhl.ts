@@ -1,31 +1,36 @@
+import { type BasketProduct } from "~/types/Product";
+
 const WEIGHT_LIMIT = 30;
 
-export const AVAILABLE_COUNTRIES_ZONES: Record<string, Zone> = {
-  AT: "1",
-  BE: "1",
-  BG: "4",
-  HR: "3",
-  CZ: "4",
-  DK: "3",
-  EE: "4",
-  FI: "3",
-  FR: "1",
-  DE: "1",
-  GR: "3",
-  HU: "4",
-  IE: "3",
-  IT: "Italy",
-  LV: "4",
-  LT: "4",
-  LU: "1",
-  NL: "1",
-  PL: "4",
-  PT: "3",
-  RO: "4",
-  SK: "4",
-  SI: "4",
-  ES: "3",
-  SE: "3",
+export const AVAILABLE_COUNTRIES_ZONES: Record<
+  string,
+  { zone: Zone; label: string }
+> = {
+  AT: { zone: "1", label: "Austria" },
+  BE: { zone: "1", label: "Belgium" },
+  BG: { zone: "4", label: "Bulgaria" },
+  HR: { zone: "3", label: "Croatia" },
+  CZ: { zone: "4", label: "Czech Republic" },
+  DK: { zone: "3", label: "Denmark" },
+  EE: { zone: "4", label: "Estonia" },
+  FI: { zone: "3", label: "Finland" },
+  FR: { zone: "1", label: "France" },
+  DE: { zone: "1", label: "Germany" },
+  GR: { zone: "3", label: "Greece" },
+  HU: { zone: "4", label: "Hungary" },
+  IE: { zone: "3", label: "Ireland" },
+  IT: { zone: "Italy", label: "Italy" },
+  LV: { zone: "4", label: "Latvia" },
+  LT: { zone: "4", label: "Lithuania" },
+  LU: { zone: "1", label: "Luxembourg" },
+  NL: { zone: "1", label: "Netherlands" },
+  PL: { zone: "4", label: "Poland" },
+  PT: { zone: "3", label: "Portugal" },
+  RO: { zone: "4", label: "Romania" },
+  SK: { zone: "4", label: "Slovakia" },
+  SI: { zone: "4", label: "Slovenia" },
+  ES: { zone: "3", label: "Spain" },
+  SE: { zone: "3", label: "Sweden" },
 };
 
 export const AVAILABLE_COUNTRIES = Object.keys(AVAILABLE_COUNTRIES_ZONES);
@@ -54,13 +59,22 @@ type Zone = "1" | "2" | "3" | "4" | "5" | "Italy";
 // };
 
 // Current limit: 30kg
-export function getShippingPrice(weight: number, zone: Zone): number {
-  // To remove this limit we need to add the additional charges for each zone
-  if (weight > WEIGHT_LIMIT) {
+export function getShippingPrice(basket: BasketProduct[], zone?: Zone): number {
+  if (!zone) {
     return Infinity;
   }
 
-  const basePrice = DHL_BASE_PRICES[zone][Math.ceil(weight)];
+  const totalWeight = basket.reduce(
+    (acc, { weight, quantity }) => Number(weight) * quantity + acc,
+    0,
+  );
+
+  // To remove this limit we need to add the additional charges for each zone
+  if (totalWeight > WEIGHT_LIMIT) {
+    return Infinity;
+  }
+
+  const basePrice = DHL_BASE_PRICES[zone][Math.ceil(totalWeight)];
 
   if (!basePrice) {
     return Infinity;

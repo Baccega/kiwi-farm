@@ -10,6 +10,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        disabled:
+          "bg-muted text-muted-foreground hover:cursor-not-allowed hover:shadow-none hover:scale-100",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -52,6 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
+        disabled={variant === "disabled"}
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}

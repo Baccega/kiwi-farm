@@ -107,6 +107,8 @@
   },
   "Basket": {
     "title": "Cart",
+    "shipping": "Shipping:",
+    "shippingPlaceholder": "Select the shipping location",
     "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
     "buyButton": "Purchase these products",

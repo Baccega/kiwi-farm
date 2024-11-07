@@ -25,10 +25,12 @@ import { useLocale } from "next-intl";
 
 interface BasketState {
   basket: BasketProduct[];
+  shippingLocation: string | undefined;
   emptyBasket: () => void;
   removeProductFromBasket: (id: string) => void;
   addProductToBasket: (product: Stripe.Product, price: Stripe.Price) => void;
   setProductQuantity: (id: string, newQuantity: number) => void;
+  setShippingLocation: (newLocation: string | undefined) => void;
 }
 
 export const useBasketStore = create<BasketState>()(
@@ -36,6 +38,7 @@ export const useBasketStore = create<BasketState>()(
     persist(
       (set) => ({
         basket: [],
+        shippingLocation: "",
         emptyBasket: () => set({ basket: [] }),
         removeProductFromBasket: (id: string) =>
           set((state) => ({
@@ -64,12 +67,17 @@ export const useBasketStore = create<BasketState>()(
                     product,
                     price,
                     quantity: 1,
+                    weight: Number(product?.metadata?.weight) ?? 0,
                   },
                 ],
               };
             }
             return state;
           }),
+        setShippingLocation: (newLocation: string | undefined) =>
+          set(() => ({
+            shippingLocation: newLocation,
+          })),
       }),
       {
         name: "basket-storage",

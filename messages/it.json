@@ -109,6 +109,8 @@
     "title": "Carrello",
     "youHaveXProducts": "Hai {products, plural, =0 {0 prodotti} =1 {1 prodotto} other {# prodotti}} nel carrello",
     "total": "Totale:",
+    "shipping": "Spedizione:",
+    "shippingPlaceholder": "Seleziona il luogo di spedizione",
     "buyButton": "Acquista questi prodotti",
     "emptyButton": "Svuota il carrello",
     "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",

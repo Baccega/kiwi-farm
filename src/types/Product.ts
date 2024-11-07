@@ -5,4 +5,5 @@ export type BasketProduct = {
   product: Stripe.Product;
   price: Stripe.Price;
   quantity: number;
+  weight: number;
 };
