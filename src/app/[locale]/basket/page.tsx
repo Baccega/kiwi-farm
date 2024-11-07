@@ -17,6 +17,11 @@ import {
   SelectSeparator,
 } from "~/components/ui/select";
 import { AVAILABLE_COUNTRIES_ZONES, getShippingPrice } from "~/lib/dhl";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 
 export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
@@ -114,23 +119,33 @@ export default function BasketPage(props: { params: { locale: string } }) {
             </div>
 
             <div className="flex flex-col gap-2 md:flex-row">
-              <Link
-                href={
-                  isShippingLocationSelected
-                    ? `/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`
-                    : "#"
-                }
-                className={cn(
-                  buttonVariants({
-                    variant: isShippingLocationSelected
-                      ? "default"
-                      : "disabled",
-                  }),
-                  "flex items-center gap-2",
-                )}
-              >
-                <Coins /> {t("buyButton")}
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={
+                      isShippingLocationSelected
+                        ? `/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`
+                        : "#"
+                    }
+                    className={cn(
+                      buttonVariants({
+                        variant: isShippingLocationSelected
+                          ? "default"
+                          : "disabled",
+                      }),
+                      "flex items-center gap-2",
+                    )}
+                  >
+                    <Coins /> {t("buyButton")}
+                  </Link>
+                </TooltipTrigger>
+                {!isShippingLocationSelected ? (
+                  <TooltipContent>
+                    <p>{t("disabledBuyButton")}</p>
+                  </TooltipContent>
+                ) : null}
+              </Tooltip>
+
               <Button
                 className="flex items-center gap-2"
                 variant={"outline"}

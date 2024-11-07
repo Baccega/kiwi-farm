@@ -112,6 +112,7 @@
     "shipping": "Spedizione:",
     "shippingPlaceholder": "Seleziona il luogo di spedizione",
     "buyButton": "Acquista questi prodotti",
+    "disabledBuyButton": "Devi selezionare il luogo di spedizione",
     "emptyButton": "Svuota il carrello",
     "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
     "emptyCartAlertDescription": "Questa azione non può essere annullata."

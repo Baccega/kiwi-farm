@@ -22,6 +22,7 @@ import { PostHogProvider } from "posthog-js/react";
 import { Drawer } from "~/components/ui/drawer";
 import CookiesBanner from "./_components/CookieBanner";
 import { useLocale } from "next-intl";
+import { TooltipProvider } from "~/components/ui/tooltip";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -160,25 +161,31 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     >
       <PostHogProvider client={posthog}>
         <QueryClientProvider client={queryClient}>
-          <AlertContext.Provider value={{ openAlert }}>
-            <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
-              <AlertDialogContent onEscapeKeyDown={() => setIsAlertOpen(false)}>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>{title}</AlertDialogTitle>
-                  <AlertDialogDescription>{description}</AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel onClick={closeAlert}>
-                    Annulla
-                  </AlertDialogCancel>
-                  <AlertDialogAction onClick={handleConfirm}>
-                    Conferma
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-              {children}
-            </AlertDialog>
-          </AlertContext.Provider>
+          <TooltipProvider>
+            <AlertContext.Provider value={{ openAlert }}>
+              <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}>
+                <AlertDialogContent
+                  onEscapeKeyDown={() => setIsAlertOpen(false)}
+                >
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>{title}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      {description}
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel onClick={closeAlert}>
+                      Annulla
+                    </AlertDialogCancel>
+                    <AlertDialogAction onClick={handleConfirm}>
+                      Conferma
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+                {children}
+              </AlertDialog>
+            </AlertContext.Provider>
+          </TooltipProvider>
         </QueryClientProvider>
       </PostHogProvider>
       <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} />

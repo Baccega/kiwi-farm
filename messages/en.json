@@ -112,6 +112,7 @@
     "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
     "buyButton": "Purchase these products",
+    "disabledBuyButton": "You need to select the shipping location",
     "emptyButton": "Empty the cart",
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
     "emptyCartAlertDescription": "This action cannot be undone."
