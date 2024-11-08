@@ -111,11 +111,14 @@
     "total": "Totale:",
     "shipping": "Spedizione:",
     "shippingPlaceholder": "Seleziona il luogo di spedizione",
+    "pickup": "Ritira in negozio",
     "buyButton": "Acquista questi prodotti",
-    "disabledBuyButton": "Devi selezionare il luogo di spedizione",
+    "disabledBuyButton": "Il carrello è superiore all'attuale limite di peso di spedizione ({weightLimit}kg)",
     "emptyButton": "Svuota il carrello",
     "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
-    "emptyCartAlertDescription": "Questa azione non può essere annullata."
+    "emptyCartAlertDescription": "Questa azione non può essere annullata.",
+    "weightLimitTitle": "Limite di peso raggiunto!",
+    "weightLimitDescription": "Al momento c'è un limite di {weightLimit}kg sulle spedizioni"
   },
   "Checkout": {
     "title": "🎉 Grazie per il tuo acquisto 🎉",

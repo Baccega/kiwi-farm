@@ -109,13 +109,16 @@
     "title": "Cart",
     "shipping": "Shipping:",
     "shippingPlaceholder": "Select the shipping location",
+    "pickup": "Pickup at the store",
     "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
     "buyButton": "Purchase these products",
-    "disabledBuyButton": "You need to select the shipping location",
+    "disabledBuyButton": "The basket is over the current weight shipping limit ({weightLimit}kg)",
     "emptyButton": "Empty the cart",
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
-    "emptyCartAlertDescription": "This action cannot be undone."
+    "emptyCartAlertDescription": "This action cannot be undone.",
+    "weightLimitTitle": "Weight limit reached!",
+    "weightLimitDescription": "There is currently a weight limit of {weightLimit}kg on shipping"
   },
   "Checkout": {
     "title": "🎉 Thank you for your purchase 🎉",

@@ -1,6 +1,6 @@
 import { type BasketProduct } from "~/types/Product";
 
-const WEIGHT_LIMIT = 30;
+export const WEIGHT_LIMIT = 30;
 
 export const AVAILABLE_COUNTRIES_ZONES: Record<
   string,

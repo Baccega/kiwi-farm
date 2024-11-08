@@ -2,7 +2,7 @@
 
 import { Button, buttonVariants } from "~/components/ui/button";
 import { AlertContext, useBasketStore } from "../providers";
-import { Coins, Trash } from "lucide-react";
+import { AlertCircle, Coins, Trash } from "lucide-react";
 import BasketProduct from "./_components/BasketProduct";
 import { useContext } from "react";
 import Link from "next/link";
@@ -16,12 +16,17 @@ import {
   SelectContent,
   SelectSeparator,
 } from "~/components/ui/select";
-import { AVAILABLE_COUNTRIES_ZONES, getShippingPrice } from "~/lib/dhl";
+import {
+  AVAILABLE_COUNTRIES_ZONES,
+  getShippingPrice,
+  WEIGHT_LIMIT,
+} from "~/lib/dhl";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 
 export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
@@ -32,13 +37,19 @@ export default function BasketPage(props: { params: { locale: string } }) {
     (state) => state.setShippingLocation,
   );
 
-  const isShippingLocationSelected = !!shippingLocation;
+  const isPickup = shippingLocation === "pickup";
   const shippingZone =
-    isShippingLocationSelected &&
-    AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
-  const shippingPrice = isShippingLocationSelected
-    ? Number(shippingZone && getShippingPrice(basket, shippingZone).toFixed(2))
-    : 0;
+    !isPickup && AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
+  const shippingPrice = isPickup
+    ? 0
+    : Number(shippingZone && getShippingPrice(basket, shippingZone).toFixed(2));
+
+  const totalWeight = basket.reduce(
+    (acc, { weight, quantity }) => Number(weight) * quantity + acc,
+    0,
+  );
+
+  const isOverTheWeightLimit = totalWeight > WEIGHT_LIMIT;
 
   const { openAlert } = useContext(AlertContext) ?? {};
 
@@ -52,8 +63,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
   }
 
   function handleShippingLocationChange(value: string) {
-    const newShippingLocation = value === "-" ? undefined : value;
-    setShippingLocation(newShippingLocation);
+    setShippingLocation(value);
   }
 
   return (
@@ -86,8 +96,8 @@ export default function BasketPage(props: { params: { locale: string } }) {
                   <SelectValue placeholder={t("shippingPlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem key="-" value="-">
-                    {t("shippingPlaceholder")}
+                  <SelectItem key="pickup" value="pickup">
+                    {t("pickup")}
                   </SelectItem>
                   <SelectSeparator />
                   {Object.entries(AVAILABLE_COUNTRIES_ZONES).map(
@@ -118,20 +128,27 @@ export default function BasketPage(props: { params: { locale: string } }) {
               </span>
             </div>
 
+            {!isPickup && isOverTheWeightLimit && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>{t("weightLimitTitle")}</AlertTitle>
+                <AlertDescription>
+                  {t("weightLimitDescription", { weightLimit: WEIGHT_LIMIT })}
+                </AlertDescription>
+              </Alert>
+            )}
+
             <div className="flex flex-col gap-2 md:flex-row">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
-                    href={
-                      isShippingLocationSelected
-                        ? `/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`
-                        : "#"
-                    }
+                    href={`/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`}
                     className={cn(
                       buttonVariants({
-                        variant: isShippingLocationSelected
-                          ? "default"
-                          : "disabled",
+                        variant:
+                          !isPickup && isOverTheWeightLimit
+                            ? "disabled"
+                            : "default",
                       }),
                       "flex items-center gap-2",
                     )}
@@ -139,9 +156,11 @@ export default function BasketPage(props: { params: { locale: string } }) {
                     <Coins /> {t("buyButton")}
                   </Link>
                 </TooltipTrigger>
-                {!isShippingLocationSelected ? (
+                {!isPickup && isOverTheWeightLimit ? (
                   <TooltipContent>
-                    <p>{t("disabledBuyButton")}</p>
+                    <p>
+                      {t("disabledBuyButton", { weightLimit: WEIGHT_LIMIT })}
+                    </p>
                   </TooltipContent>
                 ) : null}
               </Tooltip>
