@@ -1,3 +1,4 @@
+import type Stripe from "stripe";
 import { type BasketProduct } from "~/types/Product";
 
 export const WEIGHT_LIMIT = 30;
@@ -33,7 +34,9 @@ export const AVAILABLE_COUNTRIES_ZONES: Record<
   SE: { zone: "3", label: "Sweden" },
 };
 
-export const AVAILABLE_COUNTRIES = Object.keys(AVAILABLE_COUNTRIES_ZONES);
+export const AVAILABLE_COUNTRIES = Object.keys(
+  AVAILABLE_COUNTRIES_ZONES,
+) as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[];
 
 type Zone = "1" | "2" | "3" | "4" | "5" | "Italy";
 

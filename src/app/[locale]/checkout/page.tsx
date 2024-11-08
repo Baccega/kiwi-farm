@@ -7,12 +7,14 @@ import {
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
 import useStripe from "./_hooks/useStripe";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
 export default function CheckoutPage(props: { params: { locale: string } }) {
+  const searchParams = useSearchParams();
+  const shippingLocation = searchParams.get("shippingLocation") ?? "pickup";
   const basket = useBasketStore((state) => state.basket);
 
-  const stripeProps = useStripe(basket, props.params.locale);
+  const stripeProps = useStripe(basket, props.params.locale, shippingLocation);
   // const { data, isLoading } = useQuery({
   //   queryKey: ["checkout-session"],
   //   queryFn: createStripeCheckoutSession,

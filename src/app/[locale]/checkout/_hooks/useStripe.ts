@@ -3,7 +3,11 @@ import { useCallback } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { type BasketProduct } from "~/types/Product";
 
-export default function useStripe(basket: BasketProduct[], locale: string) {
+export default function useStripe(
+  basket: BasketProduct[],
+  locale: string,
+  shippingLocation: string,
+) {
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
   const fetchClientSecret = useCallback(() => {
     return fetch(`/${locale}/checkout/api`, {
@@ -14,6 +18,7 @@ export default function useStripe(basket: BasketProduct[], locale: string) {
           price: price.id,
         })),
         locale,
+        shippingLocation,
       }),
     })
       .then((res) => res.json())
@@ -21,7 +26,7 @@ export default function useStripe(basket: BasketProduct[], locale: string) {
         const data = z.object({ clientSecret: z.string() }).parse(unParsedData);
         return data.clientSecret;
       });
-  }, [basket, locale]);
+  }, [basket, locale, shippingLocation]);
 
   const options = { fetchClientSecret };
 
