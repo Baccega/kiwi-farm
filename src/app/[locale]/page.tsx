@@ -40,7 +40,6 @@ export default async function HomePage(props: { params: { locale: string } }) {
       id: "farmers-market",
       image: spaccioImage,
       name: t("Services.farmersMarket.title"),
-      imgClassname: "object-right",
     },
   ];
 
@@ -144,10 +143,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
                     src={service.image ?? "/placeholder.png"}
                     fill={true}
                     alt={service.name ?? ""}
-                    className={cn(
-                      "z-20 rounded-lg object-cover",
-                      service.imgClassname,
-                    )}
+                    className={cn("z-20 rounded-lg object-cover object-center")}
                     sizes="20rem"
                   />
                 ) : null}
