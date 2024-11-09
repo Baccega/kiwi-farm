@@ -105,7 +105,8 @@
     "noProductsAvailable": "No products available at the moment",
     "addProductToBasket": "Add product to basket",
     "totalPrice": "{total} €",
-    "pricePerUnit": "{price} € / {unit} (VAT included)"
+    "pricePerUnit": "{price} € / {unit} (VAT included)",
+    "pricePerUnitShort": "{price} € / {unit}"
   },
   "Basket": {
     "title": "Cart",

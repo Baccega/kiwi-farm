@@ -16,7 +16,7 @@ export const BOTTOM_RIGHT = "-bottom-7 -right-6";
 export const BOTTOM_RIGHT_2 = "-bottom-7 right-0";
 export const BOTTOM_RIGHT_3 = "bottom-0 -right-6";
 
-const sizes = [32, 35, 37] as const;
+const sizes = [35, 37, 39] as const;
 // const extraFlowers = [0, 1, 2, 3];
 // const positions =
 

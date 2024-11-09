@@ -45,10 +45,16 @@ export default async function ProductList(props: { locale: string }) {
                   className="z-20 rounded-lg object-cover"
                 />
               ) : null}
-              <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
-                <h2>{product.name}</h2>
-                <p>{product.description}</p>
-                {price ? <p>{getFormattedPrice(price)} €</p> : null}
+              <span className="h-15 z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4">
+                <h2 className="text-balance">{product.name}</h2>
+                <p className="text-nowrap">
+                  {price
+                    ? t("pricePerUnitShort", {
+                        price: getFormattedPrice(price),
+                        unit: product.unit_label ?? "pz",
+                      })
+                    : null}
+                </p>
               </span>
             </CustomBorder>
           </Link>

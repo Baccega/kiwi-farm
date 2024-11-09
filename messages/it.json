@@ -105,7 +105,8 @@
     "noProductsAvailable": "Non ci sono prodotti disponibili al momento",
     "addProductToBasket": "Aggiungi prodotto al carrello",
     "totalPrice": "{total} €",
-    "pricePerUnit": "{price} € / {unit} (Iva inclusa)"
+    "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
+    "pricePerUnitShort": "{price} € / {unit}"
   },
   "Basket": {
     "title": "Carrello",
