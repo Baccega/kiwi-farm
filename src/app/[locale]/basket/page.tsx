@@ -27,6 +27,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
+import { redirect } from "next/navigation";
 
 export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
@@ -53,6 +54,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
           getShippingPrice(totalWeight, shippingZone).price.toFixed(2),
       );
 
+  const isBuyButtonDisabled = !isPickup && isOverTheWeightLimit;
   const { openAlert } = useContext(AlertContext) ?? {};
 
   function handleEmptyBasket() {
@@ -66,6 +68,12 @@ export default function BasketPage(props: { params: { locale: string } }) {
 
   function handleShippingLocationChange(value: string) {
     setShippingLocation(value);
+  }
+
+  function handleBuyButtonClick() {
+    redirect(
+      `/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`,
+    );
   }
 
   return (
@@ -143,22 +151,17 @@ export default function BasketPage(props: { params: { locale: string } }) {
             <div className="flex flex-col gap-2 md:flex-row">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
-                    href={`/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`}
-                    className={cn(
-                      buttonVariants({
-                        variant:
-                          !isPickup && isOverTheWeightLimit
-                            ? "disabled"
-                            : "default",
-                      }),
-                      "flex items-center gap-2",
-                    )}
+                  <Button
+                    onClick={() =>
+                      isBuyButtonDisabled ? null : handleBuyButtonClick()
+                    }
+                    variant={isBuyButtonDisabled ? "disabled" : "default"}
+                    className="flex items-center gap-2"
                   >
                     <Coins /> {t("buyButton")}
-                  </Link>
+                  </Button>
                 </TooltipTrigger>
-                {!isPickup && isOverTheWeightLimit ? (
+                {isBuyButtonDisabled ? (
                   <TooltipContent>
                     <p>
                       {t("disabledBuyButton", { weightLimit: WEIGHT_LIMIT })}
