@@ -26,7 +26,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
@@ -36,6 +36,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
   const setShippingLocation = useBasketStore(
     (state) => state.setShippingLocation,
   );
+  const router = useRouter();
 
   const totalWeight = basket.reduce(
     (acc, { weight, quantity }) => Number(weight) * quantity + acc,
@@ -70,7 +71,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
   }
 
   function handleBuyButtonClick() {
-    redirect(
+    router.push(
       `/${props.params.locale}/checkout?shippingLocation=${shippingLocation}`,
     );
   }
