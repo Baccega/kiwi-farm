@@ -1,12 +1,11 @@
 "use client";
 
-import { Button, buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import { AlertContext, useBasketStore } from "../providers";
 import { AlertCircle, Coins, Trash } from "lucide-react";
 import BasketProduct from "./_components/BasketProduct";
 import { useContext } from "react";
-import Link from "next/link";
-import { cn, getFormattedPrice } from "~/lib/utils";
+import { getFormattedPrice } from "~/lib/utils";
 import { useTranslations } from "next-intl";
 import {
   Select,
