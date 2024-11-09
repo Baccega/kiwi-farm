@@ -57,7 +57,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
           className="absolute bottom-0 top-0 h-full w-full border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4"
         >
           <Image
-            src="/products/kiwi2.jpg"
+            src="/products/kiwi.jpg"
             aria-hidden="true"
             className="-z-10 block object-cover opacity-30 grayscale"
             alt=""
