@@ -37,19 +37,21 @@ export default function BasketPage(props: { params: { locale: string } }) {
     (state) => state.setShippingLocation,
   );
 
+  const totalWeight = basket.reduce(
+    (acc, { weight, quantity }) => Number(weight) * quantity + acc,
+    0,
+  );
+  const isOverTheWeightLimit = totalWeight > WEIGHT_LIMIT;
+
   const isPickup = shippingLocation === "pickup";
   const shippingZone =
     !isPickup && AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
   const shippingPrice = isPickup
     ? 0
-    : Number(shippingZone && getShippingPrice(basket, shippingZone).toFixed(2));
-
-  const totalWeight = basket.reduce(
-    (acc, { weight, quantity }) => Number(weight) * quantity + acc,
-    0,
-  );
-
-  const isOverTheWeightLimit = totalWeight > WEIGHT_LIMIT;
+    : Number(
+        shippingZone &&
+          getShippingPrice(totalWeight, shippingZone).price.toFixed(2),
+      );
 
   const { openAlert } = useContext(AlertContext) ?? {};
 

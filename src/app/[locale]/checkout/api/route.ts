@@ -1,6 +1,11 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { AVAILABLE_COUNTRIES, WEIGHT_LIMIT } from "~/lib/dhl";
+import {
+  AVAILABLE_COUNTRIES,
+  AVAILABLE_COUNTRIES_ZONES,
+  getShippingPrice,
+  WEIGHT_LIMIT,
+} from "~/lib/dhl";
 import { createCheckoutSessionRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -77,6 +82,12 @@ export async function POST(req: NextRequest) {
       throw new Error("Weight limit reached");
     }
 
+    const shippingZone = AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
+    const shippingPriceId = getShippingPrice(
+      totalWeight,
+      shippingZone,
+    )?.shipping_id;
+
     const session = await stripe.checkout.sessions.create({
       locale: locale as Stripe.Checkout.SessionCreateParams.Locale,
       ui_mode: "embedded",
@@ -89,6 +100,9 @@ export async function POST(req: NextRequest) {
               (cur) => cur === shippingLocation,
             ),
           },
+      shipping_options: isPickup
+        ? undefined
+        : [{ shipping_rate: shippingPriceId }],
       return_url: `${req.headers.get("origin")}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     });
 
