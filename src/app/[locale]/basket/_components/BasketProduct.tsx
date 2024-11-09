@@ -30,10 +30,11 @@ export default function BasketProduct(props: BasketProductProps) {
             alt={""}
           />
         </figure>
-        <Link href={`/${locale}/products/${product.id}`}>
-          <h3 className="text-lg font-bold grid-in-name hover:underline">
-            {product.name}
-          </h3>
+        <Link
+          className="grid-in-name"
+          href={`/${locale}/products/${product.id}`}
+        >
+          <h3 className="text-lg font-bold hover:underline">{product.name}</h3>
         </Link>
 
         <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
