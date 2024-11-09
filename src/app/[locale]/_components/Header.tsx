@@ -16,7 +16,7 @@ export default async function Header(props: { locale: string }) {
           width={160}
           height={160}
           priority
-          className="absolute bottom-0 left-0 z-20 translate-x-[-55%] translate-y-[87%] object-cover md:translate-x-[-45%]"
+          className="absolute bottom-0 left-0 z-20 translate-x-[-55%] translate-y-[83%] scale-90 object-cover md:translate-x-[-45%] md:scale-100"
         />
         <Image
           src="/svgs/drappeggio4.svg"
@@ -25,7 +25,7 @@ export default async function Header(props: { locale: string }) {
           aria-hidden={true}
           width={160}
           height={160}
-          className="absolute bottom-0 right-0 z-20 translate-x-[55%] translate-y-[87%] object-cover md:translate-x-[45%]"
+          className="absolute bottom-0 right-0 z-20 translate-x-[55%] translate-y-[83%] scale-90 object-cover md:translate-x-[45%] md:scale-100"
         />
         <Link
           href={`/${props.locale}`}
