@@ -103,12 +103,16 @@
   },
   "Products": {
     "noProductsAvailable": "Non ci sono prodotti disponibili al momento",
-    "addProductToBasket": "Aggiungi prodotto al carrello"
+    "addProductToBasket": "Aggiungi prodotto al carrello",
+    "totalPrice": "{total} €",
+    "pricePerUnit": "{price} € / {unit} (Iva inclusa)"
   },
   "Basket": {
     "title": "Carrello",
     "youHaveXProducts": "Hai {products, plural, =0 {0 prodotti} =1 {1 prodotto} other {# prodotti}} nel carrello",
     "total": "Totale:",
+    "totalPrice": "{total} €",
+    "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
     "shipping": "Spedizione:",
     "shippingPlaceholder": "Seleziona il luogo di spedizione",
     "pickup": "Ritira in negozio",

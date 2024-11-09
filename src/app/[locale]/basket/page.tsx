@@ -126,14 +126,15 @@ export default function BasketPage(props: { params: { locale: string } }) {
               <span className="flex w-full items-baseline justify-between gap-3 md:w-96">
                 <h3 className="text-3xl font-bold">{t("total")}</h3>
                 <p className="text-2xl font-bold">
-                  {Number(
-                    basket?.reduce(
-                      (acc, { price, quantity }) =>
-                        getFormattedPrice(price) * quantity + acc,
-                      0,
-                    ) + shippingPrice,
-                  ).toFixed(2)}{" "}
-                  €
+                  {t("totalPrice", {
+                    total: Number(
+                      basket?.reduce(
+                        (acc, { price, quantity }) =>
+                          getFormattedPrice(price) * quantity + acc,
+                        0,
+                      ) + shippingPrice,
+                    ).toFixed(2),
+                  })}
                 </p>
               </span>
             </div>

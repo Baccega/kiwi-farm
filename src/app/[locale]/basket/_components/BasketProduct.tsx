@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
@@ -16,6 +16,7 @@ export default function BasketProduct(props: BasketProductProps) {
   const { basketProduct } = props;
   const { product, price, quantity } = basketProduct;
   const locale = useLocale();
+  const t = useTranslations("Basket");
 
   return (
     <div className="min-h-36 gap-4 rounded-xl border-2 border-primary bg-accent shadow-lg @container/basket-product">
@@ -36,9 +37,14 @@ export default function BasketProduct(props: BasketProductProps) {
         </Link>
 
         <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
-          {Number(getFormattedPrice(price) * quantity).toFixed(2)} €
+          {t("totalPrice", {
+            total: Number(getFormattedPrice(price) * quantity).toFixed(2),
+          })}
           <span className="text-sm font-light tracking-wide">
-            {getFormattedPrice(price)} € / {product.unit_label ?? "pz"}
+            {t("pricePerUnit", {
+              price: getFormattedPrice(price),
+              unit: product.unit_label ?? "pz",
+            })}
           </span>
         </p>
         <span className="flex items-center justify-start gap-2 self-end pb-4 pr-2 grid-in-quantity @md/basket-product:justify-end">

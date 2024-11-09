@@ -28,25 +28,37 @@ export function ProductBasketData(props: {
       {basketProduct ? (
         <div className="">
           <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
-            {Number(getFormattedPrice(price) * basketProduct.quantity).toFixed(
-              2,
-            )}{" "}
-            €
+            {t("totalPrice", {
+              total: Number(
+                getFormattedPrice(price) * basketProduct.quantity,
+              ).toFixed(2),
+            })}
             <span className="text-sm font-light tracking-wide">
-              {getFormattedPrice(price)} € / {product.unit_label ?? "pz"}
+              {t("pricePerUnit", {
+                price: getFormattedPrice(price),
+                unit: product.unit_label ?? "pz",
+              })}
             </span>
           </p>
           <ProductQuantityChanger basketProduct={basketProduct} />
         </div>
       ) : (
-        <Button
-          variant={"default"}
-          className="gap-2"
-          onClick={() => addProductToBasket(product, price)}
-        >
-          <ShoppingBasket />
-          {t("addProductToBasket")}
-        </Button>
+        <>
+          <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
+            {t("pricePerUnit", {
+              price: getFormattedPrice(price),
+              unit: product.unit_label ?? "pz",
+            })}
+          </p>
+          <Button
+            variant={"default"}
+            className="gap-2"
+            onClick={() => addProductToBasket(product, price)}
+          >
+            <ShoppingBasket />
+            {t("addProductToBasket")}
+          </Button>
+        </>
       )}
     </div>
   );

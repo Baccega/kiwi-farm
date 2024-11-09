@@ -103,7 +103,9 @@
   },
   "Products": {
     "noProductsAvailable": "No products available at the moment",
-    "addProductToBasket": "Add product to basket"
+    "addProductToBasket": "Add product to basket",
+    "totalPrice": "{total} €",
+    "pricePerUnit": "{price} € / {unit} (VAT included)"
   },
   "Basket": {
     "title": "Cart",
@@ -112,6 +114,8 @@
     "pickup": "Pickup at the store",
     "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
+    "totalPrice": "{total} €",
+    "pricePerUnit": "{price} € / {unit} (VAT included)",
     "buyButton": "Purchase these products",
     "disabledBuyButton": "The basket is over the current weight shipping limit ({weightLimit}kg)",
     "emptyButton": "Empty the cart",
