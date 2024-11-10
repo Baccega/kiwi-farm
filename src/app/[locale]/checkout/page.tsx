@@ -24,7 +24,7 @@ function Checkout({ locale }: { locale: string }) {
   return (
     <section
       id="checkout"
-      className="container relative min-h-page bg-primary py-10 md:px-16"
+      className="container relative h-full min-h-page w-screen max-w-none bg-primary py-10 text-white md:px-16"
     >
       <EmbeddedCheckoutProvider {...stripeProps}>
         <EmbeddedCheckout />
