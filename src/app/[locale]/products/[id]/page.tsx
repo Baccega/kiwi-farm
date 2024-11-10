@@ -42,8 +42,7 @@ export default async function Page(props: {
   const product = await getStripeProduct(props.params.id);
 
   if (
-    !product ||
-    !product.default_price ||
+    !product?.default_price ||
     typeof product.default_price === "string"
   )
     return notFound();
