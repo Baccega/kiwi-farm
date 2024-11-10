@@ -102,7 +102,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 defaultValue={shippingLocation}
                 onValueChange={handleShippingLocationChange}
               >
-                <SelectTrigger className="w-96">
+                <SelectTrigger className="max-w-96">
                   <SelectValue placeholder={t("shippingPlaceholder")} />
                 </SelectTrigger>
                 <SelectContent>
@@ -119,11 +119,11 @@ export default function BasketPage(props: { params: { locale: string } }) {
                   )}
                 </SelectContent>
               </Select>
-              <span className="flex w-full items-baseline justify-between gap-3 md:w-96">
+              <span className="flex w-full items-baseline justify-between gap-3 max-w-96">
                 <h4 className="text-xl">{t("shipping")}</h4>
                 <p className="text-lg font-bold">{shippingPrice} €</p>
               </span>
-              <span className="flex w-full items-baseline justify-between gap-3 md:w-96">
+              <span className="flex w-full items-baseline justify-between gap-3 max-w-96">
                 <h3 className="text-3xl font-bold">{t("total")}</h3>
                 <p className="text-2xl font-bold">
                   {t("totalPrice", {

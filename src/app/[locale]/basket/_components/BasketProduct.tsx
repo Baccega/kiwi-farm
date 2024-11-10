@@ -20,7 +20,7 @@ export default function BasketProduct(props: BasketProductProps) {
 
   return (
     <div className="min-h-36 gap-4 rounded-xl border-2 border-primary bg-accent shadow-lg @container/basket-product">
-      <div className="grid h-full w-full grid-cols-basket-product grid-rows-basket-product items-center gap-2 grid-areas-basket-product-sm @md/basket-product:grid-areas-basket-product">
+      <div className="grid h-full w-full grid-cols-basket-product grid-rows-basket-product items-center gap-2 pr-2 grid-areas-basket-product-sm @md/basket-product:grid-areas-basket-product">
         <figure className="relative h-full w-32 rounded-lg rounded-r-none border-r-2 border-primary bg-primary grid-in-image">
           <Image
             src={product?.images?.[0] ?? "/placeholder.png"}
@@ -38,17 +38,19 @@ export default function BasketProduct(props: BasketProductProps) {
         </Link>
 
         <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
-          {t("totalPrice", {
-            total: Number(getFormattedPrice(price) * quantity).toFixed(2),
-          })}
-          <span className="text-sm font-light tracking-wide">
+          <span className="text-nowrap">
+            {t("totalPrice", {
+              total: Number(getFormattedPrice(price) * quantity).toFixed(2),
+            })}
+          </span>
+          <span className="text-balance text-sm font-light tracking-wide">
             {t("pricePerUnit", {
               price: getFormattedPrice(price),
               unit: product.unit_label ?? "pz",
             })}
           </span>
         </p>
-        <span className="flex items-center justify-start gap-2 self-end pb-4 pr-2 grid-in-quantity @md/basket-product:justify-end">
+        <span className="flex items-center justify-start self-end pb-4 pr-2 grid-in-quantity @md/basket-product:justify-end">
           <ProductQuantityChanger basketProduct={basketProduct} />
         </span>
       </div>

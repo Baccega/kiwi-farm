@@ -46,7 +46,7 @@ export default async function Page(props: {
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:px-16">
         <h1 className="px-4 text-3xl font-bold md:px-0">{product.name}</h1>
         <div className="flex h-full flex-col gap-8 md:flex-row">
-          <figure className="relative h-80 w-full min-w-96 basis-80 px-12">
+          <figure className="relative h-80 w-full md:min-w-96 basis-80 px-12">
             <Carousel opts={{ loop: true, align: "start" }}>
               <CarouselContent>
                 {product.metadata?.images?.split(",").map((image, index) => (

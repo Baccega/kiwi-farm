@@ -37,7 +37,7 @@ export default async function Header(props: { locale: string }) {
             width={200}
             height={50}
             priority
-            className="h-auto w-52"
+            className="h-auto w-44 md:w-52"
           />
         </Link>
         <div className="flex items-center gap-1 @md/header:gap-4 @4xl/header:flex-row-reverse md:gap-6">
