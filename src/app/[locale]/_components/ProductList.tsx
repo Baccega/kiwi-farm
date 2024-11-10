@@ -45,7 +45,7 @@ export default async function ProductList(props: { locale: string }) {
                   className="z-20 rounded-lg object-cover"
                 />
               ) : null}
-              <span className="h-15 z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4 shadow-lg">
+              <span className="h-15 shadow-top z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4">
                 <h2 className="text-balance">{product.name}</h2>
                 <p className="text-nowrap">
                   {price

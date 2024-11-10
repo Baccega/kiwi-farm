@@ -147,7 +147,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
                     sizes="20rem"
                   />
                 ) : null}
-                <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
+                <span className="shadow-top h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
                   <h2>{service.name}</h2>
                 </span>
               </CustomBorder>

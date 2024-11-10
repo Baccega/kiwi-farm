@@ -31,6 +31,9 @@ const config = {
       padding: {
         header: "var(--header-height)",
       },
+      boxShadow: {
+        top: `0px -5px 10px 0px rgba(0,0,0,0.4);`,
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -105,12 +108,7 @@ const config = {
           "description description",
           "price price",
         ],
-        product: [
-          "image name",
-          "image description",
-          "image price",
-          ". . ",
-        ],
+        product: ["image name", "image description", "image price", ". . "],
       },
       gridTemplateColumns: {
         "basket-product": "8rem 1fr 1fr",
