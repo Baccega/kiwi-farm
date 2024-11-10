@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getStripePrice, getStripeProduct } from "~/server/stripeQueries";
+import { getStripeProduct } from "~/server/stripeQueries";
 import { ProductBasketData } from "./_components/productBasketData";
 import {
   Carousel,
@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "~/components/ui/carousel";
 import { setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params: { locale, id },
@@ -39,14 +40,20 @@ export default async function Page(props: {
 }) {
   setRequestLocale(props.params.locale);
   const product = await getStripeProduct(props.params.id);
-  const price = await getStripePrice(product.default_price?.toString() ?? "");
+
+  if (
+    !product ||
+    !product.default_price ||
+    typeof product.default_price === "string"
+  )
+    return notFound();
 
   return (
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:px-16">
         <h1 className="px-4 text-3xl font-bold md:px-0">{product.name}</h1>
         <div className="flex h-full flex-col gap-8 md:flex-row">
-          <figure className="relative h-80 w-full md:min-w-96 basis-80 px-12">
+          <figure className="relative h-80 w-full basis-80 px-12 md:min-w-96">
             <Carousel opts={{ loop: true, align: "start" }}>
               <CarouselContent>
                 {product.metadata?.images?.split(",").map((image, index) => (
@@ -68,7 +75,10 @@ export default async function Page(props: {
             <p className="">
               {product.metadata?.[`${props.params.locale}_description`]}
             </p>
-            <ProductBasketData product={product} price={price} />
+            <ProductBasketData
+              product={product}
+              price={product.default_price}
+            />
           </div>
         </div>
       </section>

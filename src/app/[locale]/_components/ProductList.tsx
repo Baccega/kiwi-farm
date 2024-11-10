@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { CustomBorder } from "~/components/customBorder";
-import { getStripePrices, getStripeProducts } from "~/server/stripeQueries";
+import { getStripeProducts } from "~/server/stripeQueries";
 import Link from "next/link";
 import { getFormattedPrice } from "~/lib/utils";
 import { getTranslations } from "next-intl/server";
@@ -10,7 +10,6 @@ export const revalidate = 3600;
 
 export default async function ProductList(props: { locale: string }) {
   const products = await getStripeProducts();
-  const prices = await getStripePrices();
   const t = await getTranslations("Products");
 
   if (products?.length === 0) {
@@ -24,8 +23,8 @@ export default async function ProductList(props: { locale: string }) {
   return (
     <>
       {products.map((product) => {
-        const price = prices.find((price) => price.product === product.id);
-
+        if (!product.default_price || typeof product.default_price === "string")
+          return null;
         return (
           <Link
             href={`/${props.locale}/products/${product.id}`}
@@ -48,9 +47,9 @@ export default async function ProductList(props: { locale: string }) {
               <span className="h-15 shadow-top z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4">
                 <h2 className="text-balance">{product.name}</h2>
                 <p className="text-nowrap">
-                  {price
+                  {product.default_price
                     ? t("pricePerUnitShort", {
-                        price: getFormattedPrice(price),
+                        price: getFormattedPrice(product.default_price),
                         unit: product.unit_label ?? "pz",
                       })
                     : null}
