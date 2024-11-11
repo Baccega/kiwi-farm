@@ -44,6 +44,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.35.4
     version: 5.35.4(react@18.2.0)
+  '@twicpics/components':
+    specifier: ^0.31.1
+    version: 0.31.1
   '@vercel/postgres':
     specifier: ^0.8.0
     version: 0.8.0
@@ -2442,6 +2445,10 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.35.4
       react: 18.2.0
+    dev: false
+
+  /@twicpics/components@0.31.1:
+    resolution: {integrity: sha512-F/8rf00OkF4zF57YYZW5xjHQs6P1w7lm7q9sGRMxszd2aupqRYxyS6u1SDO4bqolHkxT4rs6+tKm6lzNn8t1Qw==}
     dev: false
 
   /@types/cookie@0.6.0:

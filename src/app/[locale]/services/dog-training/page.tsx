@@ -1,9 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import Image from "next/image";
-import dogTrainingImage from "/public/services/dog-training.jpg";
 import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
+import CdnImage from "~/components/cdnImage";
 
 export async function generateMetadata({
   params: { locale },
@@ -23,7 +22,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      images: [dogTrainingImage.src],
+      images: ["/services/dog-training.jpeg"],
     },
   };
 }
@@ -35,8 +34,8 @@ export default async function Page(props: { params: { locale: string } }) {
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
-          <Image
-            src={dogTrainingImage}
+          <CdnImage
+            src={"/services/dog-training.jpeg"}
             alt={"Dog Training"}
             fill={true}
             className="z-20 rounded-lg object-cover"

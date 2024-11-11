@@ -10,6 +10,7 @@ import {
 } from "~/components/ui/carousel";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import CdnImage from "~/components/cdnImage";
 
 export async function generateMetadata({
   params: { locale, id },
@@ -41,10 +42,7 @@ export default async function Page(props: {
   setRequestLocale(props.params.locale);
   const product = await getStripeProduct(props.params.id);
 
-  if (
-    !product?.default_price ||
-    typeof product.default_price === "string"
-  )
+  if (!product?.default_price || typeof product.default_price === "string")
     return notFound();
 
   return (
@@ -57,7 +55,7 @@ export default async function Page(props: {
               <CarouselContent>
                 {product.metadata?.images?.split(",").map((image, index) => (
                   <CarouselItem key={index} className="relative h-80">
-                    <Image
+                    <CdnImage
                       src={image ?? "/placeholder.png"}
                       alt={product.name ?? ""}
                       fill={true}

@@ -16,10 +16,8 @@ import { Suspense } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { CustomBorder } from "~/components/customBorder";
 import Faq from "./_components/Faq";
-import dogTrainingImage from "/public/services/dog-training.jpg";
-import selfPickingImage from "/public/services/self-picking.jpg";
-import spaccioImage from "/public/services/spaccio.jpg";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import CdnImage from "~/components/cdnImage";
 
 export default async function HomePage(props: { params: { locale: string } }) {
   setRequestLocale(props.params.locale);
@@ -28,17 +26,17 @@ export default async function HomePage(props: { params: { locale: string } }) {
   const SERVICES = [
     {
       id: "dog-training",
-      image: dogTrainingImage,
+      image: "/services/dog-training.jpeg",
       name: t("Services.dogTraining.title"),
     },
     {
       id: "self-picking",
-      image: selfPickingImage,
+      image: "/services/self-picking.jpeg",
       name: t("Services.selfPicking.title"),
     },
     {
       id: "farmers-market",
-      image: spaccioImage,
+      image: "/services/spaccio.jpeg",
       name: t("Services.farmersMarket.title"),
     },
   ];
@@ -55,8 +53,8 @@ export default async function HomePage(props: { params: { locale: string } }) {
           // decorationPositions={[BOTTOM_LEFT, BOTTOM_RIGHT]}
           className="absolute bottom-0 top-0 h-full w-full border-t-0 before:border-t-0 after:border-t-0 md:px-4 md:pb-4"
         >
-          <Image
-            src="/products/kiwi.jpg"
+          <CdnImage
+            src="/products/kiwi.jpeg"
             aria-hidden="true"
             className="-z-10 block object-cover opacity-30 grayscale"
             alt=""
@@ -95,7 +93,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
             </span>
           </span>
         }
-        imgSrc="/enea.jpg"
+        imgSrc="/enea.jpeg"
         imgAlt={t("HomePage.businessAlt")}
         ctaText={t("HomePage.businessCta")}
         ctaHref={`/${props.params.locale}/contacts`}
@@ -139,15 +137,15 @@ export default async function HomePage(props: { params: { locale: string } }) {
             >
               <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
                 {service.image !== null ? (
-                  <Image
-                    src={service.image ?? "/placeholder.png"}
+                  <CdnImage
+                    src={service.image}
                     fill={true}
                     alt={service.name ?? ""}
                     className={cn("z-20 rounded-lg object-cover object-center")}
                     sizes="20rem"
                   />
                 ) : null}
-                <span className="shadow-top h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4">
+                <span className="h-15 z-30 flex w-full justify-between rounded-lg bg-primary-80 p-4 shadow-top">
                   <h2>{service.name}</h2>
                 </span>
               </CustomBorder>

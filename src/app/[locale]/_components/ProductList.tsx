@@ -5,6 +5,7 @@ import { getStripeProducts } from "~/server/stripeQueries";
 import Link from "next/link";
 import { getFormattedPrice } from "~/lib/utils";
 import { getTranslations } from "next-intl/server";
+import CdnImage from "~/components/cdnImage";
 
 export const revalidate = 3600;
 
@@ -33,7 +34,7 @@ export default async function ProductList(props: { locale: string }) {
           >
             <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
               {product.metadata?.images?.split(",")[0] !== null ? (
-                <Image
+                <CdnImage
                   src={
                     product.metadata?.images?.split(",")?.[0] ??
                     "/placeholder.png"
@@ -44,7 +45,7 @@ export default async function ProductList(props: { locale: string }) {
                   className="z-20 rounded-lg object-cover"
                 />
               ) : null}
-              <span className="h-15 shadow-top z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4">
+              <span className="h-15 z-30 flex w-full items-center justify-between rounded-lg bg-primary-80 p-4 shadow-top">
                 <h2 className="text-balance">{product.name}</h2>
                 <p className="text-nowrap">
                   {product.default_price

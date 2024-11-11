@@ -1,8 +1,8 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
+import CdnImage from "~/components/cdnImage";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
 import { getFormattedPrice } from "~/lib/utils";
 import { type BasketProduct } from "~/types/Product";
@@ -22,8 +22,10 @@ export default function BasketProduct(props: BasketProductProps) {
     <div className="min-h-36 gap-4 rounded-xl border-2 border-primary bg-accent shadow-lg @container/basket-product">
       <div className="grid h-full w-full grid-cols-basket-product grid-rows-basket-product items-center gap-2 pr-2 grid-areas-basket-product-sm @md/basket-product:grid-areas-basket-product">
         <figure className="relative h-full w-32 rounded-lg rounded-r-none border-r-2 border-primary bg-primary grid-in-image">
-          <Image
-            src={product?.images?.[0] ?? "/placeholder.png"}
+          <CdnImage
+            src={
+              product.metadata?.images?.split(",")?.[0] ?? "/placeholder.png"
+            }
             className="rounded-lg rounded-r-none object-cover"
             fill
             sizes="8rem"

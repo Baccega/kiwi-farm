@@ -1,7 +1,5 @@
-import Image from "next/image";
-
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import selfPickingImage from "/public/services/self-picking.jpg";
+import CdnImage from "~/components/cdnImage";
 
 export async function generateMetadata({
   params: { locale },
@@ -21,7 +19,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      images: [selfPickingImage.src],
+      images: ["/services/self-picking.jpeg"],
     },
   };
 }
@@ -34,8 +32,8 @@ export default async function Page(props: { params: { locale: string } }) {
     <main className="gap-4 pt-header">
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
-          <Image
-            src={selfPickingImage}
+          <CdnImage
+            src={"/services/self-picking.jpeg"}
             alt={"Self Picking"}
             fill={true}
             sizes="(max-width: 768px) 100vw, 20rem"

@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import Image from "next/image";
 import Link from "next/link";
 import React, { type ReactNode } from "react";
+import CdnImage from "~/components/cdnImage";
 import { CustomBorder } from "~/components/customBorder";
 import { AspectRatio } from "~/components/ui/aspect-ratio";
 import { buttonVariants } from "~/components/ui/button";
@@ -88,7 +88,7 @@ export function HeroSection({
         <div className="basis-1/3">
           <CustomBorder className={heroSectionFigureVariants({ variant })}>
             <AspectRatio ratio={1}>
-              <Image
+              <CdnImage
                 src={imgSrc}
                 alt={imgAlt}
                 fill

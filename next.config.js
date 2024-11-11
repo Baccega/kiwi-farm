@@ -13,7 +13,7 @@ const withNextIntl = createNextIntlPlugin();
 const coreConfig = withNextIntl({
   output: "standalone",
   images: {
-    remotePatterns: [{ hostname: "files.stripe.com" }],
+    remotePatterns: [{ hostname: "kiwi-farm.twic.pics" }],
     formats: ["image/avif", "image/webp"],
   },
   async rewrites() {
