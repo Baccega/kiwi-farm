@@ -27,7 +27,7 @@ jobs:
       - run: echo "$PROD_ENV" >> ./.env
       - run: pnpm install --frozen-lockfile
       - run: NODE_ENV=production && pnpm run build
-      - run: ssh vps "rm -rf /var/www/.next"
+      - run: ssh vps "rm -rf /var/www/.next && git pull"
       - run: rsync -re ssh ./.next/ vps:/var/www/.next
       - run: rsync -re ssh ./.env vps:/var/www/.env
       - run: ssh vps "source ~/.nvm/nvm.sh && pm2 restart kiwi-farm"
