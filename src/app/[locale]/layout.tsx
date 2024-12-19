@@ -30,7 +30,7 @@ export async function generateMetadata({
     description: t("HomePage.description"),
     metadataBase: new URL("https://legiumelle.it"),
     alternates: {
-      canonical: "/",
+      canonical: "/it",
       languages: {
         "it-IT": "/it",
         "en-US": "/en",
