@@ -29,7 +29,7 @@ export default function BasketProduct(props: BasketProductProps) {
             className="rounded-lg rounded-r-none object-cover"
             fill
             sizes="8rem"
-            alt={""}
+            alt={product.name}
           />
         </figure>
         <Link
