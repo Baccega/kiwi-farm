@@ -1,9 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { sendTelegramMessage } from "~/server/telegram";
-import {
-  sendTelegramMessageRequestSchema,
-} from "~/types/Api";
+import { sendTelegramMessageRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export const dynamic = "force-dynamic";
@@ -25,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     await sendTelegramMessage(
-      `New order received! 🎉 \nSession: ${session_id}`,
+      `New order received! 🎉 \nSession: ${session_id.slice(0, 20)}\nTotal: ${Number(session.amount_total) / 100}\nShipping: ${session.shipping_details?.address ? JSON.stringify(session.shipping_details?.address) : "No Shipping"}`, 
     );
 
     return NextResponse.json(
