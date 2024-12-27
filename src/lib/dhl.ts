@@ -78,6 +78,15 @@ export function getShippingPrice(totalWeight: number, zone?: Zone) {
   return { price: basePrice?.price, shipping_id: basePrice?.shipping_id };
 }
 
+export function getPickupShippingOption() {
+  return {
+    price: 0,
+    shipping_id: isProduction
+      ? "shr_1Qad9rL58FsTMD3c13V7FB3H"
+      : "shr_1Qacz3L58FsTMD3cNtrgC7nl",
+  };
+}
+
 export const DHL_BASE_PRICES: Record<
   Zone,
   Record<number, { price: number; shipping_id: string }>

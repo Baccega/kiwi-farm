@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import {
   AVAILABLE_COUNTRIES,
   AVAILABLE_COUNTRIES_ZONES,
+  getPickupShippingOption,
   getShippingPrice,
   WEIGHT_LIMIT,
 } from "~/lib/dhl";
@@ -101,7 +102,7 @@ export async function POST(req: NextRequest) {
             ),
           },
       shipping_options: isPickup
-        ? undefined
+        ? [{ shipping_rate: getPickupShippingOption().shipping_id }]
         : [{ shipping_rate: shippingPriceId }],
       return_url: `${req.headers.get("origin")}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     });
