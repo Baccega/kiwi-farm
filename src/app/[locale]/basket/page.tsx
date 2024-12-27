@@ -108,6 +108,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
             <div className="flex flex-col items-baseline gap-3">
               <h4 className="text-xl">{t("shippingMode")}</h4>
               <RadioGroup
+                className="pb-2"
                 defaultValue={
                   shippingLocation === undefined ||
                   shippingLocation === "pickup"
