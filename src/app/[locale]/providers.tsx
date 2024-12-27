@@ -26,7 +26,7 @@ import { TooltipProvider } from "~/components/ui/tooltip";
 
 interface BasketState {
   basket: BasketProduct[];
-  shippingLocation: string;
+  shippingLocation: string | undefined;
   emptyBasket: () => void;
   removeProductFromBasket: (id: string) => void;
   addProductToBasket: (product: Stripe.Product, price: Stripe.Price) => void;
@@ -39,7 +39,7 @@ export const useBasketStore = create<BasketState>()(
     persist(
       (set) => ({
         basket: [],
-        shippingLocation: "pickup",
+        shippingLocation: undefined,
         emptyBasket: () => set({ basket: [] }),
         removeProductFromBasket: (id: string) =>
           set((state) => ({
