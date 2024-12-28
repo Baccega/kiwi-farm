@@ -24,7 +24,13 @@ export function ProductBasketData(props: {
   );
 
   return (
-    <div className="grid-in-price">
+    <div
+      itemProp="offers"
+      itemType="https://schema.org/AggregateOffer"
+      itemScope
+      className="grid-in-price"
+    >
+      <meta itemProp="priceCurrency" content="EUR" />
       {basketProduct ? (
         <div className="">
           <p className="flex flex-row items-baseline gap-x-2 self-center pb-4 text-lg font-bold grid-in-price @md/basket-product:flex-col-reverse @md/basket-product:self-end">
@@ -38,6 +44,15 @@ export function ProductBasketData(props: {
                 price: getFormattedPrice(price),
                 unit: product.unit_label ?? "pz",
               })}
+              <meta
+                itemProp="lowPrice"
+                content={`${getFormattedPrice(price).toFixed(2)}`}
+              />
+              <meta
+                itemProp="highPrice"
+                content={`${(getFormattedPrice(price) * 1.1).toFixed(2)}`}
+              />
+              <meta itemProp="offerCount" content="10" />
             </span>
           </p>
           <ProductQuantityChanger basketProduct={basketProduct} />
