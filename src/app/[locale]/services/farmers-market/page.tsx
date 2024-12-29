@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import spaccioImage from "/public/services/spaccio.jpeg";
 import { buttonVariants } from "~/components/ui/button";
 import CdnImage from "~/components/cdnImage";
 
@@ -23,7 +22,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      images: [spaccioImage.src],
+      images: ["/services/spaccio.jpeg"],
     },
   };
 }
@@ -37,7 +36,7 @@ export default async function Page(props: { params: { locale: string } }) {
       <section className="container relative flex h-full min-h-section flex-col gap-8 py-8 md:flex-row md:px-16">
         <figure className="relative h-80 w-full basis-80 px-12">
           <CdnImage
-            src={spaccioImage}
+            src={"/services/spaccio.jpeg"}
             alt={"Spaccio"}
             fill={true}
             className="z-20 rounded-lg object-cover"
