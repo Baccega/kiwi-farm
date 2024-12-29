@@ -78,7 +78,7 @@ export default async function Page(props: { params: { locale: string } }) {
                 {t("dogTraining.phone")}
               </Link>
             </span>
-            <Image
+            <CdnImage
               src={"/logos/enci-logo.png"}
               alt={"Enci logo"}
               width={150}

@@ -88,7 +88,7 @@ export default async function Page(props: {
               product={product}
               price={product.default_price}
             />
-            <Image
+            <CdnImage
               src={"/logos/sqnpi-logo.png"}
               alt={"Sqnpi logo"}
               width={100}
