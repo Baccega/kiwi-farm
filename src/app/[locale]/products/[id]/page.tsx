@@ -88,6 +88,13 @@ export default async function Page(props: {
               product={product}
               price={product.default_price}
             />
+            <Image
+              src={"/logos/sqnpi-logo.png"}
+              alt={"Sqnpi logo"}
+              width={100}
+              height={100}
+              className="block object-cover pt-4"  
+            />
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPin, Phone } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import CdnImage from "~/components/cdnImage";
+import Image from "next/image";
 
 export async function generateMetadata({
   params: { locale },
@@ -77,6 +78,13 @@ export default async function Page(props: { params: { locale: string } }) {
                 {t("dogTraining.phone")}
               </Link>
             </span>
+            <Image
+              src={"/logos/enci-logo.png"}
+              alt={"Enci logo"}
+              width={150}
+              height={150}
+              className="block object-cover pt-4"  
+            />
           </div>
         </div>
       </section>
