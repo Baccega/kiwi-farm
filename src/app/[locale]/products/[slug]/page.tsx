@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getStripeProduct } from "~/server/stripeQueries";
 import { ProductBasketData } from "./_components/productBasketData";
 import {
@@ -11,23 +10,34 @@ import {
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import CdnImage from "~/components/cdnImage";
+import {
+  getStripeIdFromSlug,
+  isSlugValid,
+  type ProductSlug,
+} from "~/lib/products";
 
 export async function generateMetadata({
-  params: { locale, id },
+  params: { locale, slug },
 }: {
-  params: { locale: string; id: string };
+  params: { locale: string; slug: string };
 }) {
+  if (!isSlugValid(slug)) {
+    return notFound();
+  }
+
+  // Checked slug validity above 
+  const stripeId = getStripeIdFromSlug(slug as ProductSlug);
   // const t = await getTranslations({ locale, namespace: "Metadata" });
-  const product = await getStripeProduct(id);
+  const product = await getStripeProduct(stripeId);
 
   return {
     title: product.name,
     description: product.metadata?.[`${locale}_description`],
     alternates: {
-      canonical: `/it/products/${id}`,
+      canonical: `/it/products/${slug}`,
       languages: {
-        "it-IT": `/it/products/${id}`,
-        "en-US": `/en/products/${id}`,
+        "it-IT": `/it/products/${slug}`,
+        "en-US": `/en/products/${slug}`,
       },
     },
     openGraph: {
@@ -37,10 +47,16 @@ export async function generateMetadata({
 }
 
 export default async function Page(props: {
-  params: { id: string; locale: string };
+  params: { slug: string; locale: string };
 }) {
   setRequestLocale(props.params.locale);
-  const product = await getStripeProduct(props.params.id);
+  if (!isSlugValid(props.params.slug)) {
+    return notFound();
+  }
+
+  // Checked slug validity above 
+  const stripeId = getStripeIdFromSlug(props.params.slug as ProductSlug);
+  const product = await getStripeProduct(stripeId);
 
   if (!product?.default_price || typeof product.default_price === "string")
     return notFound();
@@ -93,7 +109,7 @@ export default async function Page(props: {
               alt={"Sqnpi logo"}
               width={100}
               height={100}
-              className="block object-cover pt-4"  
+              className="block object-cover pt-4"
             />
           </div>
         </div>

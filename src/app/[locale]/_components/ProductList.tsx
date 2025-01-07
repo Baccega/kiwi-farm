@@ -28,7 +28,7 @@ export default async function ProductList(props: { locale: string }) {
           return null;
         return (
           <Link
-            href={`/${props.locale}/products/${product.id}`}
+            href={`/${props.locale}/products/${product.metadata?.slug ?? product.id}`}
             scroll={false}
             key={product.id}
           >

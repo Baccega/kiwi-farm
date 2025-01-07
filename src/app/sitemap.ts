@@ -1,4 +1,5 @@
 import { type MetadataRoute } from "next";
+import { getAllProductsSlugs } from "~/lib/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const PATHS = [
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy",
     "/contacts",
     "/returns",
+    ...getAllProductsSlugs().map((cur) => `/products/${cur}`),
   ];
 
   return PATHS.map((path) => ({
