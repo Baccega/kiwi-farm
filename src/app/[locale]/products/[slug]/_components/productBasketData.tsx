@@ -1,11 +1,12 @@
 "use client";
-import { ShoppingBasket } from "lucide-react";
+import { ShoppingCart, ShoppingBasket } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import type Stripe from "stripe";
 import { useBasketStore } from "~/app/[locale]/providers";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
-import { Button } from "~/components/ui/button";
-import { getFormattedPrice } from "~/lib/utils";
+import { Button, buttonVariants } from "~/components/ui/button";
+import { cn, getFormattedPrice } from "~/lib/utils";
 
 export function ProductBasketData(props: {
   product: Stripe.Product;
@@ -56,6 +57,15 @@ export function ProductBasketData(props: {
             </span>
           </p>
           <ProductQuantityChanger basketProduct={basketProduct} />
+          <Link
+            href="/basket"
+            className={cn(
+              buttonVariants(),
+              "mt-4 flex w-fit items-center gap-2",
+            )}
+          >
+            <ShoppingCart /> {t("proceedToBasket")}
+          </Link>
         </div>
       ) : (
         <>
