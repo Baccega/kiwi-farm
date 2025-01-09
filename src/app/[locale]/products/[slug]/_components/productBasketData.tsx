@@ -1,6 +1,6 @@
 "use client";
 import { ShoppingCart, ShoppingBasket } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import type Stripe from "stripe";
 import { useBasketStore } from "~/app/[locale]/providers";
@@ -14,6 +14,7 @@ export function ProductBasketData(props: {
 }) {
   const { product, price } = props;
   const t = useTranslations("Products");
+  const locale = useLocale();
   const basket = useBasketStore((state) => state.basket);
 
   const addProductToBasket = useBasketStore(
@@ -58,7 +59,7 @@ export function ProductBasketData(props: {
           </p>
           <ProductQuantityChanger basketProduct={basketProduct} />
           <Link
-            href="/basket"
+            href={`/${locale}/basket`}
             className={cn(
               buttonVariants(),
               "mt-4 flex w-fit items-center gap-2",

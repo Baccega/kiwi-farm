@@ -34,7 +34,7 @@ export default function BasketProduct(props: BasketProductProps) {
         </figure>
         <Link
           className="grid-in-name"
-          href={`/${locale}/products/${product.id}`}
+          href={`/${locale}/products/${product?.metadata?.slug ?? product.id}`}
         >
           <h3 className="text-lg font-bold hover:underline">{product.name}</h3>
         </Link>
