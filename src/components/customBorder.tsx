@@ -6,7 +6,7 @@ import Image from "next/image";
 import { getRandomCustomBorder } from "~/resources/customBordersList";
 
 const customBorderVariants = cva(
-  "relative rounded-xl after:border-sketchy before:border-sketchy",
+  "group/border relative rounded-xl after:border-sketchy before:border-sketchy",
   {
     variants: {
       variant: {
@@ -48,6 +48,15 @@ const CustomBorder = React.forwardRef<HTMLDivElement, CustomBorderProps>(
     ref,
   ) => {
     const randomBorder = getRandomCustomBorder(decorationPositions);
+    const flowersDelays = [
+      `group-hover/border:motion-delay-75`,
+      `group-hover/border:motion-delay-100`,
+      `group-hover/border:motion-delay-300`,
+      `group-hover/border:motion-delay-200`,
+      `group-hover/border:motion-delay-150`,
+      `group-hover/border:motion-delay-75`,
+      `group-hover/border:motion-delay-300`,
+    ];
 
     return (
       <div
@@ -56,17 +65,23 @@ const CustomBorder = React.forwardRef<HTMLDivElement, CustomBorderProps>(
         {...props}
       >
         {withDecoration
-          ? randomBorder.map(({ src, position, size }, i) => (
-              <Image
-                src={`/svgs/${src}`}
-                className={cn(`absolute z-40`, position)}
-                width={size}
-                height={size}
-                alt=""
-                aria-hidden={true}
-                key={i}
-              />
-            ))
+          ? randomBorder.map(({ src, position, size }, i) => {
+              return (
+                <Image
+                  src={`/svgs/${src}`}
+                  className={cn(
+                    `group-hover/border:motion-preset-shake motion-opacity-in-0 absolute z-40`,
+                    flowersDelays[i],
+                    position,
+                  )}
+                  width={size}
+                  height={size}
+                  alt=""
+                  aria-hidden={true}
+                  key={i}
+                />
+              );
+            })
           : null}
         {children}
       </div>

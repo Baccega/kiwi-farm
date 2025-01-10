@@ -178,6 +178,12 @@ devDependencies:
   tailwindcss:
     specifier: ^3.4.3
     version: 3.4.3
+  tailwindcss-intersect:
+    specifier: ^2.0.1
+    version: 2.0.1(tailwindcss@3.4.3)
+  tailwindcss-motion:
+    specifier: ^1.0.1
+    version: 1.0.1(tailwindcss@3.4.3)
   typescript:
     specifier: ^5.4.5
     version: 5.4.5
@@ -6056,6 +6062,22 @@ packages:
     dependencies:
       tailwindcss: 3.4.3
     dev: false
+
+  /tailwindcss-intersect@2.0.1(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-0NcIGTKvJwNvMZBKMiykddJdKmJUb3eeVCvy366UP7tS/Sxdxc5E3pR9rwPMLxmhFIYiMdbCKn2G7GfZ8zB/TQ==}
+    peerDependencies:
+      tailwindcss: '>=3.2.0'
+    dependencies:
+      tailwindcss: 3.4.3
+    dev: true
+
+  /tailwindcss-motion@1.0.1(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-ZqarvI3XSclT46Dq1wOo9qG9Yx0TIyEtkMfTo8l0JuVKvO1WiSbvAECuTqdYHpC9Ml7abuJIk7u907SBHYprwQ==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.3
+    dev: true
 
   /tailwindcss@3.4.3:
     resolution: {integrity: sha512-U7sxQk/n397Bmx4JHbJx/iSOOv5G+II3f1kpLpY2QeUv5DcPdcTsYLlusZfq1NthHS1c1cZoyFmmkex1rzke0A==}

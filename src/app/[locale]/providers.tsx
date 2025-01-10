@@ -1,5 +1,6 @@
 "use client";
 import { create } from "zustand";
+import { Observer } from "tailwindcss-intersect";
 import { devtools, persist } from "zustand/middleware";
 import { getCookie } from "cookies-next";
 import type { BasketProduct } from "~/types/Product";
@@ -14,7 +15,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~/components/ui/alert-dialog";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import posthog from "posthog-js";
@@ -124,6 +125,12 @@ export const AlertContext = createContext<{
 
 const queryClient = new QueryClient();
 
+function useTailwindIntersecProvider() {
+  useEffect(() => {
+    Observer.start();
+  }, []);
+}
+
 export default function Providers({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
   const hasCookiesConsent = Boolean(getCookie("hasCookiesConsent") ?? "false");
@@ -133,6 +140,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
   const [cookiesDrawerOpen, setCookiesDrawerOpen] =
     useState(!hasCookiesConsent);
+
+  useTailwindIntersecProvider();
 
   function handleCookiesDrawerOpenChange(open: boolean) {
     setCookiesDrawerOpen(open);

@@ -122,6 +122,8 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("tailwindcss-motion"),
+    require("tailwindcss-intersect"),
     require("@tailwindcss/container-queries"),
     require("@savvywombat/tailwindcss-grid-areas"),
   ],
