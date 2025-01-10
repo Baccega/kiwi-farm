@@ -107,6 +107,7 @@ export default async function Page(props: {
               >
                 <meta itemProp="name" content="Le Giumelle" />
               </div>
+              <meta itemProp="itemCondition" content="https://schema.org/NewCondition" />
             </p>
             <ProductBasketData
               product={product}
