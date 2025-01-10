@@ -101,13 +101,13 @@ export default async function Page(props: {
                   product.metadata?.[`${props.params.locale}_description`]
                 }
               />
-              <div
+              <span
                 itemProp="brand"
                 itemType="https://schema.org/Brand"
                 itemScope
               >
                 <meta itemProp="name" content="Le Giumelle" />
-              </div>
+              </span>
               <meta
                 itemProp="itemCondition"
                 content="https://schema.org/NewCondition"
