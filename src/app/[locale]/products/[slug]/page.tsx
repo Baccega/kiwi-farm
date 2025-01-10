@@ -16,6 +16,8 @@ import {
   type ProductSlug,
 } from "~/lib/products";
 import ProductList from "../../_components/ProductList";
+import { Suspense } from "react";
+import { Skeleton } from "~/components/ui/skeleton";
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -129,10 +131,22 @@ export default async function Page(props: {
         <div className="pt-4">
           <h2 className="w-full text-2xl font-bold">{t("relatedProducts")}</h2>
           <div className="flex w-full flex-wrap gap-8 px-2 pt-8 md:gap-10">
-            <ProductList
-              filter={(cur) => cur.id !== product.id}
-              locale={props.params.locale}
-            />
+            <Suspense
+              fallback={[1, 2, 3, 4, 5, 6].map((id) => (
+                <div key={id} className="flex flex-col space-y-3">
+                  <Skeleton className="h-product w-product rounded-xl" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-product" />
+                    <Skeleton className="h-4 w-product" />
+                  </div>
+                </div>
+              ))}
+            >
+              <ProductList
+                filter={(cur) => cur.id !== product.id}
+                locale={props.params.locale}
+              />
+            </Suspense>
           </div>
         </div>
       </section>
