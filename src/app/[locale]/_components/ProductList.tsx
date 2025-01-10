@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { CustomBorder } from "~/components/customBorder";
 import { getStripeProducts } from "~/server/stripeQueries";
@@ -6,10 +5,14 @@ import Link from "next/link";
 import { getFormattedPrice } from "~/lib/utils";
 import { getTranslations } from "next-intl/server";
 import CdnImage from "~/components/cdnImage";
+import type Stripe from "stripe";
 
 export const revalidate = 3600;
 
-export default async function ProductList(props: { locale: string }) {
+export default async function ProductList(props: {
+  locale: string;
+  filter?: (product: Stripe.Product) => boolean;
+}) {
   const products = await getStripeProducts();
   const t = await getTranslations("Products");
 
@@ -23,7 +26,7 @@ export default async function ProductList(props: { locale: string }) {
 
   return (
     <>
-      {products.map((product) => {
+      {products.filter(props.filter ?? (() => true)).map((product) => {
         if (!product.default_price || typeof product.default_price === "string")
           return null;
         return (

@@ -15,6 +15,7 @@ import {
   isSlugValid,
   type ProductSlug,
 } from "~/lib/products";
+import ProductList from "../../_components/ProductList";
 
 export async function generateMetadata({
   params: { locale, slug },
@@ -25,7 +26,7 @@ export async function generateMetadata({
     return notFound();
   }
 
-  // Checked slug validity above 
+  // Checked slug validity above
   const stripeId = getStripeIdFromSlug(slug as ProductSlug);
   // const t = await getTranslations({ locale, namespace: "Metadata" });
   const product = await getStripeProduct(stripeId);
@@ -54,7 +55,7 @@ export default async function Page(props: {
     return notFound();
   }
 
-  // Checked slug validity above 
+  // Checked slug validity above
   const stripeId = getStripeIdFromSlug(props.params.slug as ProductSlug);
   const product = await getStripeProduct(stripeId);
 
@@ -110,6 +111,15 @@ export default async function Page(props: {
               width={100}
               height={100}
               className="block object-cover pt-4"
+            />
+          </div>
+        </div>
+        <div className="pt-4">
+          <h2 className="w-full text-2xl font-bold">Related products</h2>
+          <div className="flex w-full flex-wrap gap-8 px-2 pt-8 md:gap-10">
+            <ProductList
+              filter={(cur) => cur.id !== product.id}
+              locale={props.params.locale}
             />
           </div>
         </div>
