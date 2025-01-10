@@ -35,7 +35,7 @@ export default async function ProductList(props: {
             scroll={false}
             key={product.id}
           >
-            <CustomBorder className="relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
+            <CustomBorder className="intersect-once intersect:motion-preset-expand relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
               {product.metadata?.images?.split(",")[0] !== null ? (
                 <CdnImage
                   src={
