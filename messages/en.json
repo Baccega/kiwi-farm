@@ -107,7 +107,8 @@
     "proceedToBasket": "Proceed to basket",
     "totalPrice": "{total} €",
     "pricePerUnit": "{price} € / {unit} (VAT included)",
-    "pricePerUnitShort": "{price} € / {unit}"
+    "pricePerUnitShort": "{price} € / {unit}",
+    "relatedProducts": "Related products"
   },
   "Basket": {
     "title": "Cart",

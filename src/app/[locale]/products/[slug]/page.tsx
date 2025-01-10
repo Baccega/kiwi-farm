@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import CdnImage from "~/components/cdnImage";
 import {
@@ -58,6 +58,7 @@ export default async function Page(props: {
   // Checked slug validity above
   const stripeId = getStripeIdFromSlug(props.params.slug as ProductSlug);
   const product = await getStripeProduct(stripeId);
+  const t = await getTranslations("Products");
 
   if (!product?.default_price || typeof product.default_price === "string")
     return notFound();
@@ -107,7 +108,10 @@ export default async function Page(props: {
               >
                 <meta itemProp="name" content="Le Giumelle" />
               </div>
-              <meta itemProp="itemCondition" content="https://schema.org/NewCondition" />
+              <meta
+                itemProp="itemCondition"
+                content="https://schema.org/NewCondition"
+              />
             </p>
             <ProductBasketData
               product={product}
@@ -123,7 +127,7 @@ export default async function Page(props: {
           </div>
         </div>
         <div className="pt-4">
-          <h2 className="w-full text-2xl font-bold">Related products</h2>
+          <h2 className="w-full text-2xl font-bold">{t("relatedProducts")}</h2>
           <div className="flex w-full flex-wrap gap-8 px-2 pt-8 md:gap-10">
             <ProductList
               filter={(cur) => cur.id !== product.id}

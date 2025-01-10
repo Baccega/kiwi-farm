@@ -107,7 +107,8 @@
     "proceedToBasket": "Procedi al carrello",
     "totalPrice": "{total} €",
     "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
-    "pricePerUnitShort": "{price} € / {unit}"
+    "pricePerUnitShort": "{price} € / {unit}",
+    "relatedProducts": "Prodotti correlati"
   },
   "Basket": {
     "title": "Carrello",
