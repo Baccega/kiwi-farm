@@ -3,10 +3,14 @@ import Stripe from "stripe";
 import {
   AVAILABLE_COUNTRIES,
   AVAILABLE_COUNTRIES_ZONES,
-  getPickupShippingOption,
-  getShippingPrice,
+  getDHLShippingPrice,
   WEIGHT_LIMIT,
 } from "~/lib/dhl";
+import {
+  AVAILABLE_HOME_DELIVERIES,
+  getHomeDeliveryShippingPrice,
+} from "~/lib/homeDelivery";
+import { getPickupShippingOption } from "~/lib/pickup";
 import { createCheckoutSessionRequestSchema } from "~/types/Api";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -47,15 +51,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    // const identifier = `${req.ip}-${req.headers.get("user-agent") ?? ""}`;
-    // const { success } = await ratelimit.limit(identifier);
-
-    // if (!success) {
-    //   return NextResponse.json(
-    //     { error: "Rate limit exceeded" },
-    //     { status: 429 },
-    //   );
-    // }
     const payload: unknown = await req.json();
 
     // Validate the input items
@@ -63,6 +58,10 @@ export async function POST(req: NextRequest) {
       createCheckoutSessionRequestSchema.parse(payload);
 
     const isPickup = shippingLocation === "pickup";
+    const isHomeDelivery = Object.keys(AVAILABLE_HOME_DELIVERIES).includes(
+      shippingLocation ?? "",
+    );
+    const isDHLDelivery = !isPickup && !isHomeDelivery;
 
     const itemsPrices = items.map((cur) => cur.price);
     const stripeProducts = (
@@ -79,31 +78,59 @@ export async function POST(req: NextRequest) {
       );
     }, 0);
 
-    if (!isPickup && totalWeight > WEIGHT_LIMIT) {
+    if (!isPickup && !isHomeDelivery && totalWeight > WEIGHT_LIMIT) {
       throw new Error("Weight limit reached");
     }
 
-    const shippingZone = AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
-    const shippingPriceId = getShippingPrice(
-      totalWeight,
-      shippingZone,
-    )?.shipping_id;
+    let shippingPriceId;
+    let shippingAddressCollection:
+      | Stripe.Checkout.SessionCreateParams.ShippingAddressCollection
+      | undefined;
+    let shippingZone;
+
+    switch (true) {
+      case isPickup === true:
+        shippingPriceId = getPickupShippingOption().shipping_id;
+        shippingAddressCollection = undefined;
+        break;
+      case isHomeDelivery === true:
+        shippingZone = AVAILABLE_HOME_DELIVERIES[shippingLocation]?.zone;
+
+        if (!shippingZone) throw new Error("Shipping Zone not found");
+
+        shippingPriceId = getHomeDeliveryShippingPrice(
+          0, // TODO
+          shippingZone,
+        )?.shipping_id;
+        shippingAddressCollection = {
+          allowed_countries: ["IT"],
+        };
+        break;
+      case isDHLDelivery === true:
+        shippingZone = AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
+
+        if (!shippingZone) throw new Error("Shipping Zone not found");
+
+        shippingPriceId = getDHLShippingPrice(
+          totalWeight,
+          shippingZone,
+        )?.shipping_id;
+
+        shippingAddressCollection = {
+          allowed_countries: AVAILABLE_COUNTRIES.filter(
+            (cur) => cur === shippingLocation,
+          ),
+        };
+        break;
+    }
 
     const session = await stripe.checkout.sessions.create({
       locale: locale as Stripe.Checkout.SessionCreateParams.Locale,
       ui_mode: "embedded",
       line_items: items,
       mode: "payment",
-      shipping_address_collection: isPickup
-        ? undefined
-        : {
-            allowed_countries: AVAILABLE_COUNTRIES.filter(
-              (cur) => cur === shippingLocation,
-            ),
-          },
-      shipping_options: isPickup
-        ? [{ shipping_rate: getPickupShippingOption().shipping_id }]
-        : [{ shipping_rate: shippingPriceId }],
+      shipping_address_collection: shippingAddressCollection,
+      shipping_options: [{ shipping_rate: shippingPriceId }],
       return_url: `${req.headers.get("origin")}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     });
 

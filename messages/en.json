@@ -115,7 +115,8 @@
     "shipping": "Shipping:",
     "shippingPlaceholder": "Select the shipping location",
     "pickup": "Pickup at the store",
-    "delivery": "Home delivery",
+    "homeDelivery": "Home delivery (Veneto)",
+    "delivery": "DHL delivery (Europe)",
     "shippingMode": "Shipping mode",
     "youHaveXProducts": "You have {products, plural, =0 {0 products} =1 {1 product} other {# products}} in your cart",
     "total": "Total:",
@@ -127,7 +128,7 @@
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
     "emptyCartAlertDescription": "This action cannot be undone.",
     "weightLimitTitle": "Weight limit reached!",
-    "weightLimitDescription": "There is currently a weight limit of {weightLimit}kg on shipping"
+    "weightLimitDescription": "There is currently a weight limit of {weightLimit}kg on DHL shipping"
   },
   "Checkout": {
     "title": "🎉 Thank you for your purchase 🎉",

@@ -14,11 +14,7 @@ import {
   SelectItem,
   SelectContent,
 } from "~/components/ui/select";
-import {
-  AVAILABLE_COUNTRIES_ZONES,
-  getShippingPrice,
-  WEIGHT_LIMIT,
-} from "~/lib/dhl";
+import { AVAILABLE_COUNTRIES_ZONES, WEIGHT_LIMIT } from "~/lib/dhl";
 import {
   Tooltip,
   TooltipContent,
@@ -28,6 +24,9 @@ import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 import { useRouter } from "next/navigation";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { Label } from "~/components/ui/label";
+import { Combobox } from "~/components/ui/combobox";
+import { AVAILABLE_HOME_DELIVERIES } from "~/lib/homeDelivery";
+import { useShipping } from "./_hooks/useShipping";
 
 export default function BasketPage(props: { params: { locale: string } }) {
   const t = useTranslations("Basket");
@@ -39,26 +38,12 @@ export default function BasketPage(props: { params: { locale: string } }) {
   );
   const router = useRouter();
 
-  const totalWeight = basket.reduce(
-    (acc, { weight, quantity }) => Number(weight) * quantity + acc,
-    0,
-  );
-  const isOverTheWeightLimit = totalWeight > WEIGHT_LIMIT;
-
-  const isPickup = shippingLocation === "pickup";
-  const shippingZone =
-    shippingLocation &&
-    !isPickup &&
-    AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
-  const shippingPrice = isPickup
-    ? 0
-    : Number(
-        shippingZone &&
-          getShippingPrice(totalWeight, shippingZone).price.toFixed(2),
-      );
+  const { isHomeDelivery, isDHLDelivery, shippingPrice, isOverTheWeightLimit } =
+    useShipping(basket, shippingLocation);
 
   const isBuyButtonDisabled =
-    !Boolean(shippingLocation) || (!isPickup && isOverTheWeightLimit);
+    !Boolean(shippingLocation) || isOverTheWeightLimit;
+
   const { openAlert } = useContext(AlertContext) ?? {};
 
   function handleEmptyBasket() {
@@ -80,8 +65,12 @@ export default function BasketPage(props: { params: { locale: string } }) {
     );
   }
 
-  function handleShippingModeClick(mode: "pickup" | "delivery") {
-    setShippingLocation(mode === "pickup" ? "pickup" : "IT");
+  function handleShippingModeClick(
+    mode: "pickup" | "homeDelivery" | "delivery",
+  ) {
+    setShippingLocation(
+      mode === "pickup" ? "pickup" : mode === "homeDelivery" ? "Padova" : "IT",
+    );
   }
 
   return (
@@ -113,7 +102,9 @@ export default function BasketPage(props: { params: { locale: string } }) {
                   shippingLocation === undefined ||
                   shippingLocation === "pickup"
                     ? shippingLocation
-                    : "delivery"
+                    : isHomeDelivery
+                      ? "homeDelivery"
+                      : "delivery"
                 }
               >
                 <div className="flex items-center space-x-2">
@@ -128,6 +119,16 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem
+                    onClick={() => handleShippingModeClick("homeDelivery")}
+                    value="homeDelivery"
+                    id="homeDelivery"
+                  />
+                  <Label htmlFor="homeDelivery" className="cursor-pointer">
+                    {t("homeDelivery")}
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
                     onClick={() => handleShippingModeClick("delivery")}
                     value="delivery"
                     id="delivery"
@@ -137,7 +138,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
                   </Label>
                 </div>
               </RadioGroup>
-              {shippingLocation && shippingLocation !== "pickup" ? (
+              {shippingLocation && isDHLDelivery ? (
                 <Select
                   defaultValue={shippingLocation}
                   onValueChange={handleShippingLocationChange}
@@ -155,6 +156,18 @@ export default function BasketPage(props: { params: { locale: string } }) {
                     )}
                   </SelectContent>
                 </Select>
+              ) : null}
+              {isHomeDelivery ? (
+                <Combobox
+                  defaultValue={shippingLocation ?? ""}
+                  onValueChange={handleShippingLocationChange}
+                  options={Object.entries(AVAILABLE_HOME_DELIVERIES).map(
+                    ([_, { label }]) => ({
+                      value: label,
+                      label,
+                    }),
+                  )}
+                />
               ) : null}
               {shippingLocation && (
                 <>
@@ -181,7 +194,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
               )}
             </div>
 
-            {!isPickup && isOverTheWeightLimit && (
+            {isDHLDelivery && isOverTheWeightLimit && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>{t("weightLimitTitle")}</AlertTitle>

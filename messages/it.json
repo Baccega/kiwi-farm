@@ -119,7 +119,8 @@
     "shipping": "Spedizione:",
     "shippingPlaceholder": "Seleziona il luogo di spedizione",
     "pickup": "Ritira in negozio",
-    "delivery": "Consegna a domicilio",
+    "homeDelivery": "Consegna a domicilio (Veneto)",
+    "delivery": "Consegna con DHL (Tutta Europa)",
     "shippingMode": "Modalitá di consegna",
     "buyButton": "Acquista questi prodotti",
     "disabledBuyButton": "Nessuna modalità di spedizione selezionata o il peso del carrello è superiore all'attuale limite di peso di spedizione ({weightLimit}kg)",
@@ -127,7 +128,7 @@
     "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
     "emptyCartAlertDescription": "Questa azione non può essere annullata.",
     "weightLimitTitle": "Limite di peso raggiunto!",
-    "weightLimitDescription": "Al momento c'è un limite di {weightLimit}kg sulle spedizioni"
+    "weightLimitDescription": "Al momento c'è un limite di {weightLimit}kg sulle spedizioni con DHL"
   },
   "Checkout": {
     "title": "🎉 Grazie per il tuo acquisto 🎉",

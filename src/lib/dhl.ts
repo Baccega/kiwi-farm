@@ -6,7 +6,7 @@ export const WEIGHT_LIMIT = 30;
 
 export const AVAILABLE_COUNTRIES_ZONES: Record<
   string,
-  { zone: Zone; label: string }
+  { zone: DHLZone; label: string }
 > = {
   AT: { zone: "1", label: "Austria" },
   BE: { zone: "1", label: "Belgium" },
@@ -39,7 +39,7 @@ export const AVAILABLE_COUNTRIES = Object.keys(
   AVAILABLE_COUNTRIES_ZONES,
 ) as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[];
 
-type Zone = "1" | "2" | "3" | "4" | "5" | "Italy";
+type DHLZone = "1" | "2" | "3" | "4" | "5" | "Italy";
 
 // const additionalChargesItaly = {
 //   "10.1": 5.34,
@@ -63,13 +63,13 @@ type Zone = "1" | "2" | "3" | "4" | "5" | "Italy";
 // };
 
 // Current limit: 30kg
-export function getShippingPrice(totalWeight: number, zone?: Zone) {
+export function getDHLShippingPrice(totalWeight: number, zone?: DHLZone) {
   // To remove this limit we need to add the additional charges for each zone
   if (!zone || totalWeight > WEIGHT_LIMIT) {
     return { price: Infinity, shipping_id: "NO_SHIPPING_ID" };
   }
 
-  const basePrice = DHL_BASE_PRICES[zone][Math.ceil(totalWeight)];
+  const basePrice = DHL_SHIPPING_PRICES[zone][Math.ceil(totalWeight)];
 
   if (!basePrice) {
     return { price: Infinity, shipping_id: "NO_SHIPPING_ID" };
@@ -78,17 +78,8 @@ export function getShippingPrice(totalWeight: number, zone?: Zone) {
   return { price: basePrice?.price, shipping_id: basePrice?.shipping_id };
 }
 
-export function getPickupShippingOption() {
-  return {
-    price: 0,
-    shipping_id: isProduction
-      ? "shr_1Qad9rL58FsTMD3c13V7FB3H"
-      : "shr_1Qacz3L58FsTMD3cNtrgC7nl",
-  };
-}
-
-export const DHL_BASE_PRICES: Record<
-  Zone,
+export const DHL_SHIPPING_PRICES: Record<
+  DHLZone,
   Record<number, { price: number; shipping_id: string }>
 > = {
   "1": {
