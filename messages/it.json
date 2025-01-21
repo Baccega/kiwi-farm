@@ -116,6 +116,7 @@
     "total": "Totale:",
     "totalPrice": "{total} €",
     "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
+    "taxable": "Imponibile:",
     "shipping": "Spedizione:",
     "shippingPlaceholder": "Seleziona il luogo di spedizione",
     "pickup": "Ritira in negozio",

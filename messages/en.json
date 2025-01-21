@@ -113,6 +113,7 @@
   "Basket": {
     "title": "Cart",
     "shipping": "Shipping:",
+    "taxable": "Taxable:",
     "shippingPlaceholder": "Select the shipping location",
     "pickup": "Pickup at the store",
     "homeDelivery": "Home delivery (Veneto)",

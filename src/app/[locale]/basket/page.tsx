@@ -44,6 +44,11 @@ export default function BasketPage(props: { params: { locale: string } }) {
   const isBuyButtonDisabled =
     !Boolean(shippingLocation) || isOverTheWeightLimit;
 
+  const taxable = basket?.reduce(
+    (acc, { price, quantity }) => getFormattedPrice(price) * quantity + acc,
+    0,
+  );
+
   const { openAlert } = useContext(AlertContext) ?? {};
 
   function handleEmptyBasket() {
@@ -173,6 +178,10 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 <>
                   <hr className="w-full max-w-96" />
                   <span className="flex w-full max-w-96 items-baseline justify-between gap-3">
+                    <h4 className="text-xl">{t("taxable")}</h4>
+                    <p className="text-lg font-bold">{taxable} €</p>
+                  </span>
+                  <span className="flex w-full max-w-96 items-baseline justify-between gap-3">
                     <h4 className="text-xl">{t("shipping")}</h4>
                     <p className="text-lg font-bold">{shippingPrice} €</p>
                   </span>
@@ -180,13 +189,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
                     <h3 className="text-3xl font-bold">{t("total")}</h3>
                     <p className="text-2xl font-bold">
                       {t("totalPrice", {
-                        total: Number(
-                          basket?.reduce(
-                            (acc, { price, quantity }) =>
-                              getFormattedPrice(price) * quantity + acc,
-                            0,
-                          ) + shippingPrice,
-                        ).toFixed(2),
+                        total: Number(taxable + shippingPrice).toFixed(2),
                       })}
                     </p>
                   </span>
