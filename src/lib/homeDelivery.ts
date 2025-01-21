@@ -24,11 +24,15 @@ export function getHomeDeliveryShippingPrice(
     return { price: Infinity, shipping_id: "NO_SHIPPING_ID" };
   }
 
-  if (totalPrice > basePrice.freeOver) {
+  if (totalPrice >= basePrice.freeOver) {
     return { price: 0, shipping_id: FREE_SHIPPING_ID };
   }
 
-  return { price: basePrice?.price, shipping_id: basePrice?.shipping_id };
+  return {
+    price: basePrice?.price,
+    shipping_id: basePrice?.shipping_id,
+    freeOver: basePrice.freeOver,
+  };
 }
 
 export const HOME_DELIVERY_SHIPPING_PRICES = {

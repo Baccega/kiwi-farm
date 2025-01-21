@@ -68,20 +68,6 @@ export async function POST(req: NextRequest) {
       await stripe.prices.list({ expand: ["data.product"] })
     ).data.filter((cur) => itemsPrices.includes(cur.id));
 
-    const totalWeight = stripeProducts.reduce((acc, cur) => {
-      const quantity =
-        items.find((cur2) => cur2.price === cur.id)?.quantity ?? 0;
-      return (
-        Number((cur?.product as Stripe.Product)?.metadata?.weight ?? 0) *
-          quantity +
-        acc
-      );
-    }, 0);
-
-    if (!isPickup && !isHomeDelivery && totalWeight > WEIGHT_LIMIT) {
-      throw new Error("Weight limit reached");
-    }
-
     let shippingPriceId;
     let shippingAddressCollection:
       | Stripe.Checkout.SessionCreateParams.ShippingAddressCollection
@@ -98,8 +84,14 @@ export async function POST(req: NextRequest) {
 
         if (!shippingZone) throw new Error("Shipping Zone not found");
 
+        const taxableTotal = stripeProducts.reduce((acc, cur) => {
+          const quantity =
+            items.find((cur2) => cur2.price === cur.id)?.quantity ?? 0;
+          return (Number(cur?.unit_amount ?? 0) / 100) * quantity + acc;
+        }, 0);
+
         shippingPriceId = getHomeDeliveryShippingPrice(
-          0, // TODO
+          taxableTotal,
           shippingZone,
         )?.shipping_id;
         shippingAddressCollection = {
@@ -110,6 +102,20 @@ export async function POST(req: NextRequest) {
         shippingZone = AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.zone;
 
         if (!shippingZone) throw new Error("Shipping Zone not found");
+
+        const totalWeight = stripeProducts.reduce((acc, cur) => {
+          const quantity =
+            items.find((cur2) => cur2.price === cur.id)?.quantity ?? 0;
+          return (
+            Number((cur?.product as Stripe.Product)?.metadata?.weight ?? 0) *
+              quantity +
+            acc
+          );
+        }, 0);
+
+        if (totalWeight > WEIGHT_LIMIT) {
+          throw new Error("Weight limit reached");
+        }
 
         shippingPriceId = getDHLShippingPrice(
           totalWeight,

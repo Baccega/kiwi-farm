@@ -7,6 +7,7 @@ import {
   AVAILABLE_HOME_DELIVERIES,
   getHomeDeliveryShippingPrice,
 } from "~/lib/homeDelivery";
+import { getFormattedPrice } from "~/lib/utils";
 import { type BasketProduct } from "~/types/Product";
 
 export function useShipping(
@@ -18,6 +19,7 @@ export function useShipping(
       shippingPrice: 0,
       shippingZone: undefined,
       isOverTheWeightLimit: false,
+      freeOver: 0,
       isPickup: false,
       isHomeDelivery: false,
       isDHLDelivery: false,
@@ -30,7 +32,10 @@ export function useShipping(
   );
   const isDHLDelivery = !isPickup && !isHomeDelivery;
 
-  let shippingZone, shippingPrice, isOverTheWeightLimit;
+  let shippingZone,
+    shippingPrice,
+    isOverTheWeightLimit,
+    freeOver = 0;
 
   switch (true) {
     case isPickup:
@@ -43,9 +48,13 @@ export function useShipping(
 
       if (!shippingZone) throw new Error("Shipping Zone not found");
 
-      shippingPrice = Number(
-        getHomeDeliveryShippingPrice(0, shippingZone).price.toFixed(2),
+      const totalPrice = basket?.reduce(
+        (acc, { price, quantity }) => getFormattedPrice(price) * quantity + acc,
+        0,
       );
+      const shipping = getHomeDeliveryShippingPrice(totalPrice, shippingZone);
+      shippingPrice = Number(shipping.price.toFixed(2));
+      freeOver = shipping.freeOver ?? 0;
       isOverTheWeightLimit = false;
       break;
     default:
@@ -71,6 +80,7 @@ export function useShipping(
     shippingPrice,
     shippingZone,
     isOverTheWeightLimit,
+    freeOver,
     isPickup,
     isHomeDelivery,
     isDHLDelivery,

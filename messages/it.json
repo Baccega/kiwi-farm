@@ -116,6 +116,8 @@
     "total": "Totale:",
     "totalPrice": "{total} €",
     "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
+    "shippingPrice": "{shippingPrice, plural, =0 {Gratuita!} other {# €}}",
+    "freeShippingOver": "Spedizione gratuita con spesa oltre {freeOver}€",
     "taxable": "Imponibile:",
     "shipping": "Spedizione:",
     "province": "Provincia",
