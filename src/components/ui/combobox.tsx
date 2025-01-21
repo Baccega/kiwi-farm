@@ -18,9 +18,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
+import { Label } from "./label";
 
 export function Combobox(props: {
-  defaultValue: string;
+  defaultValue: string | undefined;
+  label: string;
+  placeholder: string;
+  searchPlaceholder: string;
   onValueChange: (newValue: string) => void;
   options: { value: string; label: string }[];
 }) {
@@ -30,21 +34,26 @@ export function Combobox(props: {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-full max-w-96 justify-between"
-        >
-          {value
-            ? props.options.find((option) => option.value === value)?.label
-            : "Select option..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
+        <span className="w-full max-w-96">
+          <Label className="font-light uppercase tracking-widest">
+            {props.label}
+          </Label>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-full justify-between"
+          >
+            {value
+              ? props.options.find((option) => option.value === value)?.label
+              : props.placeholder}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </span>
       </PopoverTrigger>
       <PopoverContent className="w-96 p-0">
         <Command>
-          <CommandInput placeholder="Search option..." />
+          <CommandInput placeholder={props.searchPlaceholder} />
           <CommandList>
             <CommandEmpty>No option found.</CommandEmpty>
             <CommandGroup>
