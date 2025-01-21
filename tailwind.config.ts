@@ -92,12 +92,20 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       gridTemplateAreas: {
+        "basket-product-xs": [
+          "image image image",
+          "name name name",
+          "price price price",
+          "quantity quantity quantity",
+        ],
         "basket-product-sm": [
+          "image name name",
           "image name name",
           "image price price",
           "image quantity quantity",
         ],
         "basket-product": [
+          "image name name",
           "image name name",
           "image price quantity",
           "image price quantity",
@@ -115,7 +123,7 @@ const config = {
         product: "2fr 3fr",
       },
       gridTemplateRows: {
-        "basket-product": "auto 2rem 3rem",
+        "basket-product": "auto 2rem 2rem 3rem",
         product: "300px 2rem 5rem 3rem",
       },
     },
