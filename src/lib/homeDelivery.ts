@@ -12,7 +12,9 @@ export const AVAILABLE_HOME_DELIVERIES: Record<
 
 type HomeDeliveryZone = "Veneto-1" | "Veneto-2" | "Veneto-3";
 
-const FREE_SHIPPING_ID = "shr_1Qjd4XL58FsTMD3ciPZAQtu5";
+const FREE_SHIPPING_ID = isProduction
+  ? "shr_1QjhrdL58FsTMD3cHhpmbWVJ"
+  : "shr_1Qjd4XL58FsTMD3ciPZAQtu5";
 
 export function getHomeDeliveryShippingPrice(
   totalPrice: number,
@@ -38,17 +40,23 @@ export function getHomeDeliveryShippingPrice(
 export const HOME_DELIVERY_SHIPPING_PRICES = {
   "Veneto-1": {
     price: 5,
-    shipping_id: "shr_1QjPOYL58FsTMD3cQX61tGuU",
+    shipping_id: isProduction
+      ? "shr_1QjhqnL58FsTMD3cgfArm1So"
+      : "shr_1QjPOYL58FsTMD3cQX61tGuU",
     freeOver: 20,
   },
   "Veneto-2": {
     price: 10,
-    shipping_id: "shr_1QjPPcL58FsTMD3cydGtnKQA",
+    shipping_id: isProduction
+      ? "shr_1Qjhr2L58FsTMD3cz0tCe7Wj"
+      : "shr_1QjPPcL58FsTMD3cydGtnKQA",
     freeOver: 35,
   },
   "Veneto-3": {
     price: 15,
-    shipping_id: "shr_1QjPPvL58FsTMD3cS5CL3Fzb",
+    shipping_id: isProduction
+      ? "shr_1QjhrLL58FsTMD3cCqmxdzPT"
+      : "shr_1QjPPvL58FsTMD3cS5CL3Fzb",
     freeOver: 50,
   },
 };
