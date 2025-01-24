@@ -1,16 +1,42 @@
+import { COMUNI_VENETO_WITH_DISTANCES_FROM_SHOP } from "./comuni";
+
 const isProduction = process.env.NODE_ENV === "production";
 
 export const AVAILABLE_HOME_DELIVERIES: Record<
   string,
   { zone: HomeDeliveryZone; label: string }
-> = {
-  Padova: { zone: "Veneto-1", label: "Padova" },
-  Treviso: { zone: "Veneto-2", label: "Treviso" },
-  Vicenza: { zone: "Veneto-2", label: "Vicenza" },
-  Venezia: { zone: "Veneto-3", label: "Venezia" },
-};
+> = {};
+COMUNI_VENETO_WITH_DISTANCES_FROM_SHOP.forEach((cur) => {
+  switch (true) {
+    case cur.distance <= 10:
+      AVAILABLE_HOME_DELIVERIES[cur.name] = {
+        zone: "Veneto-1",
+        label: cur.name,
+      };
+      break;
+    case cur.distance > 10 && cur.distance <= 20:
+      AVAILABLE_HOME_DELIVERIES[cur.name] = {
+        zone: "Veneto-2",
+        label: cur.name,
+      };
+      break;
+    case cur.distance > 20 && cur.distance <= 50:
+      AVAILABLE_HOME_DELIVERIES[cur.name] = {
+        zone: "Veneto-3",
+        label: cur.name,
+      };
+      break;
+    default:
+    case cur.distance > 50:
+      AVAILABLE_HOME_DELIVERIES[cur.name] = {
+        zone: "Veneto-4",
+        label: cur.name,
+      };
+      break;
+  }
+});
 
-type HomeDeliveryZone = "Veneto-1" | "Veneto-2" | "Veneto-3";
+type HomeDeliveryZone = "Veneto-1" | "Veneto-2" | "Veneto-3" | "Veneto-4";
 
 const FREE_SHIPPING_ID = isProduction
   ? "shr_1QjhrdL58FsTMD3cHhpmbWVJ"
@@ -58,5 +84,12 @@ export const HOME_DELIVERY_SHIPPING_PRICES = {
       ? "shr_1QjhrLL58FsTMD3cCqmxdzPT"
       : "shr_1QjPPvL58FsTMD3cS5CL3Fzb",
     freeOver: 50,
+  },
+  "Veneto-4": {
+    price: 25,
+    shipping_id: isProduction
+      ? "shr_1Qkq9KL58FsTMD3ccrpCs48H"
+      : "shr_1Qkq8uL58FsTMD3cdidi8n88",
+    freeOver: 100,
   },
 };

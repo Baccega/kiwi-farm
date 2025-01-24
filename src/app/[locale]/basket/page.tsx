@@ -171,9 +171,9 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 <Combobox
                   defaultValue={shippingLocation ?? ""}
                   onValueChange={handleShippingLocationChange}
-                  label={t("province")}
-                  placeholder={t("provincePlaceholder")}
-                  searchPlaceholder={t("provinceSearchPlaceholder")}
+                  label={t("comune")}
+                  placeholder={t("comunePlaceholder")}
+                  searchPlaceholder={t("comuneSearchPlaceholder")}
                   options={Object.entries(AVAILABLE_HOME_DELIVERIES).map(
                     ([_, { label }]) => ({
                       value: label,
