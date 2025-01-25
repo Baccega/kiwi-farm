@@ -44,6 +44,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
     shippingPrice,
     isOverTheWeightLimit,
     freeOver,
+    shouldProbablyUseDHL,
   } = useShipping(basket, shippingLocation);
 
   const isBuyButtonDisabled =
@@ -149,23 +150,20 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 </div>
               </RadioGroup>
               {shippingLocation && isDHLDelivery ? (
-                <Select
-                  defaultValue={shippingLocation}
+                <Combobox
+                  defaultValue={shippingLocation ?? ""}
                   onValueChange={handleShippingLocationChange}
-                >
-                  <SelectTrigger className="max-w-96">
-                    <SelectValue placeholder={t("shippingPlaceholder")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(AVAILABLE_COUNTRIES_ZONES).map(
-                      ([key, { label }]) => (
-                        <SelectItem key={key} value={key}>
-                          {label}
-                        </SelectItem>
-                      ),
-                    )}
-                  </SelectContent>
-                </Select>
+                  label={t("country")}
+                  placeholder={t("countryPlaceholder")}
+                  searchPlaceholder={t("countrySearchPlaceholder")}
+                  options={Object.entries(AVAILABLE_COUNTRIES_ZONES).map(
+                    ([key, { label }]) => ({
+                      key,
+                      value: key,
+                      label,
+                    }),
+                  )}
+                />
               ) : null}
               {isHomeDelivery ? (
                 <>
@@ -176,19 +174,22 @@ export default function BasketPage(props: { params: { locale: string } }) {
                     placeholder={t("comunePlaceholder")}
                     searchPlaceholder={t("comuneSearchPlaceholder")}
                     options={Object.entries(AVAILABLE_HOME_DELIVERIES).map(
-                      ([_, { label }]) => ({
+                      ([key, { label }]) => ({
                         value: label,
+                        key,
                         label,
                       }),
                     )}
                   />
-                  <Alert variant="default">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertTitle>{t("shouldProbablyUseDHLTitle")}</AlertTitle>
-                    <AlertDescription>
-                      {t("shouldProbablyUseDHLDescription")}
-                    </AlertDescription>
-                  </Alert>
+                  {shouldProbablyUseDHL ? (
+                    <Alert variant="default">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>{t("shouldProbablyUseDHLTitle")}</AlertTitle>
+                      <AlertDescription>
+                        {t("shouldProbablyUseDHLDescription")}
+                      </AlertDescription>
+                    </Alert>
+                  ) : null}
                 </>
               ) : null}
               {shippingLocation && (

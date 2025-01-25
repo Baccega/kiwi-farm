@@ -6,6 +6,7 @@ import {
 import {
   AVAILABLE_HOME_DELIVERIES,
   getHomeDeliveryShippingPrice,
+  HOME_DELIVERY_SHIPPING_PRICES,
 } from "~/lib/homeDelivery";
 import { getFormattedPrice } from "~/lib/utils";
 import { type BasketProduct } from "~/types/Product";
@@ -23,6 +24,7 @@ export function useShipping(
       isPickup: false,
       isHomeDelivery: false,
       isDHLDelivery: false,
+      shouldProbablyUseDHL: false,
     };
   }
 
@@ -35,6 +37,7 @@ export function useShipping(
   let shippingZone,
     shippingPrice,
     isOverTheWeightLimit,
+    shouldProbablyUseDHL = false,
     freeOver = 0;
 
   switch (true) {
@@ -54,6 +57,8 @@ export function useShipping(
       );
       const shipping = getHomeDeliveryShippingPrice(totalPrice, shippingZone);
       shippingPrice = Number(shipping.price.toFixed(2));
+      shouldProbablyUseDHL =
+        shipping.price >= HOME_DELIVERY_SHIPPING_PRICES["Veneto-4"].price;
       freeOver = shipping.freeOver ?? 0;
       isOverTheWeightLimit = false;
       break;
@@ -84,5 +89,6 @@ export function useShipping(
     isPickup,
     isHomeDelivery,
     isDHLDelivery,
+    shouldProbablyUseDHL,
   };
 }

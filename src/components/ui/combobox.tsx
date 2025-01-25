@@ -26,7 +26,7 @@ export function Combobox(props: {
   placeholder: string;
   searchPlaceholder: string;
   onValueChange: (newValue: string) => void;
-  options: { value: string; label: string }[];
+  options: { key: string; value: string; label: string }[];
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(props.defaultValue);
@@ -59,7 +59,7 @@ export function Combobox(props: {
             <CommandGroup>
               {props.options.map((option) => (
                 <CommandItem
-                  key={option.value}
+                  key={option.key}
                   value={option.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
