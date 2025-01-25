@@ -168,19 +168,28 @@ export default function BasketPage(props: { params: { locale: string } }) {
                 </Select>
               ) : null}
               {isHomeDelivery ? (
-                <Combobox
-                  defaultValue={shippingLocation ?? ""}
-                  onValueChange={handleShippingLocationChange}
-                  label={t("comune")}
-                  placeholder={t("comunePlaceholder")}
-                  searchPlaceholder={t("comuneSearchPlaceholder")}
-                  options={Object.entries(AVAILABLE_HOME_DELIVERIES).map(
-                    ([_, { label }]) => ({
-                      value: label,
-                      label,
-                    }),
-                  )}
-                />
+                <>
+                  <Combobox
+                    defaultValue={shippingLocation ?? ""}
+                    onValueChange={handleShippingLocationChange}
+                    label={t("comune")}
+                    placeholder={t("comunePlaceholder")}
+                    searchPlaceholder={t("comuneSearchPlaceholder")}
+                    options={Object.entries(AVAILABLE_HOME_DELIVERIES).map(
+                      ([_, { label }]) => ({
+                        value: label,
+                        label,
+                      }),
+                    )}
+                  />
+                  <Alert variant="default">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>{t("shouldProbablyUseDHLTitle")}</AlertTitle>
+                    <AlertDescription>
+                      {t("shouldProbablyUseDHLDescription")}
+                    </AlertDescription>
+                  </Alert>
+                </>
               ) : null}
               {shippingLocation && (
                 <>

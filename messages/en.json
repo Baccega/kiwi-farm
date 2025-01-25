@@ -133,6 +133,8 @@
     "emptyButton": "Empty the cart",
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
     "emptyCartAlertDescription": "This action cannot be undone.",
+    "shouldProbablyUseDHLTitle" : "You should probably use the DHL shipping service",
+    "shouldProbablyUseDHLDescription": "In your case it could be more convinient to use DHL than our Home Delivery service", 
     "weightLimitTitle": "Weight limit reached!",
     "weightLimitDescription": "There is currently a weight limit of {weightLimit}kg on DHL shipping"
   },

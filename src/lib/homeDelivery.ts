@@ -76,14 +76,14 @@ export const HOME_DELIVERY_SHIPPING_PRICES = {
     shipping_id: isProduction
       ? "shr_1Qjhr2L58FsTMD3cz0tCe7Wj"
       : "shr_1QjPPcL58FsTMD3cydGtnKQA",
-    freeOver: 35,
+    freeOver: 50,
   },
   "Veneto-3": {
     price: 15,
     shipping_id: isProduction
       ? "shr_1QjhrLL58FsTMD3cCqmxdzPT"
       : "shr_1QjPPvL58FsTMD3cS5CL3Fzb",
-    freeOver: 50,
+    freeOver: 70,
   },
   "Veneto-4": {
     price: 25,

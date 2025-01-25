@@ -133,6 +133,8 @@
     "emptyButton": "Svuota il carrello",
     "emptyCartAlertTitle": "Sei sicuro di voler svuotare il carrello",
     "emptyCartAlertDescription": "Questa azione non può essere annullata.",
+    "shouldProbablyUseDHLTitle": "Considera di usare il servizio di spedizione con DHL",
+    "shouldProbablyUseDHLDescription": "Nel tuo caso potrebbe essere più conveniente usare il servizio di spedizione con DHL rispetto alla consegna a domicilio",
     "weightLimitTitle": "Limite di peso raggiunto!",
     "weightLimitDescription": "Al momento c'è un limite di {weightLimit}kg sulle spedizioni con DHL"
   },
