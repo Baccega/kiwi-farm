@@ -80,7 +80,11 @@ export default function BasketPage(props: { params: { locale: string } }) {
     mode: "pickup" | "homeDelivery" | "delivery",
   ) {
     setShippingLocation(
-      mode === "pickup" ? "pickup" : mode === "homeDelivery" ? "Padova" : "IT",
+      mode === "pickup"
+        ? "pickup"
+        : mode === "homeDelivery"
+          ? "Villa del Conte"
+          : "IT",
     );
   }
 
@@ -151,7 +155,9 @@ export default function BasketPage(props: { params: { locale: string } }) {
               </RadioGroup>
               {shippingLocation && isDHLDelivery ? (
                 <Combobox
-                  defaultValue={shippingLocation ?? ""}
+                  defaultValue={
+                    AVAILABLE_COUNTRIES_ZONES[shippingLocation]?.label ?? ""
+                  }
                   onValueChange={handleShippingLocationChange}
                   label={t("country")}
                   placeholder={t("countryPlaceholder")}
@@ -159,7 +165,7 @@ export default function BasketPage(props: { params: { locale: string } }) {
                   options={Object.entries(AVAILABLE_COUNTRIES_ZONES).map(
                     ([key, { label }]) => ({
                       key,
-                      value: key,
+                      value: label,
                       label,
                     }),
                   )}

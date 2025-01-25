@@ -63,7 +63,7 @@ export function Combobox(props: {
                   value={option.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    props.onValueChange(currentValue);
+                    props.onValueChange(option.key);
                     setOpen(false);
                   }}
                 >
