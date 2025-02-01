@@ -29,6 +29,7 @@ export async function sendTelegramMessage(message: string) {
           body: JSON.stringify({
             chat_id: chatId,
             text: message,
+            parse_mode: "HTML",
           }),
         });
         const data = (await res.json()) as SendMessageResponse;
