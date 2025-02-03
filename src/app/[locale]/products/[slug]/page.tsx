@@ -33,6 +33,10 @@ export async function generateMetadata({
   // const t = await getTranslations({ locale, namespace: "Metadata" });
   const product = await getStripeProduct(stripeId);
 
+  if (product === null) {
+    return notFound();
+  }
+
   return {
     title: product.name,
     description: product.metadata?.[`${locale}_description`],
