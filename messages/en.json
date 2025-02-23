@@ -108,6 +108,7 @@
     "totalPrice": "{total} €",
     "pricePerUnit": "{price} € / {unit} (VAT included)",
     "pricePerUnitShort": "{price} € / {unit}",
+    "outOfStock": "Out of stock",
     "relatedProducts": "Related products"
   },
   "Basket": {

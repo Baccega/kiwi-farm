@@ -5,9 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 export async function getStripeProducts() {
   const data = (await stripe.products.list({ expand: ["data.default_price"] }))
     .data;
-  return (JSON.parse(JSON.stringify(data)) as Stripe.Product[]).filter(
-    (product) => (product.metadata?.enabled ?? "true") === "true",
-  );
+  return (JSON.parse(JSON.stringify(data)) as Stripe.Product[]);
 }
 
 export async function getStripeProduct(id: string) {
