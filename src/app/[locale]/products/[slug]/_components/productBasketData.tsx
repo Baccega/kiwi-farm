@@ -16,6 +16,7 @@ export function ProductBasketData(props: {
   const t = useTranslations("Products");
   const locale = useLocale();
   const basket = useBasketStore((state) => state.basket);
+  const outOfStock = product.metadata?.enabled === "false";
 
   const addProductToBasket = useBasketStore(
     (state) => state.addProductToBasket,
@@ -24,6 +25,10 @@ export function ProductBasketData(props: {
   const basketProduct = basket.find(
     (basketProduct) => basketProduct.product.id === product.id,
   );
+
+  if (outOfStock) {
+    return <p className="text-bold text-2xl">{t("outOfStockLong")}</p>;
+  }
 
   return (
     <div

@@ -17,9 +17,6 @@ export async function getStripeProduct(id: string) {
   const data = await stripe.products.retrieve(id, {
     expand: ["default_price"],
   });
-  if (data.metadata?.enabled === "false") {
-    return null;
-  }
 
   return JSON.parse(JSON.stringify(data)) as Stripe.Product;
 }

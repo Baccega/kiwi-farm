@@ -109,6 +109,7 @@
     "pricePerUnit": "{price} € / {unit} (Iva inclusa)",
     "pricePerUnitShort": "{price} € / {unit}",
     "outOfStock": "Esaurito",
+    "outOfStockLong": "Questo prodotto è attualmente esaurito",
     "relatedProducts": "Prodotti correlati"
   },
   "Basket": {

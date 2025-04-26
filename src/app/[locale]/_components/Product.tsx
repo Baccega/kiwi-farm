@@ -35,15 +35,7 @@ const Product = React.forwardRef<HTMLAnchorElement, ProductProps>(
       return null;
 
     return (
-      <Link
-        tabIndex={isOutOfStock ? -1 : 0}
-        aria-disabled={isOutOfStock}
-        ref={ref}
-        href={href}
-        scroll={false}
-        className={cn(isOutOfStock && "pointer-events-none")}
-        {...props}
-      >
+      <Link ref={ref} href={href} scroll={false} {...props}>
         <CustomBorder className="intersect-once relative flex h-product w-product cursor-pointer items-end border-primary bg-primary-80 text-white transition-all intersect:motion-preset-expand hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
           {product.metadata?.images?.split(",")[0] !== null ? (
             <CdnImage

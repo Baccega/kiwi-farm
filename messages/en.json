@@ -109,6 +109,7 @@
     "pricePerUnit": "{price} € / {unit} (VAT included)",
     "pricePerUnitShort": "{price} € / {unit}",
     "outOfStock": "Out of stock",
+    "outOfStockLong": "This product is currently out of stock!",
     "relatedProducts": "Related products"
   },
   "Basket": {
@@ -136,8 +137,8 @@
     "emptyButton": "Empty the cart",
     "emptyCartAlertTitle": "Are you sure you want to empty the cart",
     "emptyCartAlertDescription": "This action cannot be undone.",
-    "shouldProbablyUseDHLTitle" : "You should probably use the DHL shipping service",
-    "shouldProbablyUseDHLDescription": "In your case it could be more convinient to use DHL than our Home Delivery service", 
+    "shouldProbablyUseDHLTitle": "You should probably use the DHL shipping service",
+    "shouldProbablyUseDHLDescription": "In your case it could be more convinient to use DHL than our Home Delivery service",
     "weightLimitTitle": "Weight limit reached!",
     "weightLimitDescription": "There is currently a weight limit of {weightLimit}kg on DHL shipping"
   },
