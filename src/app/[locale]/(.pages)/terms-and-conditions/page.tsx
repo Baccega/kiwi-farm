@@ -403,7 +403,7 @@ export default async function Page(props: { params: { locale: string } }) {
       <h2 className="pt-6 text-2xl">SEZIONE 20 - Contatti</h2>
       <p className="">
         Eventuali domande relative ai Termini e condizioni del servizio dovranno
-        esserci inviate all&apos;indirizzo info@legiumelle.it.
+        esserci inviate all&apos;indirizzo soc.agr.kiwifarm@gmail.com.
       </p>
     </main>
   );

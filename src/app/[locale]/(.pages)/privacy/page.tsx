@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
 
-
 export async function generateMetadata() {
   // const t = await getTranslations({ locale, namespace: "Metadata" });
 
@@ -26,7 +25,7 @@ export default async function Page(props: { params: { locale: string } }) {
         Informativa sulla privacy di Società agricola Kiwi Farm S.S. La presente
         Informativa sulla privacy descrive le modalità con cui i tuoi dati
         personali vengono raccolti, utilizzati e diffusi quando visiti o
-        effettui un acquisto su https://www.legiumelle.it/ (il “Sito”). Quando
+        effettui un acquisto su https://www.legiumelle.com/ (il “Sito”). Quando
         parliamo di “Dati personali” in questa Informativa sulla privacy,
         facciamo riferimento sia alle Informazioni sul dispositivo che alle
         Informazioni sugli ordini.
@@ -147,8 +146,8 @@ export default async function Page(props: { params: { locale: string } }) {
       <p className="">
         Per maggiori informazioni sulle nostre procedure in materia di privacy,
         se hai domande o se vuoi presentare un reclamo, inviaci un&apos;email a
-        info@legiumelle.it o contattaci tramite posta ai seguenti recapiti: Via
-        Restello 19 35010 Villa del Conte PD Italia
+        soc.agr.kiwifarm@gmail.com o contattaci tramite posta ai seguenti
+        recapiti: Via Restello 19 35010 Villa del Conte PD Italia
       </p>
     </main>
   );

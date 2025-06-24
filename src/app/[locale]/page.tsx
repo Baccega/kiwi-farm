@@ -135,7 +135,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
               scroll={false}
               key={service.id}
             >
-              <CustomBorder className="intersect-once intersect:motion-preset-expand  relative flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
+              <CustomBorder className="intersect-once relative  flex h-product w-product cursor-pointer items-end bg-primary-80 text-white transition-all intersect:motion-preset-expand hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-inner">
                 {service.image !== null ? (
                   <CdnImage
                     src={service.image}
@@ -210,7 +210,7 @@ export default async function HomePage(props: { params: { locale: string } }) {
             <span className="flex justify-center gap-2 md:justify-start">
               <Mail />{" "}
               <Link
-                href="mailto:info@legiumelle.it"
+                href="mailto:soc.agr.kiwifarm@gmail.com"
                 className={buttonVariants({
                   variant: "link",
                   inverted: true,

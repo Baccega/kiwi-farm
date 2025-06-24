@@ -54,30 +54,30 @@ export default async function Page(props: { params: { locale: string } }) {
         banca. Spesso sono previsti dei tempi di elaborazione per la
         registrazione di un rimborso. Se hai già seguito questi passaggi e non
         hai ancora ricevuto il rimborso, scrivici al seguente indirizzo:
-        info@legiumelle.it. Articoli in saldo (se applicabile) Solo gli articoli
-        a prezzo pieno possono essere rimborsati. Purtroppo per gli articoli in
-        saldo non è possibile alcun rimborso. Cambi (se applicabile) Sostituiamo
-        gli articoli solo se difettosi o danneggiati. Se ti occorre un cambio
-        con lo stesso articolo, inviaci un&apos;email a info@legiumelle.it e
-        spedisci l&apos;articolo al seguente indirizzo: Via Restello 19 35010
-        Villa del Conte PD Italia. Regali Se al momento dell&apos;acquisto
-        l&apos;articolo è stato contrassegnato come regalo e spedito
-        direttamente a te, riceverai un buono corrispondente al valore del reso.
-        Alla ricezione dell&apos;articolo oggetto di reso, ti sarà spedito per
-        posta il buono regalo. Se l&apos;articolo non è stato contrassegnato
-        come regalo al momento dell&apos;acquisto, o se chi ha fatto il regalo
-        si è fatto spedire l&apos;ordine per consegnartelo di persona, invieremo
-        un rimborso a chi ha fatto il regalo e questi verrà a conoscenza del tuo
-        reso. Spedizione Per effettuare un reso, spedisci il prodotto al
-        seguente indirizzo: Via Restello 19 35010 Villa del Conte PD Italia. I
-        costi di spedizione per il reso dell&apos;articolo saranno a tuo carico.
-        I costi di spedizione non sono rimborsabili. Se ricevi un rimborso, i
-        costi di spedizione del reso non saranno inclusi nel rimborso. A seconda
-        del paese in cui vivi, il tempo necessario per il recapito del prodotto
-        in sostituzione può variare. Se devi spedire un articolo del valore di
-        oltre 75 €, considera di utilizzare un servizio di spedizione
-        tracciabile o di assicurare la spedizione. Non garantiamo che riceveremo
-        l&apos;articolo oggetto di reso.
+        soc.agr.kiwifarm@gmail.com. Articoli in saldo (se applicabile) Solo gli
+        articoli a prezzo pieno possono essere rimborsati. Purtroppo per gli
+        articoli in saldo non è possibile alcun rimborso. Cambi (se applicabile)
+        Sostituiamo gli articoli solo se difettosi o danneggiati. Se ti occorre
+        un cambio con lo stesso articolo, inviaci un&apos;email a
+        soc.agr.kiwifarm@gmail.com e spedisci l&apos;articolo al seguente
+        indirizzo: Via Restello 19 35010 Villa del Conte PD Italia. Regali Se al
+        momento dell&apos;acquisto l&apos;articolo è stato contrassegnato come
+        regalo e spedito direttamente a te, riceverai un buono corrispondente al
+        valore del reso. Alla ricezione dell&apos;articolo oggetto di reso, ti
+        sarà spedito per posta il buono regalo. Se l&apos;articolo non è stato
+        contrassegnato come regalo al momento dell&apos;acquisto, o se chi ha
+        fatto il regalo si è fatto spedire l&apos;ordine per consegnartelo di
+        persona, invieremo un rimborso a chi ha fatto il regalo e questi verrà a
+        conoscenza del tuo reso. Spedizione Per effettuare un reso, spedisci il
+        prodotto al seguente indirizzo: Via Restello 19 35010 Villa del Conte PD
+        Italia. I costi di spedizione per il reso dell&apos;articolo saranno a
+        tuo carico. I costi di spedizione non sono rimborsabili. Se ricevi un
+        rimborso, i costi di spedizione del reso non saranno inclusi nel
+        rimborso. A seconda del paese in cui vivi, il tempo necessario per il
+        recapito del prodotto in sostituzione può variare. Se devi spedire un
+        articolo del valore di oltre 75 €, considera di utilizzare un servizio
+        di spedizione tracciabile o di assicurare la spedizione. Non garantiamo
+        che riceveremo l&apos;articolo oggetto di reso.
       </p>
     </main>
   );
