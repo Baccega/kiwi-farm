@@ -15,11 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return PATHS.map((path) => ({
-    url: `https://legiumelle.it/it${path}`,
+    url: `https://legiumelle.com/it${path}`,
     lastModified: new Date(),
     alternates: {
       languages: {
-        en: `https://legiumelle.it/en${path}`,
+        en: `https://legiumelle.com/en${path}`,
       },
     },
   }));

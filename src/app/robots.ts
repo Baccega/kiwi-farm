@@ -11,11 +11,10 @@ export default function robots(): MetadataRoute.Robots {
         ...AVAILABLE_LOCALES.map((loc) => `/${loc}/basket`),
       ],
     },
-    sitemap: "https://legiumelle.it/sitemap.xml",
+    sitemap: "https://legiumelle.com/sitemap.xml",
   };
 }
 
-
 // Enforces that this route is used as static rendering
 // @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-export const dynamic = 'error';
+export const dynamic = "error";
