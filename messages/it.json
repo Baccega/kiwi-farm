@@ -91,7 +91,19 @@
     "bannerTitle": "Cookies",
     "bannerDescription": "Accettando i cookies si acconsente all'uso di <posthog>PostHog (Data analytics)</posthog> e <sentry>Sentry (Error reporting)</sentry> durante la navigazione sul sito. Leggi le nostre <privacyPolicy>Privacy Policy</privacyPolicy> e <termsAndConditions>Termini e condizioni</termsAndConditions> per maggiori informazioni.",
     "acceptAll": "Accetta tutti",
-    "onlyNecessary": "Solo i cookies strettamente necessari"
+    "rejectAll": "Rifiuta tutti",
+    "saveSettings": "Salva impostazioni",
+    "customize": "Personalizza",
+    "consentTypes": {
+      "necessary": "Necessari",
+      "necessaryDescription": "Questi strumenti di tracciamento sono utilizzati per attività strettamente necessarie al funzionamento o all'erogazione del servizio da te richiesto e, pertanto, non richiedono il tuo consenso.",
+      "measurement": "Analitici",
+      "measurementDescription": "Questi strumenti di tracciamento ci aiutano a misurare il traffico e ad analizzare il tuo comportamento per migliorare il nostro servizio."
+    },
+    "privacySettings": {
+      "title": "Impostazioni privacy",
+      "description": "Personalizza qui le tue impostazioni sulla privacy. Puoi scegliere quali tipi di cookie e tecnologie di tracciamento consentire."
+    }
   },
   "Footer": {
     "privacy": "Privacy",

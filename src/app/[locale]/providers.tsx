@@ -2,7 +2,6 @@
 import { create } from "zustand";
 import { Observer } from "tailwindcss-intersect";
 import { devtools, persist } from "zustand/middleware";
-import { getCookie } from "cookies-next";
 import type { BasketProduct } from "~/types/Product";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
 import {
@@ -20,10 +19,10 @@ import type Stripe from "stripe";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
-import { Drawer } from "~/components/ui/drawer";
 import CookiesBanner from "./_components/CookieBanner";
-import { useLocale } from "next-intl";
 import { TooltipProvider } from "~/components/ui/tooltip";
+import { ConsentManagerProvider } from "@c15t/nextjs";
+import { useLocale, useTranslations } from "next-intl";
 
 interface BasketState {
   basket: BasketProduct[];
@@ -88,31 +87,6 @@ export const useBasketStore = create<BasketState>()(
   ),
 );
 
-interface CookiesBannerState {
-  cookiesDrawerOpen: boolean;
-  hasCookiesConsent: boolean | null;
-  setCookiesDrawerOpen: (open: boolean) => void;
-  setHasCookiesConsent: (hasConsent: boolean) => void;
-}
-
-export const useCookiesStore = create<CookiesBannerState>()(
-  devtools(
-    persist(
-      (set) => ({
-        cookiesDrawerOpen: false,
-        hasCookiesConsent: null,
-        setCookiesDrawerOpen: (open: boolean) =>
-          set({ cookiesDrawerOpen: open }),
-        setHasCookiesConsent: (hasConsent: boolean) =>
-          set({ hasCookiesConsent: hasConsent }),
-      }),
-      {
-        name: "cookies-storage",
-      },
-    ),
-  ),
-);
-
 type OpenAlertProps = {
   title: string;
   description: string;
@@ -133,19 +107,13 @@ function useTailwindIntersecProvider() {
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const locale = useLocale();
-  const hasCookiesConsent = Boolean(getCookie("hasCookiesConsent") ?? "false");
+  const t = useTranslations();
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [onConfirm, setOnConfirm] = useState<undefined | (() => void)>();
-  const [cookiesDrawerOpen, setCookiesDrawerOpen] =
-    useState(!hasCookiesConsent);
 
   useTailwindIntersecProvider();
-
-  function handleCookiesDrawerOpenChange(open: boolean) {
-    setCookiesDrawerOpen(open);
-  }
 
   function closeAlert() {
     setIsAlertOpen(false);
@@ -164,9 +132,39 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Drawer
-      open={cookiesDrawerOpen}
-      onOpenChange={handleCookiesDrawerOpenChange}
+    <ConsentManagerProvider
+      options={{
+        mode: "offline",
+        consentCategories: ["necessary", "measurement"],
+        ignoreGeoLocation: true,
+        translations: {
+          defaultLanguage: locale,
+          translations: {
+            [locale]: {
+              common: {
+                acceptAll: t("Cookies.acceptAll"),
+                customize: t("Cookies.customize"),
+                rejectAll: t("Cookies.rejectAll"),
+                save: t("Cookies.saveSettings"),
+              },
+              consentTypes: {
+                necessary: {
+                  title: t("Cookies.consentTypes.necessary"),
+                  description: t("Cookies.consentTypes.necessaryDescription"),
+                },
+                measurement: {
+                  title: t("Cookies.consentTypes.measurement"),
+                  description: t("Cookies.consentTypes.measurementDescription"),
+                },
+              },
+              consentManagerDialog: {
+                title: t("Cookies.privacySettings.title"),
+                description: t("Cookies.privacySettings.description"),
+              },
+            },
+          },
+        },
+      }}
     >
       <PostHogProvider client={posthog}>
         <QueryClientProvider client={queryClient}>
@@ -192,12 +190,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
                   </AlertDialogFooter>
                 </AlertDialogContent>
                 {children}
+                <CookiesBanner locale={locale} />
               </AlertDialog>
             </AlertContext.Provider>
           </TooltipProvider>
         </QueryClientProvider>
       </PostHogProvider>
-      <CookiesBanner locale={locale} hasCookiesConsent={hasCookiesConsent} />
-    </Drawer>
+    </ConsentManagerProvider>
   );
 }

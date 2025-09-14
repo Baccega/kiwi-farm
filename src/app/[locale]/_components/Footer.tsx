@@ -1,12 +1,14 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useConsentManager } from "@c15t/nextjs";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
-import React from "react";
-import { buttonVariants } from "~/components/ui/button";
-import { DrawerTrigger } from "~/components/ui/drawer";
+import { Button, buttonVariants } from "~/components/ui/button";
 
-export default async function Footer(props: { locale: string }) {
-  const t = await getTranslations("Footer");
+export default function Footer(props: { locale: string }) {
+  const t = useTranslations("Footer");
   const year = new Date().getFullYear();
+  const { setIsPrivacyDialogOpen } = useConsentManager();
+
   return (
     <footer className="bg-primary-80">
       <div className="container flex flex-col items-center justify-between py-1 text-sm text-white md:flex-row md:px-16">
@@ -21,15 +23,14 @@ export default async function Footer(props: { locale: string }) {
           >
             {t("privacy")}
           </Link>
-          <DrawerTrigger
-            className={buttonVariants({
-              variant: "link",
-              inverted: true,
-              size: "sm",
-            })}
+          <Button
+            variant="link"
+            size="sm"
+            className="text-primary-foreground"
+            onClick={() => setIsPrivacyDialogOpen(true)}
           >
             {t("cookies")}
-          </DrawerTrigger>
+          </Button>
           <Link
             href={`/${props.locale}/terms-and-conditions`}
             className={buttonVariants({

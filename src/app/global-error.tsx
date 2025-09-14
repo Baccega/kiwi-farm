@@ -3,15 +3,16 @@
 import * as Sentry from "@sentry/nextjs";
 import Error from "next/error";
 import { useEffect } from "react";
-import { useCookiesStore } from "./[locale]/providers";
+import { useConsentManager } from "@c15t/nextjs";
 
 export default function GlobalError(props: { error: unknown }) {
-  const hasCookiesConsent = useCookiesStore((state) => state.hasCookiesConsent);
+  const { hasConsentFor } = useConsentManager();
+  const hasMesurementCookiesConsent = hasConsentFor("measurement");
 
   useEffect(() => {
-    if (!hasCookiesConsent) return;
+    if (!hasMesurementCookiesConsent) return;
     Sentry.captureException(props.error);
-  }, [hasCookiesConsent, props.error]);
+  }, [hasMesurementCookiesConsent, props.error]);
 
   return (
     <html>

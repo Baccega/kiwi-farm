@@ -39,6 +39,13 @@
     --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
+
+    /* Cookie banner */
+    --button-primary: var(--primary) !important;
+    --button-primary-hover: var(--primary-20) !important;
+    --switch-background-color: var(--primary-60) !important;
+    --switch-background-color-hover: var(--primary-80) !important;
+    --switch-background-color-checked: var(--primary) !important;
   }
 
   * {
