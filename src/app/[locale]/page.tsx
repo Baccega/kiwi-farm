@@ -168,7 +168,13 @@ export default async function HomePage(props: { params: { locale: string } }) {
       >
         <div className="container relative flex h-full flex-col items-center justify-between gap-6 py-6 text-center text-white md:min-h-64 md:flex-row md:gap-4 md:px-16">
           <div className="flex flex-col justify-between gap-2 md:gap-6 ">
-            <Image src="/logo-white.svg" alt="logo" width={200} height={50} />
+            <Image
+              src="/logo-white.svg"
+              alt="logo"
+              width={2070}
+              height={530}
+              className="h-auto w-[200px]"
+            />
             <div className="flex items-center justify-center gap-1 md:-translate-x-2 md:justify-start">
               {" "}
               <Link

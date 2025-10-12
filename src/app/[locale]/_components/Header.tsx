@@ -13,19 +13,19 @@ export default async function Header(props: { locale: string }) {
           src="/svgs/drappeggio4.svg"
           alt=""
           aria-hidden={true}
-          width={160}
-          height={160}
+          width={142}
+          height={150}
           priority
-          className="absolute bottom-0 left-0 z-20 translate-x-[-55%] translate-y-[83%] scale-90 object-cover md:translate-x-[-45%] md:scale-100"
+          className="absolute bottom-0 left-0 z-20 w-40 translate-x-[-55%] translate-y-[83%] scale-90 object-cover md:translate-x-[-45%] md:scale-100"
         />
         <Image
           src="/svgs/drappeggio4.svg"
           alt=""
           priority
           aria-hidden={true}
-          width={160}
-          height={160}
-          className="absolute bottom-0 right-0 z-20 translate-x-[55%] translate-y-[83%] scale-90 object-cover md:translate-x-[45%] md:scale-100"
+          width={142}
+          height={150}
+          className="absolute bottom-0 right-0 z-20 w-40 translate-x-[55%] translate-y-[83%] scale-90 object-cover md:translate-x-[45%] md:scale-100"
         />
         <Link
           href={`/${props.locale}`}

@@ -88,6 +88,7 @@ export default async function Page(props: {
                       src={image ?? "/placeholder.png"}
                       alt={product.name ?? ""}
                       fill={true}
+                      sizes="24rem"
                       className="z-20 rounded-lg object-cover"
                     />
                     <link itemProp="image" href={image} />
@@ -126,9 +127,9 @@ export default async function Page(props: {
             <CdnImage
               src={"/logos/sqnpi-logo.png"}
               alt={"Sqnpi logo"}
-              width={100}
-              height={100}
-              className="block object-cover pt-4"
+              width={957}
+              height={924}
+              className="block w-28 object-cover pt-4"
             />
           </div>
         </div>
