@@ -87,6 +87,10 @@
     "facebook": "Segui la nostra pagina Facebook",
     "instagram": "Seguici su Instagram"
   },
+  "ReservationOnly": {
+    "title": "Questo prodotto è disponibile solo tramite prenotazione",
+    "phone": "+39 346 058 6379 (Martina)"
+  },
   "Cookies": {
     "bannerTitle": "Cookies",
     "bannerDescription": "Accettando i cookies si acconsente all'uso di <posthog>PostHog (Data analytics)</posthog> e <sentry>Sentry (Error reporting)</sentry> durante la navigazione sul sito. Leggi le nostre <privacyPolicy>Privacy Policy</privacyPolicy> e <termsAndConditions>Termini e condizioni</termsAndConditions> per maggiori informazioni.",

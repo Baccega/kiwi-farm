@@ -3,6 +3,7 @@ import { ShoppingCart, ShoppingBasket } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import type Stripe from "stripe";
+import ReservationOnly from "~/app/[locale]/_components/ReservationOnly";
 import { useBasketStore } from "~/app/[locale]/providers";
 import ProductQuantityChanger from "~/components/productQuantityChanger";
 import { Button, buttonVariants } from "~/components/ui/button";
@@ -62,16 +63,22 @@ export function ProductBasketData(props: {
               })}
             </span>
           </p>
-          <ProductQuantityChanger basketProduct={basketProduct} />
-          <Link
-            href={`/${locale}/basket`}
-            className={cn(
-              buttonVariants(),
-              "mt-4 flex w-fit items-center gap-2",
-            )}
-          >
-            <ShoppingCart /> {t("proceedToBasket")}
-          </Link>
+          {product.metadata?.reservation_only === "true" ? (
+            <ReservationOnly />
+          ) : (
+            <>
+              <ProductQuantityChanger basketProduct={basketProduct} />
+              <Link
+                href={`/${locale}/basket`}
+                className={cn(
+                  buttonVariants(),
+                  "mt-4 flex w-fit items-center gap-2",
+                )}
+              >
+                <ShoppingCart /> {t("proceedToBasket")}
+              </Link>
+            </>
+          )}
         </div>
       ) : (
         <>
@@ -81,14 +88,18 @@ export function ProductBasketData(props: {
               unit: product.unit_label ?? "pz",
             })}
           </p>
-          <Button
-            variant={"default"}
-            className="gap-2"
-            onClick={() => addProductToBasket(product, price)}
-          >
-            <ShoppingBasket />
-            {t("addProductToBasket")}
-          </Button>
+          {product.metadata?.reservation_only === "true" ? (
+            <ReservationOnly />
+          ) : (
+            <Button
+              variant={"default"}
+              className="gap-2"
+              onClick={() => addProductToBasket(product, price)}
+            >
+              <ShoppingBasket />
+              {t("addProductToBasket")}
+            </Button>
+          )}
         </>
       )}
     </div>
