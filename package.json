@@ -38,7 +38,7 @@
     "drizzle-orm": "^0.29.5",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.373.0",
-    "next": "^14.2.33",
+    "next": "^14.2.35",
     "next-intl": "^3.23.5",
     "postgres": "^3.4.7",
     "posthog-js": "^1.301.1",
@@ -81,5 +81,14 @@
   "ct3aMetadata": {
     "initVersion": "7.31.0"
   },
-  "packageManager": "pnpm@8.10.5"
+  "packageManager": "pnpm@8.10.5",
+  "pnpm": {
+    "overrides": {
+      "ws@>=8.0.0 <8.17.1": ">=8.17.1",
+      "esbuild@<=0.24.2": ">=0.25.0",
+      "glob@>=10.2.0 <10.5.0": ">=10.5.0",
+      "next@>=13.3.0 <14.2.34": ">=14.2.34",
+      "next@>=13.3.1-canary.0 <14.2.35": ">=14.2.35"
+    }
+  }
 }
