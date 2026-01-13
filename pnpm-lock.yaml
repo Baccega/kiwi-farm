@@ -10,6 +10,8 @@ overrides:
   glob@>=10.2.0 <10.5.0: '>=10.5.0'
   next@>=13.3.0 <14.2.34: '>=14.2.34'
   next@>=13.3.1-canary.0 <14.2.35: '>=14.2.35'
+  qs@<6.14.1: '>=6.14.1'
+  preact@>=10.28.0 <10.28.2: '>=10.28.2'
 
 dependencies:
   '@c15t/nextjs':
@@ -6790,12 +6792,12 @@ packages:
       '@posthog/core': 1.7.0
       core-js: 3.47.0
       fflate: 0.4.8
-      preact: 10.28.0
+      preact: 10.28.2
       web-vitals: 4.2.4
     dev: false
 
-  /preact@10.28.0:
-    resolution: {integrity: sha512-rytDAoiXr3+t6OIP3WGlDd0ouCUG1iCWzkcY3++Nreuoi17y6T5i/zRhe6uYfoVcxq6YU+sBtJouuRDsq8vvqA==}
+  /preact@10.28.2:
+    resolution: {integrity: sha512-lbteaWGzGHdlIuiJ0l2Jq454m6kcpI1zNje6d8MlGAFlYvP2GO4ibnat7P74Esfz4sPTdM6UxtTwh/d3pwM9JA==}
     dev: false
 
   /prelude-ls@1.2.1:
@@ -6904,8 +6906,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /qs@6.14.0:
-    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
+  /qs@6.14.1:
+    resolution: {integrity: sha512-4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==}
     engines: {node: '>=0.6'}
     dependencies:
       side-channel: 1.1.0
@@ -7491,7 +7493,7 @@ packages:
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 20.19.25
-      qs: 6.14.0
+      qs: 6.14.1
     dev: false
 
   /styled-jsx@5.1.1(react@18.2.0):
